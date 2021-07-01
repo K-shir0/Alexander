@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'login_page.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -28,7 +27,7 @@ class _SignUpPageState extends State<SignUpPage> {
         //戻るボタンアイコン
         leading: IconButton(
           //アイコンボタンが押された時の処理
-          onPressed: ReturnPage,
+          onPressed: returnPage,
           icon: Icon(
             Icons.arrow_back,
             color: Colors.black,
@@ -254,8 +253,7 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   //ログインページに戻らせる画面遷移
-  void ReturnPage() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => LoginPage()));
+  void returnPage() {
+    Navigator.pushNamed(context, '/login');
   }
 }
