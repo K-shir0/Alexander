@@ -1,4 +1,3 @@
-import 'package:alexander/pages/sign_up_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -116,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   //新規登録したいときに飛ぶリンクの設定
                   InkWell(
-                    onTap: SinkiPage,
+                    onTap: toSignUpPage,
                     child: Text(
                       "新規登録はこちら",
                       style: TextStyle(fontSize: 8),
@@ -142,8 +141,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void SinkiPage() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => SignUpPage()));
+  void toSignUpPage() {
+    Navigator.pushNamed(context, '/signup');
   }
 }

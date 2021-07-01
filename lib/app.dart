@@ -1,4 +1,5 @@
 import 'package:alexander/pages/login_page.dart';
+import 'package:alexander/pages/sign_up_page.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/counter_page.dart';
@@ -21,11 +22,12 @@ class App extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/Login',
+      initialRoute: '/login',
       routes: {
         '/': (BuildContext context) =>
             CounterPage(title: 'Flutter Demo Home Page'),
-        '/Login': (BuildContext context) => LoginPage(),
+        '/login': (BuildContext context) => const LoginPage(),
+        '/signup': (BuildContext context) => const SignUpPage(),
       },
     );
   }
