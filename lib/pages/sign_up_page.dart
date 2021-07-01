@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'LoginPage.dart';
+import 'login_page.dart';
 
 class SinkiPage extends StatelessWidget {
   const SinkiPage({Key? key}) : super(key: key);

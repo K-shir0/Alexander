@@ -1,4 +1,4 @@
-import 'package:alexander/pages/SinkiToroku.dart';
+import 'package:alexander/pages/sign_up_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
