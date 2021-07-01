@@ -1,29 +1,14 @@
 import 'package:flutter/material.dart';
 import 'login_page.dart';
 
-class SinkiPage extends StatelessWidget {
-  const SinkiPage({Key? key}) : super(key: key);
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        fontFamily: "Noto Sans JP",
-      ),
-      debugShowCheckedModeBanner: false,
-      home: SinkiForm(),
-    );
-  }
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class SinkiForm extends StatefulWidget {
-  const SinkiForm({Key? key}) : super(key: key);
-
-  @override
-  _SinkiFormState createState() => _SinkiFormState();
-}
-
-class _SinkiFormState extends State<SinkiForm> {
+class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     //各項目の入力内容を格納する変数

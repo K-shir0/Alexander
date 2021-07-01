@@ -1,28 +1,15 @@
 import 'package:alexander/pages/sign_up_page.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        fontFamily: "Noto Sans JP",
-      ),
-      debugShowCheckedModeBanner: false,
-      home: loginPage(),
-    );
-  }
-}
-
-class loginPage extends StatefulWidget {
-  const loginPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  _loginPageState createState() => _loginPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
 //ログインページ
-class _loginPageState extends State<loginPage> {
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     //各項目の入力内容を格納する変数
@@ -157,6 +144,6 @@ class _loginPageState extends State<loginPage> {
 
   void SinkiPage() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => SinkiForm()));
+        context, MaterialPageRoute(builder: (context) => SignUpPage()));
   }
 }
