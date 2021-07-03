@@ -1,11 +1,24 @@
+import 'package:alexander/pages/auth_sample_page.dart';
+import 'package:alexander/service/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'pages/counter_page.dart';
 
-class App extends StatelessWidget {
+class App extends HookWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    useProvider(authProvider);
+
+    //　起動時に一度だけログイン済みかチェックする
+    useEffect(() {
+      WidgetsBinding.instance?.addPostFrameCallback((_) {
+        context.read(authProvider).getCookie();
+      });
+    }, []);
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -20,9 +33,10 @@ class App extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
+      initialRoute: '/test',
       routes: {
         '/': (BuildContext context) => CounterPage(title: 'Flutter Demo Home Page'),
+        '/test': (BuildContext context) => AuthSamplePage(),
       },
     );
   }
