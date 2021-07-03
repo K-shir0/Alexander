@@ -16,11 +16,11 @@ class LoginTestPage extends HookWidget {
         child: Column(
           children: [
             ElevatedButton(
-              child: Text('ログイン'),
               onPressed: () {
                 provider.signIn(SignInRequest(
                     email: 'laravel-a@example.com', password: 'password'));
               },
+              child: Text('ログイン'),
             ),
           ],
         ),
