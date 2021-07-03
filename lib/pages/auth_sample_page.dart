@@ -46,9 +46,17 @@ class AuthSamplePage extends HookWidget {
               TextFormField(
                 controller: notifier.passwordController,
               ),
-              ElevatedButton(
-                onPressed: notifier.onTapSignInButton(),
-                child: const Text('ログイン'),
+              Row(
+                children: [
+                  ElevatedButton(
+                    onPressed: notifier.onTapSignInButton(),
+                    child: const Text('ログイン'),
+                  ),
+                  ElevatedButton(
+                    onPressed: notifier.onTapSignOutButton(),
+                    child: const Text('ログアウト'),
+                  ),
+                ],
               ),
             ],
           ),

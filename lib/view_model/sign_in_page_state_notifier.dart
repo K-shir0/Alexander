@@ -19,7 +19,11 @@ class SignInPageStateNotifier extends StateNotifier<SignInPageState>
   /// ログイン中のユーザーを取得
   User? get authUser => ref.read(authStateProvider).authUser;
 
-  Function() onTapSignInButton() {
+  Function()? onTapSignInButton() {
+    if (state.isLoading) {
+      return null;
+    }
+
     return () {
       state.copyWith(isLoading: true);
 
@@ -33,6 +37,23 @@ class SignInPageStateNotifier extends StateNotifier<SignInPageState>
             email: emailController.text,
             password: passwordController.text,
           ))
+          .then((value) => value.when(success: (_) {}, failure: (_) {}))
+          .whenComplete(() => state.copyWith(isLoading: false));
+    };
+  }
+
+  Function()? onTapSignOutButton() {
+    if (state.isLoading) {
+      return null;
+    }
+
+    return () {
+      state.copyWith(isLoading: true);
+
+      // ログイン処理
+      ref
+          .read(authStateProvider.notifier)
+          .signOut()
           .then((value) => value.when(success: (_) {}, failure: (_) {}))
           .whenComplete(() => state.copyWith(isLoading: false));
     };

@@ -29,4 +29,19 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
       return result;
     });
   }
+
+  Future<Result<SignOutResponse>> signOut() async {
+    final client = ref.read(authProvider);
+
+    return client.signOut().then((result) {
+      result.when(
+          success: (_) {
+            // ログアウト成功
+            state = state.copyWith(authUser: null);
+          },
+          failure: (_) {});
+
+      return result;
+    });
+  }
 }
