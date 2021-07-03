@@ -4,7 +4,9 @@ targets:
       freezed:freezed:
         generate_for:
           include:
-            - lib/model/**.dart
+            # domain
+            - lib/domain/**.dart
+            # service
             - lib/service/model/**.dart
             - lib/service/base/model/**.dart
       json_serializable:
