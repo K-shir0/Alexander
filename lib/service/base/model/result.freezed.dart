@@ -108,23 +108,15 @@ class _$SuccessCopyWithImpl<T, $Res> extends _$ResultCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$Success<T> with DiagnosticableTreeMixin implements Success<T> {
+class _$Success<T> implements Success<T> {
   const _$Success(this.value);
 
   @override
   final T value;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Result<$T>.success(value: $value)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Result<$T>.success'))
-      ..add(DiagnosticsProperty('value', value));
   }
 
   @override
@@ -203,6 +195,8 @@ abstract class $FailureCopyWith<T, $Res> {
   factory $FailureCopyWith(Failure<T> value, $Res Function(Failure<T>) then) =
       _$FailureCopyWithImpl<T, $Res>;
   $Res call({Error error});
+
+  $ErrorCopyWith<$Res> get error;
 }
 
 /// @nodoc
@@ -225,27 +219,26 @@ class _$FailureCopyWithImpl<T, $Res> extends _$ResultCopyWithImpl<T, $Res>
               as Error,
     ));
   }
+
+  @override
+  $ErrorCopyWith<$Res> get error {
+    return $ErrorCopyWith<$Res>(_value.error, (value) {
+      return _then(_value.copyWith(error: value));
+    });
+  }
 }
 
 /// @nodoc
 
-class _$Failure<T> with DiagnosticableTreeMixin implements Failure<T> {
+class _$Failure<T> implements Failure<T> {
   const _$Failure(this.error);
 
   @override
   final Error error;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Result<$T>.failure(error: $error)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Result<$T>.failure'))
-      ..add(DiagnosticsProperty('error', error));
   }
 
   @override

@@ -21,7 +21,7 @@ class _$UserTearOff {
   const _$UserTearOff();
 
   _User call(
-      {required String id,
+      {required int id,
       required String firstName,
       required String lastName,
       required String email,
@@ -49,7 +49,7 @@ const $User = _$UserTearOff();
 
 /// @nodoc
 mixin _$User {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
@@ -67,7 +67,7 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
   $Res call(
-      {String id,
+      {int id,
       String firstName,
       String lastName,
       String email,
@@ -98,7 +98,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       firstName: firstName == freezed
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -133,7 +133,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$UserCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
+      {int id,
       String firstName,
       String lastName,
       String email,
@@ -165,7 +165,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       firstName: firstName == freezed
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -210,7 +210,7 @@ class _$_User with DiagnosticableTreeMixin implements _User {
       _$_$_UserFromJson(json);
 
   @override
-  final String id;
+  final int id;
   @override
   final String firstName;
   @override
@@ -292,7 +292,7 @@ class _$_User with DiagnosticableTreeMixin implements _User {
 
 abstract class _User implements User {
   const factory _User(
-      {required String id,
+      {required int id,
       required String firstName,
       required String lastName,
       required String email,
@@ -303,7 +303,7 @@ abstract class _User implements User {
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   @override
   String get firstName => throw _privateConstructorUsedError;
   @override
