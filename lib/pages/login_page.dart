@@ -17,128 +17,131 @@ class _LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent),
-      body: Center(
-        child: Container(
-          padding: const EdgeInsets.all(25),
-          width: 600,
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.yellow,
-              width: 10,
+      body: SingleChildScrollView(
+        child: Center(
+          child: Container(
+            padding: const EdgeInsets.all(25),
+            width: 600,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.yellow,
+                width: 10,
+              ),
             ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                "ログイン画面",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 35,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(
+                  height: 20,
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              //ユーザー名を入力させるエリア
-              Row(
-                children: [
-                  Text(
-                    "ユーザー名",
-                    style: TextStyle(
-                      fontSize: 10,
-                    ),
+                Text(
+                  "ログイン画面",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 35,
                   ),
-                ],
-              ),
-              TextField(
-                decoration:
-                    InputDecoration(icon: Icon(Icons.person), hintText: "Name"),
-                style: TextStyle(fontSize: 20),
-                //リアルタイム判定
-                onChanged: (text) {
-                  if (text.length > 0) {
-                    // 入力値があるなら、それを反映する。
-                    setState(() {
-                      username = text;
-                    });
-                  }
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              //パスワードを入力させるエリア
-              Row(
-                children: [
-                  Text(
-                    "パスワード",
-                    style: TextStyle(
-                      fontSize: 10,
-                    ),
-                  ),
-                ],
-              ),
-              TextField(
-                obscureText: true,
-                autocorrect: false,
-                decoration: InputDecoration(
-                    icon: Icon(Icons.lock_outline), hintText: "Password"),
-                style: TextStyle(fontSize: 20),
-                //リアルタイム判定
-                onChanged: (text) {
-                  if (text.length > 0) {
-                    // 入力値があるなら、それを反映する。
-                    setState(() {
-                      password = text;
-                    });
-                  }
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  //パスワードを忘れた時にとぶリンクを設定
-                  InkWell(
-                    onTap: () {},
-                    child: Text(
-                      "パスワードを\n忘れた方はこちら",
-                      style: TextStyle(fontSize: 8),
-                    ),
-                  ),
-                  //新規登録したいときに飛ぶリンクの設定
-                  InkWell(
-                    onTap: toSignUpPage,
-                    child: Text(
-                      "新規登録はこちら",
-                      style: TextStyle(fontSize: 8),
-                      textAlign: TextAlign.right,
-                    ),
-                  )
-                ],
-              ),
-              //ログインボタン
-              TextButton(
-                child: const Text('ログイン'),
-                style: TextButton.styleFrom(
-                  padding: const EdgeInsets.all(30.0),
-                  primary: Colors.black,
                 ),
-                //ログインボタンが押された時の処理
-                onPressed: () {},
-              ),
-            ],
+                SizedBox(
+                  height: 20,
+                ),
+                //ユーザー名を入力させるエリア
+                Row(
+                  children: [
+                    Text(
+                      "ユーザー名",
+                      style: TextStyle(
+                        fontSize: 10,
+                      ),
+                    ),
+                  ],
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                      icon: Icon(Icons.person), hintText: "Name"),
+                  style: TextStyle(fontSize: 20),
+                  //リアルタイム判定
+                  onChanged: (text) {
+                    if (text.length > 0) {
+                      // 入力値があるなら、それを反映する。
+                      setState(() {
+                        username = text;
+                      });
+                    }
+                  },
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                //パスワードを入力させるエリア
+                Row(
+                  children: [
+                    Text(
+                      "パスワード",
+                      style: TextStyle(
+                        fontSize: 10,
+                      ),
+                    ),
+                  ],
+                ),
+                TextField(
+                  obscureText: true,
+                  autocorrect: false,
+                  decoration: InputDecoration(
+                      icon: Icon(Icons.lock_outline), hintText: "Password"),
+                  style: TextStyle(fontSize: 20),
+                  //リアルタイム判定
+                  onChanged: (text) {
+                    if (text.length > 0) {
+                      // 入力値があるなら、それを反映する。
+                      setState(() {
+                        password = text;
+                      });
+                    }
+                  },
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    //パスワードを忘れた時にとぶリンクを設定
+                    InkWell(
+                      onTap: () {},
+                      child: Text(
+                        "パスワードを\n忘れた方はこちら",
+                        style: TextStyle(fontSize: 8),
+                      ),
+                    ),
+                    //新規登録したいときに飛ぶリンクの設定
+                    InkWell(
+                      onTap: toSignUpPage,
+                      child: Text(
+                        "新規登録はこちら",
+                        style: TextStyle(fontSize: 8),
+                        textAlign: TextAlign.right,
+                      ),
+                    )
+                  ],
+                ),
+                //ログインボタン
+                TextButton(
+                  child: const Text('ログイン'),
+                  style: TextButton.styleFrom(
+                    padding: const EdgeInsets.all(30.0),
+                    primary: Colors.black,
+                  ),
+                  //ログインボタンが押された時の処理
+                  onPressed: () {},
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
+    return scaffold;
   }
 
   void toSignUpPage() {
