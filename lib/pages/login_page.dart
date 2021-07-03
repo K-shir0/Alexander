@@ -141,7 +141,6 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
-    return scaffold;
   }
 
   void toSignUpPage() {
