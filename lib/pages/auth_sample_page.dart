@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class LoginTestPage extends HookWidget {
+class AuthSamplePage extends HookWidget {
   final _form = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -13,6 +13,20 @@ class LoginTestPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final provider = useProvider(authProvider);
+
+    // ログインボタンの処理
+    void onTapSignUpButton() {
+      // フォームの保存処理
+      _form.currentState?.save();
+
+      final email = _emailController.text;
+      final password = _passwordController.text;
+
+      // ログイン処理
+      provider
+          .signIn(SignInRequest(email: email, password: password))
+          .then((value) => value.when(success: (_) {}, failure: (_) {}));
+    }
 
     return Scaffold(
       appBar: AppBar(),
@@ -28,19 +42,7 @@ class LoginTestPage extends HookWidget {
                 controller: _passwordController,
               ),
               ElevatedButton(
-                onPressed: () {
-                  // フォームの保存処理
-                  _form.currentState?.save();
-
-                  final email = _emailController.text;
-                  final password = _passwordController.text;
-
-                  // ログイン処理
-                  provider
-                      .signIn(SignInRequest(email: email, password: password))
-                      .then((value) =>
-                          value.when(success: (_) {}, failure: (_) {}));
-                },
+                onPressed: onTapSignUpButton,
                 child: const Text('ログイン'),
               ),
             ],
