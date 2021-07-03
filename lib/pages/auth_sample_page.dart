@@ -1,5 +1,6 @@
 import 'package:alexander/service/auth.dart';
 import 'package:alexander/service/model/authentication.dart';
+import 'package:alexander/view_model/common/auth_state_notifier.dart';
 import 'package:alexander/view_model/model/sign_in_page_state.dart';
 import 'package:alexander/view_model/sign_in_page_state_notifier.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,22 +20,11 @@ class AuthSamplePage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = useProvider(signInPageProvider);
+    useProvider(authStateProvider);
+    useProvider(signInPageProvider);
     final notifier = useProvider(signInPageProvider.notifier);
 
-    // // ログインボタンの処理
-    // void onTapSignUpButton() {
-    //   // フォームの保存処理
-    //   _form.currentState?.save();
-    //
-    //   final email = _emailController.text;
-    //   final password = _passwordController.text;
-    //
-    //   // ログイン処理
-    //   provider
-    //       .signIn(SignInRequest(email: email, password: password))
-    //       .then((value) => value.when(success: (_) {}, failure: (_) {}));
-    // }
+    final authUser = notifier.authUser;
 
     return Scaffold(
       appBar: AppBar(),
@@ -43,6 +33,13 @@ class AuthSamplePage extends HookWidget {
           key: notifier.form,
           child: Column(
             children: [
+              if (authUser != null)
+                Row(
+                  children: [
+                    const Text('ログイン済み：'),
+                    Text(authUser.firstName),
+                  ],
+                ),
               TextFormField(
                 controller: notifier.emailController,
               ),

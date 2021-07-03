@@ -1,3 +1,4 @@
+import 'package:alexander/domain/user.dart';
 import 'package:alexander/service/model/authentication.dart';
 import 'package:alexander/view_model/common/auth_state_notifier.dart';
 import 'package:alexander/view_model/model/sign_in_page_state.dart';
@@ -14,6 +15,9 @@ class SignInPageStateNotifier extends StateNotifier<SignInPageState>
   final form = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
+  /// ログイン中のユーザーを取得
+  User? get authUser => ref.read(authStateProvider).authUser;
 
   Function() onTapSignInButton() {
     return () {
