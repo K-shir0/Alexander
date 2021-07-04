@@ -1,4 +1,5 @@
 import 'package:alexander/pages/auth_sample_page.dart';
+import 'package:alexander/pages/infinity_scroll_page.dart';
 import 'package:alexander/pages/mandala_chart_page.dart';
 import 'package:alexander/service/auth.dart';
 import 'package:flutter/material.dart';
@@ -34,11 +35,12 @@ class App extends HookWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/mandala',
+      initialRoute: '/infinity',
       routes: {
         '/': (BuildContext context) => CounterPage(title: 'Flutter Demo Home Page'),
         '/test': (BuildContext context) => AuthSamplePage(),
         '/mandala': (BuildContext context) => MandalaChartPage(),
+        '/infinity': (BuildContext context) => InfinityScrollPage(),
       },
     );
   }

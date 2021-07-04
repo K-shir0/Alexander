@@ -5,33 +5,35 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 class MandalaChartPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(),
-        body: Column(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              children: [
-                MandalaBox(),
-                MandalaBox(),
-                MandalaBox(),
-              ],
-            ),
-            Row(
-              children: [
-                MandalaBox(),
-                MandalaBox(),
-                MandalaBox(),
-              ],
-            ),
-            Row(
-              children: [
-                MandalaBox(),
-                MandalaBox(),
-                MandalaBox(),
-              ],
-            ),
+            MandalaBox(),
+            MandalaBox(),
+            MandalaBox(),
           ],
-        ));
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            MandalaBox(),
+            MandalaBox(),
+            MandalaBox(),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            MandalaBox(),
+            MandalaBox(),
+            MandalaBox(),
+          ],
+        ),
+      ],
+    );
   }
 }
 
