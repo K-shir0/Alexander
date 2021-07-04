@@ -6,10 +6,10 @@ class MandalaChartPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             MandalaBox(),
             MandalaBox(),
@@ -17,7 +17,7 @@ class MandalaChartPage extends HookWidget {
           ],
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             MandalaBox(),
             MandalaBox(),
@@ -25,7 +25,7 @@ class MandalaChartPage extends HookWidget {
           ],
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             MandalaBox(),
             MandalaBox(),
@@ -38,14 +38,14 @@ class MandalaChartPage extends HookWidget {
 }
 
 class MandalaBox extends HookWidget {
-  KeyEventResult _handleKeyPress(FocusNode node, RawKeyEvent event) {
-    if (event is RawKeyDownEvent) {
-      print('test ${node.offset}');
-
-      return KeyEventResult.handled;
-    }
-    return KeyEventResult.ignored;
-  }
+  // KeyEventResult _handleKeyPress(FocusNode node, RawKeyEvent event) {
+  //   if (event is RawKeyDownEvent) {
+  //     print('test ${node.offset}');
+  //
+  //     return KeyEventResult.handled;
+  //   }
+  //   return KeyEventResult.ignored;
+  // }
 
   @override
   Widget build(BuildContext context) {

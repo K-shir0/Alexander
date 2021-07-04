@@ -5,6 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class InfinityScrollPage extends HookWidget {
+  final widgets = [
+    Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        MandalaChartPage(),
+      ],
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     final offset = useState(Offset.zero);
@@ -17,10 +26,6 @@ class InfinityScrollPage extends HookWidget {
       appBar: AppBar(),
       body: Stack(
         children: [
-          Transform.translate(
-            offset: offset.value + sessionOffset.value,
-            child: Transform.scale(scale: scale.value, child: const Text('text')),
-          ),
           ClipRect(
             child: GestureDetector(
               onScaleStart: (details) {
@@ -37,46 +42,60 @@ class InfinityScrollPage extends HookWidget {
               },
             ),
           ),
+          ClipRect(
+            child: SizedBox.expand(
+              child: Center(
+                child: Transform.translate(
+                  offset: offset.value + sessionOffset.value,
+                  child: Transform.scale(
+                    scale: scale.value,
+                    child: Wrap(
+                      children: widgets,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          /**
+           * 左下のアイコンの所
+           */
+          Align(
+            alignment: Alignment.bottomLeft,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      scale.value += 0.1;
+                    },
+                    icon: const Icon(Icons.add),
+                    tooltip: '拡大',
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      if (scale.value >= 0.2) {
+                        scale.value -= 0.1;
+                      }
+                    },
+                    icon: const Icon(Icons.remove),
+                    tooltip: '縮小',
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      scale.value = 1.0;
+                      offset.value = Offset.zero;
+                    },
+                    icon: const Icon(Icons.center_focus_strong),
+                    tooltip: '中心',
+                  ),
+                ],
+              ),
+            ),
+          )
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          scale.value -= 0.1;
-        },
-      ),
-
-      // body: SizedBox.expand(
-      //   child: ClipRect(
-      //     child: Stack()
-      //     GestureDetector(
-      //       // onPanUpdate: (_) {
-      //       //   print(_.delta);
-      //       //   offset.value += _.delta;
-      //       // },
-      //       onScaleStart: (details) {
-      //         initOffset.value = details.focalPoint;
-      //         scale.value = 1.0;
-      //       },
-      //       onScaleUpdate: (_) {
-      //         sessionOffset.value = _.focalPoint - initOffset.value;
-      //         scale.value = _.scale;
-      //       },
-      //       onScaleEnd: (_) {
-      //         offset.value += sessionOffset.value;
-      //         sessionOffset.value = Offset.zero;
-      //       },
-      //       child: Transform.translate(
-      //         offset: offset.value + sessionOffset.value,
-      //         child: Transform.scale(
-      //             scale: scale.value,
-      //             child: Text(
-      //               'testaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-      //               overflow: TextOverflow.visible,
-      //             )),
-      //       ),
-      //     ),
-      //   ),
-      // ),
     );
   }
 }
