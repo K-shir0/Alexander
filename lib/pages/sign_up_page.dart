@@ -10,14 +10,6 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
-    //各項目の入力内容を格納する変数
-    var firstname = ""; //Firstname
-    var lastname = ""; //lastname
-    var username = ""; //ユーザー名
-    var mailAddress = ""; //メールアドレス
-    var password = ""; //パスワード
-    var saipassword = ""; //再入力パスワード
-
     final double deviceHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
@@ -28,7 +20,7 @@ class _SignUpPageState extends State<SignUpPage> {
         leading: IconButton(
           //アイコンボタンが押された時の処理
           onPressed: returnPage,
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
           ),
@@ -49,24 +41,24 @@ class _SignUpPageState extends State<SignUpPage> {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Text(
-                  "新規登録画面",
+                const Text(
+                  '新規登録画面',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 35,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 //登録するfirstnameを入力させるエリア
                 Row(
                   children: [
-                    Text(
-                      "FirstName",
+                    const Text(
+                      'FirstName',
                       style: TextStyle(
                         fontSize: 10,
                       ),
@@ -74,27 +66,25 @@ class _SignUpPageState extends State<SignUpPage> {
                   ],
                 ),
                 TextField(
-                  decoration: InputDecoration(
-                      icon: Icon(Icons.person), hintText: "FirstName"),
-                  style: TextStyle(fontSize: 15),
+                  decoration: const InputDecoration(
+                      icon: Icon(Icons.person), hintText: 'FirstName'),
+                  style: const TextStyle(fontSize: 15),
                   //リアルタイム判定
                   onChanged: (text) {
-                    if (text.length > 0) {
+                    if (text.isNotEmpty) {
                       // 入力値があるなら、それを反映する。
-                      setState(() {
-                        firstname = text;
-                      });
+                      setState(() {});
                     }
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 //登録するlastnameを入力させるエリア
                 Row(
                   children: [
-                    Text(
-                      "LastName",
+                    const Text(
+                      'LastName',
                       style: TextStyle(
                         fontSize: 10,
                       ),
@@ -102,27 +92,25 @@ class _SignUpPageState extends State<SignUpPage> {
                   ],
                 ),
                 TextField(
-                  decoration: InputDecoration(
-                      icon: Icon(Icons.person), hintText: "LastName"),
-                  style: TextStyle(fontSize: 15),
+                  decoration: const InputDecoration(
+                      icon: Icon(Icons.person), hintText: 'LastName'),
+                  style: const TextStyle(fontSize: 15),
                   //リアルタイム判定
                   onChanged: (text) {
-                    if (text.length > 0) {
+                    if (text.isNotEmpty) {
                       // 入力値があるなら、それを反映する。
-                      setState(() {
-                        lastname = text;
-                      });
+                      setState(() {});
                     }
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 //登録するユーザー名を入力させるエリア
                 Row(
                   children: [
-                    Text(
-                      "ユーザー名",
+                    const Text(
+                      'ユーザー名',
                       style: TextStyle(
                         fontSize: 10,
                       ),
@@ -130,27 +118,25 @@ class _SignUpPageState extends State<SignUpPage> {
                   ],
                 ),
                 TextField(
-                  decoration: InputDecoration(
-                      icon: Icon(Icons.person), hintText: "Name"),
-                  style: TextStyle(fontSize: 15),
+                  decoration: const InputDecoration(
+                      icon: Icon(Icons.person), hintText: 'Name'),
+                  style: const TextStyle(fontSize: 15),
                   //リアルタイム判定
                   onChanged: (text) {
-                    if (text.length > 0) {
+                    if (text.isNotEmpty) {
                       // 入力値があるなら、それを反映する。
-                      setState(() {
-                        username = text;
-                      });
+                      setState(() {});
                     }
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 //登録するメールアドレスを入力させるエリア
                 Row(
                   children: [
-                    Text(
-                      "メールアドレス",
+                    const Text(
+                      'メールアドレス',
                       style: TextStyle(
                         fontSize: 10,
                       ),
@@ -158,27 +144,25 @@ class _SignUpPageState extends State<SignUpPage> {
                   ],
                 ),
                 TextField(
-                  decoration: InputDecoration(
-                      icon: Icon(Icons.mail), hintText: "MailAddress"),
-                  style: TextStyle(fontSize: 15),
+                  decoration: const InputDecoration(
+                      icon: Icon(Icons.mail), hintText: 'MailAddress'),
+                  style: const TextStyle(fontSize: 15),
                   //リアルタイム判定
                   onChanged: (text) {
-                    if (text.length > 0) {
+                    if (text.isNotEmpty) {
                       // 入力値があるなら、それを反映する。
-                      setState(() {
-                        mailAddress = text;
-                      });
+                      setState(() {});
                     }
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 //登録するパスワードを入力させるエリア
                 Row(
                   children: [
-                    Text(
-                      "パスワード",
+                    const Text(
+                      'パスワード',
                       style: TextStyle(
                         fontSize: 10,
                       ),
@@ -188,27 +172,25 @@ class _SignUpPageState extends State<SignUpPage> {
                 TextField(
                   obscureText: true,
                   autocorrect: false,
-                  decoration: InputDecoration(
-                      icon: Icon(Icons.lock_outline), hintText: "Password"),
-                  style: TextStyle(fontSize: 15),
+                  decoration: const InputDecoration(
+                      icon: Icon(Icons.lock_outline), hintText: 'Password'),
+                  style: const TextStyle(fontSize: 15),
                   //リアルタイム判定
                   onChanged: (text) {
-                    if (text.length > 0) {
+                    if (text.isNotEmpty) {
                       // 入力値があるなら、それを反映する。
-                      setState(() {
-                        password = text;
-                      });
+                      setState(() {});
                     }
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 //再パスワードを入力させるエリア
                 Row(
                   children: [
-                    Text(
-                      "パスワード再入力",
+                    const Text(
+                      'パスワード再入力',
                       style: TextStyle(
                         fontSize: 10,
                       ),
@@ -218,31 +200,29 @@ class _SignUpPageState extends State<SignUpPage> {
                 TextField(
                   obscureText: true,
                   autocorrect: false,
-                  decoration: InputDecoration(
-                      icon: Icon(Icons.lock_outline), hintText: "Password"),
-                  style: TextStyle(fontSize: 15),
+                  decoration: const InputDecoration(
+                      icon: Icon(Icons.lock_outline), hintText: 'Password'),
+                  style: const TextStyle(fontSize: 15),
                   //リアルタイム判定
                   onChanged: (text) {
-                    if (text.length > 0) {
+                    if (text.isNotEmpty) {
                       // 入力値があるなら、それを反映する。
-                      setState(() {
-                        saipassword = text;
-                      });
+                      setState(() {});
                     }
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 //登録ボタン
                 TextButton(
-                  child: const Text('登録'),
                   style: TextButton.styleFrom(
                     padding: const EdgeInsets.all(30.0),
                     primary: Colors.black,
                   ),
                   //ログインボタンが押された時の処理
                   onPressed: () {},
+                  child: const Text('登録'),
                 ),
               ],
             ),

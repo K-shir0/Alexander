@@ -25,7 +25,7 @@ class App extends StatelessWidget {
       initialRoute: '/login',
       routes: {
         '/': (BuildContext context) =>
-            CounterPage(title: 'Flutter Demo Home Page'),
+            const CounterPage(title: 'Flutter Demo Home Page'),
         '/login': (BuildContext context) => const LoginPage(),
         '/signup': (BuildContext context) => const SignUpPage(),
       },
