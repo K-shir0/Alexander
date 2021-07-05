@@ -18,18 +18,25 @@ class Auth {
   }
 
   /// クッキーを取得しヘッダーにセットする
-  Future<void> getCookie() async {
-    await client.get('/sanctum/csrf-cookie').then((_) {
-      // Cookieを取得
-      final cookie = window.document.cookie.toString();
+  Future<Result<String>> getCookie() async {
+    try {
+      return await client.get('/sanctum/csrf-cookie').then((_) {
+        // Cookieを取得
+        final cookie = window.document.cookie.toString();
 
-      // 正規表現にマッチするか調べる
-      final match = RegExp('XSRF-TOKEN=([^;]*)').firstMatch(cookie);
+        // 正規表現にマッチするか調べる
+        final match = RegExp('XSRF-TOKEN=([^;]*)').firstMatch(cookie);
 
-      // トークンをセット
-      client.options.headers['X-XSRF-TOKEN'] =
-          Uri.decodeFull(match?.group(1) ?? '');
-    });
+        final token = Uri.decodeFull(match?.group(1) ?? '');
+
+        // トークンをセット
+        client.options.headers['X-XSRF-TOKEN'] = token;
+
+        return Result.success(token);
+      });
+    } on DioError catch (error) {
+      return Result.failure(Error.getApiError(error));
+    }
   }
 
   /// ログイン
