@@ -1,16 +1,40 @@
-# alexander
+# Alexander API Server
 
-A new Flutter project.
+Alexander API Server(Frontend)
 
-## Getting Started
+## Development
+初回起動手順（.env.exampleから.envをコピーして下さい）
+```
+make init
 
-This project is a starting point for a Flutter application.
+make up
 
-A few resources to get you started if this is your first Flutter project:
+make install
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+make run-docker
+```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+プロジェクト更新手順
+```
+make up
+
+make install
+```
+
+---
+
+コマンド集
+```
+ライブラリをインストール
+make install
+
+実行
+make run
+
+ビルド
+make build
+
+テスト
+
+リリースビルド
+```
