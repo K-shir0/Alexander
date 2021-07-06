@@ -5,20 +5,18 @@ Alexander API Server(Frontend)
 ## Development
 初回起動手順（.env.exampleから.envをコピーして下さい）
 ```
-make init
-
-make up
-
 make install
 
-make run-docker
+make init
+
+make run
 ```
 
 プロジェクト更新手順
 ```
-make up
-
 make install
+
+make run
 ```
 
 ---
