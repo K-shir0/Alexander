@@ -53,4 +53,14 @@ class Auth {
       return Result.failure(Error.getApiError(error));
     }
   }
+
+  /// ログアウト
+  Future<Result<SignOutResponse>> signOut() async {
+    try {
+      return await client.post('/api/auth/logout').then((result) =>
+          Result.success(SignOutResponse.fromJson({...result.data})));
+    } on DioError catch (error) {
+      return Result.failure(Error.getApiError(error));
+    }
+  }
 }

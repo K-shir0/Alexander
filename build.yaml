@@ -4,9 +4,14 @@ targets:
       freezed:freezed:
         generate_for:
           include:
-            - lib/model/**.dart
+            # domain
+            - lib/domain/**.dart
+            # service
             - lib/service/model/**.dart
             - lib/service/base/model/**.dart
+            # view_model
+            - lib/view_model/common/model/**.dart
+            - lib/view_model/model/**.dart
       json_serializable:
         options:
           field_rename: snake
