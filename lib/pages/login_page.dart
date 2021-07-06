@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'home_menu.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -12,7 +13,8 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+          title: const Text('Alexander'), automaticallyImplyLeading: false),
       body: SingleChildScrollView(
         child: Center(
           child: Container(
@@ -124,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                     primary: Colors.black,
                   ),
                   //ログインボタンが押された時の処理
-                  onPressed: () {},
+                  onPressed: toHomePage,
                   child: const Text('ログイン'),
                 ),
               ],
@@ -135,6 +137,16 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  //ホーム画面へ
+  void toHomePage() {
+    //履歴を残さないように画面遷移
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const HomePage()),
+        (_) => false);
+  }
+
+  //新規登録画面へ
   void toSignUpPage() {
     Navigator.pushNamed(context, '/signup');
   }

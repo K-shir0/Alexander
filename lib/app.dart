@@ -1,3 +1,4 @@
+import 'package:alexander/pages/home_menu.dart';
 import 'package:alexander/pages/login_page.dart';
 import 'package:alexander/pages/sign_up_page.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,7 @@ class App extends StatelessWidget {
             const CounterPage(title: 'Flutter Demo Home Page'),
         '/login': (BuildContext context) => const LoginPage(),
         '/signup': (BuildContext context) => const SignUpPage(),
+        '/home': (BuildContext context) => const HomePage()
       },
     );
   }
