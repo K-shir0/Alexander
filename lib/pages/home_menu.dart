@@ -8,48 +8,110 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  //ノート名を格納する変数
-  List noteName = [];
-
+//ノート名を格納する変数
+  List<String> noteName = [
+    'ここに',
+    'ノート',
+    'cc',
+    'dd',
+    'uu',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+    'ノート',
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //AppBarは将来消す予定(HomePage完成次第)
       appBar: AppBar(title: const Text('AlexanderMainMenu')),
       drawer: Drawer(
-        child: ListView(
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text('アカウント情報を記載する予定'),
-            ),
-            ListTile(
-              title: const Text('ノート追加'),
-              trailing: IconButton(
-                icon: const Icon(Icons.add_circle),
-                tooltip: 'ノート追加',
-                onPressed: () {}, //ノート追加ボタンを押した時の処理
+        elevation: 20,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            const SizedBox(
+              height: 120,
+              child: DrawerHeader(
+                decoration: BoxDecoration(color: Colors.blue),
+                child: Text('ここにアカウント情報を記載'),
               ),
             ),
-            /*
-            ListView.builder(
-              padding: EdgeInsets.all(30),
-              shrinkWrap: true,
-              itemCount: noteName.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  
-                  child: Text(
-                    //noteName[index],
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 25),
+            Expanded(
+              child: ListView(
+                children: [
+                  Column(
+                    children: [
+                      ListTile(
+                        title: const Text('ノート追加'),
+                        trailing: IconButton(
+                          icon: const Icon(Icons.add_circle),
+                          tooltip: 'ノート追加',
+                          onPressed: noteadd, //ノート追加ボタンを押した時の処理
+                        ),
+                      ),
+                      //配列noteNameの要素が全てTextで表示される
+                      ListView.builder(
+                        padding: const EdgeInsets.all(10),
+                        shrinkWrap: true,
+                        itemCount: noteName.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Container(
+                            child: Text(
+                              noteName[index],
+                              textAlign: TextAlign.center,
+                            ),
+                          );
+                        },
+                      ),
+                    ],
                   ),
-                
-                );
-              },
-            )*/
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                //共有ボタンおしたときの処理
+                onPressed: () {},
+                child: const Text('共有'),
+              ),
+            ),
           ],
         ),
       ),
