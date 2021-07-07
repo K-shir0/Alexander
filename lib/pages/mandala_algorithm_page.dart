@@ -4,16 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class MandalaAlgorithmPage extends HookWidget {
-  int size = 11;
+  int size = 3;
+
+  final mandalaMaps = [
+    [true, true, true],
+    [false, true, true],
+    [false, false, false]
+  ];
 
   @override
   Widget build(BuildContext context) {
-    final array = List<bool?>.filled(3 * 3 * size * size, null);
+    final array = List<bool?>.filled(3 * 3 * size * size, false);
 
     int hasi = size * 3 - 1;
-
-    print('hashi ${hasi}');
-
 
     String tmp = '';
     for (int i = 0; i < array.length; i++) {
@@ -47,7 +50,20 @@ class MandalaAlgorithmPage extends HookWidget {
         array[i] = true;
       }
 
-      if (array[i] ?? false) {
+      final mandala = mandalaMaps[i ~/ 3 ~/ 3 ~/ 3][i % (hasi + 1) ~/ 3];
+
+      if (!mandala) {
+        array[i] = null;
+      }
+
+      // print(mandalaMaps);
+
+      // print( i ~/ 3 / 3 / 3); // 縦
+      // print( i % (hasi + 1) / 3); // 横
+
+      if (array[i] == null) {
+        tmp += '×';
+      } else if (array[i] ?? false){
         tmp += '■';
       } else {
         tmp += '□';
