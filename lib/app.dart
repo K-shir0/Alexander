@@ -1,3 +1,6 @@
+import 'package:alexander/pages/home_menu.dart';
+import 'package:alexander/pages/login_page.dart';
+import 'package:alexander/pages/sign_up_page.dart';
 import 'package:alexander/pages/auth_sample_page.dart';
 import 'package:alexander/service/auth.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +38,11 @@ class App extends HookWidget {
       ),
       initialRoute: '/test',
       routes: {
-        '/': (BuildContext context) => CounterPage(title: 'Flutter Demo Home Page'),
+        '/': (BuildContext context) =>
+            const CounterPage(title: 'Flutter Demo Home Page'),
+        '/login': (BuildContext context) => const LoginPage(),
+        '/signup': (BuildContext context) => const SignUpPage(),
+        '/home': (BuildContext context) => const HomePage(),
         '/test': (BuildContext context) => AuthSamplePage(),
       },
     );
