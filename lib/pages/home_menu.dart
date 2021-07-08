@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () {}, //ノート追加ボタンを押した時の処理
               ),
             ),
-            ListTile()
+            const ListTile()
           ],
         ),
       ),
@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   //ノート追加ボタンクリックイベント
-  void noteadd() {
-    noteName.add("ノート");
+  void noteAdd() {
+    noteName.add('ノート');
   }
 }

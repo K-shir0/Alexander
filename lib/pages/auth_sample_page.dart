@@ -1,5 +1,3 @@
-import 'package:alexander/service/auth.dart';
-import 'package:alexander/service/model/authentication.dart';
 import 'package:alexander/view_model/common/auth_state_notifier.dart';
 import 'package:alexander/view_model/model/sign_in_page_state.dart';
 import 'package:alexander/view_model/sign_in_page_state_notifier.dart';
