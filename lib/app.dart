@@ -1,4 +1,5 @@
 import 'package:alexander/pages/home_menu.dart';
+import 'package:alexander/pages/index_page.dart';
 import 'package:alexander/pages/login_page.dart';
 import 'package:alexander/pages/sign_up_page.dart';
 import 'package:alexander/pages/auth_sample_page.dart';
@@ -36,14 +37,15 @@ class App extends HookWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/test',
+      initialRoute: '/',
       routes: {
-        '/': (BuildContext context) =>
-            const CounterPage(title: 'Flutter Demo Home Page'),
+        '/': (BuildContext context) => IndexPage(),
+        '/home': (BuildContext context) => const HomePage(),
         '/login': (BuildContext context) => const LoginPage(),
         '/signup': (BuildContext context) => const SignUpPage(),
-        '/home': (BuildContext context) => const HomePage(),
-        '/test': (BuildContext context) => AuthSamplePage(),
+        '/test/login': (BuildContext context) => AuthSamplePage(),
+        '/counter': (BuildContext context) =>
+            const CounterPage(title: 'Flutter Demo Home Page'),
       },
     );
   }
