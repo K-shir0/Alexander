@@ -1,3 +1,4 @@
+import 'package:alexander/pages/ideaserch_page.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/counter_page.dart';
@@ -22,7 +23,9 @@ class App extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (BuildContext context) => CounterPage(title: 'Flutter Demo Home Page'),
+        '/': (BuildContext context) =>
+            const CounterPage(title: 'Flutter Demo Home Page'),
+        '/ideapage': (BuildContext context) => const IdeaPage(),
       },
     );
   }
