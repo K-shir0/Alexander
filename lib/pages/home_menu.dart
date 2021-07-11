@@ -56,6 +56,39 @@ class _HomePageState extends State<HomePage> {
     'ノート',
     'ノート',
   ];
+  //共有ノートか普通のノートかの判定
+  bool noteCheck = true; //false = ノート true = 共有ノート
+  //共有ユーザー
+  List<String> shereuser = [
+    'user1',
+    'user2',
+    'user3',
+    'user4',
+    'user5',
+    'user6',
+    'user7',
+    'user8',
+    'user9',
+    'user10',
+    'user11',
+    'user12',
+    'user13',
+    'user14',
+    'user15',
+    'user16',
+    'user17',
+    'user18',
+    'user19',
+    'user20',
+    'user21',
+    'user22',
+    'user23',
+    'user24',
+    'user25',
+    'user26',
+    'user27',
+    'user28'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,9 +125,11 @@ class _HomePageState extends State<HomePage> {
                         itemCount: noteName.length,
                         itemBuilder: (BuildContext context, int index) {
                           return Container(
+                            padding: const EdgeInsets.all(3),
                             child: Text(
                               noteName[index],
                               textAlign: TextAlign.center,
+                              style: const TextStyle(fontSize: 10),
                             ),
                           );
                         },
@@ -115,8 +150,49 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+      //ホームメニューの画面レイアウト
       body: SingleChildScrollView(
-        child: Column(),
+        child: Column(
+          children: [
+            //共有ボタン、共有車を表示
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(5),
+                  decoration: BoxDecoration(border: Border.all(width: 5)),
+                  child: Text(noteCheck == false ? 'ノート' : '共有ノート'),
+                ),
+              ],
+            ),
+            if (noteCheck == true)
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 3,
+                  vertical: 3,
+                ),
+                height: 30,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: shereuser.length,
+                  itemBuilder: (context, index) {
+                    return Center(
+                      child: Text(
+                        '${shereuser[index]},',
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                    );
+                  },
+                ),
+              ),
+
+            ListTile(
+              title: const Text('とりあえず置いてみた'),
+              subtitle: const Text('サブタイトル置いてみた'),
+              trailing: const Icon(Icons.more_vert),
+              onTap: () {},
+            )
+          ],
+        ),
       ),
     );
   }
