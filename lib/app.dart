@@ -1,6 +1,6 @@
 import 'package:alexander/pages/ideaserch_page.dart';
+import 'package:alexander/pages/ideaserch_page_miss.dart';
 import 'package:flutter/material.dart';
-
 import 'pages/counter_page.dart';
 
 class App extends StatelessWidget {
@@ -21,11 +21,12 @@ class App extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
+      initialRoute: '/ideapage',
       routes: {
         '/': (BuildContext context) =>
             const CounterPage(title: 'Flutter Demo Home Page'),
         '/ideapage': (BuildContext context) => const IdeaPage(),
+        '/ideapagemiss': (BuildContext context) => const IdeaPagemiss(),
       },
     );
   }
