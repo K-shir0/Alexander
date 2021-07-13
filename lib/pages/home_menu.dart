@@ -91,6 +91,8 @@ class _HomePageState extends State<HomePage> {
   ];
   @override
   Widget build(BuildContext context) {
+    //画面サイズを取得
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(title: const Text('AlexanderMainMenu')),
       drawer: Drawer(
@@ -157,33 +159,43 @@ class _HomePageState extends State<HomePage> {
             //共有ボタン、共有車を表示
             Row(
               children: [
-                Container(
-                  padding: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(border: Border.all(width: 5)),
-                  child: Text(noteCheck == false ? 'ノート' : '共有ノート'),
+                SizedBox(
+                  height: 50,
+                  width: 100,
+                  child: Container(
+                    padding: const EdgeInsets.all(5),
+                    decoration: BoxDecoration(border: Border.all(width: 5)),
+                    child: Text(noteCheck == false ? 'ノート' : '共有ノート'),
+                  ),
                 ),
+                if (noteCheck == true)
+                  SizedBox(
+                    height: 50,
+                    width: size.width - 100,
+                    child: SingleChildScrollView(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 3,
+                          vertical: 3,
+                        ),
+                        height: 30,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: shereuser.length,
+                          itemBuilder: (context, index) {
+                            return Center(
+                              child: Text(
+                                '${shereuser[index]},',
+                                style: const TextStyle(fontSize: 20),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
               ],
             ),
-            if (noteCheck == true)
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 3,
-                  vertical: 3,
-                ),
-                height: 30,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: shereuser.length,
-                  itemBuilder: (context, index) {
-                    return Center(
-                      child: Text(
-                        '${shereuser[index]},',
-                        style: const TextStyle(fontSize: 20),
-                      ),
-                    );
-                  },
-                ),
-              ),
 
             ListTile(
               title: const Text('とりあえず置いてみた'),
