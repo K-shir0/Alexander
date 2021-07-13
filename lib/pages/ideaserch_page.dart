@@ -26,17 +26,21 @@ class _IdeaPageState extends State<IdeaPage> {
       ),
       body: Container(
         padding: const EdgeInsets.all(20),
-        child: Column(
+        child: Row(
           children: [
             //true = 表示, false = 非表示
             if (searchcheck == true)
-              const TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+              const SizedBox(
+                height: 100,
+                width: 100,
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                    prefixIcon: Icon(Icons.search),
+                    hintText: '検索',
                   ),
-                  prefixIcon: Icon(Icons.search),
-                  hintText: '検索',
                 ),
               ),
           ],
