@@ -1,5 +1,4 @@
 import 'package:alexander/view_model/home_page_state_notifier.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -7,18 +6,16 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class DefaultPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    final state = useProvider(homePageProvider);
+    useProvider(homePageProvider);
     final notifier = useProvider(homePageProvider.notifier);
 
+    // 一度だけ一覧を取得
     useEffect(() {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
-        print('取得');
         notifier.fetchSpace(context);
       });
     }, []);
 
-    return Container(
-      child: Text('test'),
-    );
+    return const Text('test');
   }
 }
