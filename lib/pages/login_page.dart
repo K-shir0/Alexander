@@ -1,3 +1,4 @@
+import 'package:alexander/pages/common/alexander_text_field.dart';
 import 'package:flutter/material.dart';
 import 'home_menu.dart';
 
@@ -44,56 +45,59 @@ class _LoginPageState extends State<LoginPage> {
                   height: 20,
                 ),
                 //ユーザー名を入力させるエリア
-                Row(
-                  children: [
-                    const Text(
-                      'ユーザー名',
-                      style: TextStyle(
-                        fontSize: 10,
-                      ),
-                    ),
-                  ],
-                ),
-                TextField(
-                  decoration: const InputDecoration(
-                      icon: Icon(Icons.person), hintText: 'Name'),
-                  style: const TextStyle(fontSize: 20),
-                  //リアルタイム判定
-                  onChanged: (text) {
-                    if (text.isNotEmpty) {
-                      // 入力値があるなら、それを反映する。
-                      setState(() {});
-                    }
-                  },
-                ),
+                // Row(
+                //   children: [
+                //     const Text(
+                //       'ユーザー名',
+                //       style: TextStyle(
+                //         fontSize: 10,
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                // TextField(
+                //   decoration: const InputDecoration(
+                //       icon: Icon(Icons.person), hintText: 'Name'),
+                //   style: const TextStyle(fontSize: 20),
+                //   //リアルタイム判定
+                //   onChanged: (text) {
+                //     if (text.isNotEmpty) {
+                //       // 入力値があるなら、それを反映する。
+                //       setState(() {});
+                //     }
+                //   },
+                // ),
+                const AlexanderTextField(iconName: Icons.mail_outline_outlined,label: 'メールアドレス', engLabel: 'E-mail', infomation: 'メールアドレスが入力されていません'),
                 const SizedBox(
                   height: 20,
                 ),
                 //パスワードを入力させるエリア
-                Row(
-                  children: [
-                    const Text(
-                      'パスワード',
-                      style: TextStyle(
-                        fontSize: 10,
-                      ),
-                    ),
-                  ],
-                ),
-                TextField(
-                  obscureText: true,
-                  autocorrect: false,
-                  decoration: const InputDecoration(
-                      icon: Icon(Icons.lock_outline), hintText: 'Password'),
-                  style: const TextStyle(fontSize: 20),
-                  //リアルタイム判定
-                  onChanged: (text) {
-                    if (text.isNotEmpty) {
-                      // 入力値があるなら、それを反映する。
-                      setState(() {});
-                    }
-                  },
-                ),
+                // Row(
+                //   children: [
+                //     const Text(
+                //       'パスワード',
+                //       style: TextStyle(
+                //         fontSize: 10,
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                // TextField(
+                //   obscureText: true,
+                //   autocorrect: false,
+                //   decoration: const InputDecoration(
+                //       icon: Icon(Icons.lock_outline), hintText: 'Password'),
+                //   style: const TextStyle(fontSize: 20),
+                //   //リアルタイム判定
+                //   onChanged: (text) {
+                //     if (text.isNotEmpty) {
+                //       // 入力値があるなら、それを反映する。
+                //       setState(() {});
+                //     }
+                //   },
+                //),
+                const AlexanderTextField(iconName: Icons.vpn_key_outlined,label: 'パスワード', engLabel: 'Password', infomation: 'パスワードが間違っています', obscureText: true),
+
                 const SizedBox(
                   height: 20,
                 ),
