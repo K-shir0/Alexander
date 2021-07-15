@@ -9,4 +9,6 @@ class Palette{
 
   static const Color bgContentsColor = Color(0xffe9eff0);
   static const Color bgContentsHighLightColor = Color(0xfff0f5f5);
+
+
 }

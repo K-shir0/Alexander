@@ -1,4 +1,5 @@
 import 'package:alexander/pages/common/alexander_text_field.dart';
+import 'package:alexander/pages/common/sign_button.dart';
 import 'package:flutter/material.dart';
 import 'home_menu.dart';
 
@@ -21,12 +22,6 @@ class _LoginPageState extends State<LoginPage> {
           child: Container(
             padding: const EdgeInsets.all(25),
             width: 600,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.yellow,
-                width: 10,
-              ),
-            ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -101,38 +96,16 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    //パスワードを忘れた時にとぶリンクを設定
-                    InkWell(
-                      onTap: () {},
-                      child: const Text(
-                        'パスワードを\n忘れた方はこちら',
-                        style: TextStyle(fontSize: 8),
-                      ),
-                    ),
-                    //新規登録したいときに飛ぶリンクの設定
-                    InkWell(
-                      onTap: toSignUpPage,
-                      child: const Text(
-                        '新規登録はこちら',
-                        style: TextStyle(fontSize: 8),
-                        textAlign: TextAlign.right,
-                      ),
-                    )
-                  ],
-                ),
-                //ログインボタン
-                TextButton(
-                  style: TextButton.styleFrom(
-                    padding: const EdgeInsets.all(30.0),
-                    primary: Colors.black,
-                  ),
-                  //ログインボタンが押された時の処理
-                  onPressed: toHomePage,
-                  child: const Text('ログイン'),
-                ),
+                const SignButton(buttonLabel: 'SIGN IN')//ログインボタン
+                // TextButton(
+                //   style: TextButton.styleFrom(
+                //     padding: const EdgeInsets.all(30.0),
+                //     primary: Colors.black,
+                //   ),
+                //   //ログインボタンが押された時の処理
+                //   onPressed: toHomePage,
+                //   child: const Text('ログイン'),
+                // ),
               ],
             ),
           ),

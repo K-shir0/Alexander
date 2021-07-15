@@ -1,3 +1,4 @@
+import 'package:alexander/pages/theme/palette.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,7 @@ class AlexanderTextField extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0, right: 8.0),
                   child: Icon(iconName,
-                      color: const Color(0xff83acb4)),
+                      color: Palette.mainTextColor),
                 ),
                 // Column(
                 //   children: [
@@ -34,7 +35,7 @@ class AlexanderTextField extends StatelessWidget {
                         label,
                         style: const TextStyle(
                             fontSize: 12,
-                            color: Color(0xff83acb4),
+                            color: Palette.mainTextColor,
                             letterSpacing: 2.4000000000000004,),
                       ),
                     ),
@@ -47,7 +48,7 @@ class AlexanderTextField extends StatelessWidget {
                child: Text(engLabel,
                   style: const TextStyle(
                     fontSize: 12,
-                    color: Color(0xff83acb4),
+                    color: Palette.accentTextColor,
                   )),
              )
           ],
@@ -56,12 +57,11 @@ class AlexanderTextField extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4.0),
             color: const Color(0xffedf0f0),
-            border: Border.all(color: const Color(0xff1ee5ed)),
           ),
           child: TextField(
             obscureText: obscureText,
             decoration: InputDecoration(
-              border: const OutlineInputBorder(),
+              border: InputBorder.none,
               labelText: engLabel,
             ),
           ),
@@ -71,18 +71,18 @@ class AlexanderTextField extends StatelessWidget {
           children: <Widget>[
             Row(
               children: <Widget>[
-                const Padding(
+                 const Padding(
                   padding: EdgeInsets.only(top: 8.0, right: 8.0),
                   child: Icon(Icons.info_outline_rounded,
-                      color: Color(0xffff6c00)),
+                      color: Palette.emphasisTetxColor),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Text(
                     infomation,
-                    style: const TextStyle(
+                    style:  const TextStyle(
                       fontSize: 12,
-                      color: Color(0xffff6c00),
+                      color: Palette.emphasisTetxColor,
                       letterSpacing: 2.4000000000000004,
                     ),
                   ),
