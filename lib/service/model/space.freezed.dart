@@ -329,3 +329,359 @@ abstract class _SetSpaceResponse implements SetSpaceResponse {
   _$SetSpaceResponseCopyWith<_SetSpaceResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+GetSpaceResponse _$GetSpaceResponseFromJson(Map<String, dynamic> json) {
+  return _GetSpaceResponse.fromJson(json);
+}
+
+/// @nodoc
+class _$GetSpaceResponseTearOff {
+  const _$GetSpaceResponseTearOff();
+
+  _GetSpaceResponse call(
+      {required int code, required GetSpaceResponseData data}) {
+    return _GetSpaceResponse(
+      code: code,
+      data: data,
+    );
+  }
+
+  GetSpaceResponse fromJson(Map<String, Object> json) {
+    return GetSpaceResponse.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $GetSpaceResponse = _$GetSpaceResponseTearOff();
+
+/// @nodoc
+mixin _$GetSpaceResponse {
+  int get code => throw _privateConstructorUsedError;
+  GetSpaceResponseData get data => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $GetSpaceResponseCopyWith<GetSpaceResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GetSpaceResponseCopyWith<$Res> {
+  factory $GetSpaceResponseCopyWith(
+          GetSpaceResponse value, $Res Function(GetSpaceResponse) then) =
+      _$GetSpaceResponseCopyWithImpl<$Res>;
+  $Res call({int code, GetSpaceResponseData data});
+
+  $GetSpaceResponseDataCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class _$GetSpaceResponseCopyWithImpl<$Res>
+    implements $GetSpaceResponseCopyWith<$Res> {
+  _$GetSpaceResponseCopyWithImpl(this._value, this._then);
+
+  final GetSpaceResponse _value;
+  // ignore: unused_field
+  final $Res Function(GetSpaceResponse) _then;
+
+  @override
+  $Res call({
+    Object? code = freezed,
+    Object? data = freezed,
+  }) {
+    return _then(_value.copyWith(
+      code: code == freezed
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as GetSpaceResponseData,
+    ));
+  }
+
+  @override
+  $GetSpaceResponseDataCopyWith<$Res> get data {
+    return $GetSpaceResponseDataCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$GetSpaceResponseCopyWith<$Res>
+    implements $GetSpaceResponseCopyWith<$Res> {
+  factory _$GetSpaceResponseCopyWith(
+          _GetSpaceResponse value, $Res Function(_GetSpaceResponse) then) =
+      __$GetSpaceResponseCopyWithImpl<$Res>;
+  @override
+  $Res call({int code, GetSpaceResponseData data});
+
+  @override
+  $GetSpaceResponseDataCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class __$GetSpaceResponseCopyWithImpl<$Res>
+    extends _$GetSpaceResponseCopyWithImpl<$Res>
+    implements _$GetSpaceResponseCopyWith<$Res> {
+  __$GetSpaceResponseCopyWithImpl(
+      _GetSpaceResponse _value, $Res Function(_GetSpaceResponse) _then)
+      : super(_value, (v) => _then(v as _GetSpaceResponse));
+
+  @override
+  _GetSpaceResponse get _value => super._value as _GetSpaceResponse;
+
+  @override
+  $Res call({
+    Object? code = freezed,
+    Object? data = freezed,
+  }) {
+    return _then(_GetSpaceResponse(
+      code: code == freezed
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as GetSpaceResponseData,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_GetSpaceResponse
+    with DiagnosticableTreeMixin
+    implements _GetSpaceResponse {
+  const _$_GetSpaceResponse({required this.code, required this.data});
+
+  factory _$_GetSpaceResponse.fromJson(Map<String, dynamic> json) =>
+      _$_$_GetSpaceResponseFromJson(json);
+
+  @override
+  final int code;
+  @override
+  final GetSpaceResponseData data;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'GetSpaceResponse(code: $code, data: $data)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'GetSpaceResponse'))
+      ..add(DiagnosticsProperty('code', code))
+      ..add(DiagnosticsProperty('data', data));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _GetSpaceResponse &&
+            (identical(other.code, code) ||
+                const DeepCollectionEquality().equals(other.code, code)) &&
+            (identical(other.data, data) ||
+                const DeepCollectionEquality().equals(other.data, data)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(code) ^
+      const DeepCollectionEquality().hash(data);
+
+  @JsonKey(ignore: true)
+  @override
+  _$GetSpaceResponseCopyWith<_GetSpaceResponse> get copyWith =>
+      __$GetSpaceResponseCopyWithImpl<_GetSpaceResponse>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_GetSpaceResponseToJson(this);
+  }
+}
+
+abstract class _GetSpaceResponse implements GetSpaceResponse {
+  const factory _GetSpaceResponse(
+      {required int code,
+      required GetSpaceResponseData data}) = _$_GetSpaceResponse;
+
+  factory _GetSpaceResponse.fromJson(Map<String, dynamic> json) =
+      _$_GetSpaceResponse.fromJson;
+
+  @override
+  int get code => throw _privateConstructorUsedError;
+  @override
+  GetSpaceResponseData get data => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$GetSpaceResponseCopyWith<_GetSpaceResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+GetSpaceResponseData _$GetSpaceResponseDataFromJson(Map<String, dynamic> json) {
+  return _GetSpaceResponseData.fromJson(json);
+}
+
+/// @nodoc
+class _$GetSpaceResponseDataTearOff {
+  const _$GetSpaceResponseDataTearOff();
+
+  _GetSpaceResponseData call({required List<SpaceMetadata> spaces}) {
+    return _GetSpaceResponseData(
+      spaces: spaces,
+    );
+  }
+
+  GetSpaceResponseData fromJson(Map<String, Object> json) {
+    return GetSpaceResponseData.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $GetSpaceResponseData = _$GetSpaceResponseDataTearOff();
+
+/// @nodoc
+mixin _$GetSpaceResponseData {
+  List<SpaceMetadata> get spaces => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $GetSpaceResponseDataCopyWith<GetSpaceResponseData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GetSpaceResponseDataCopyWith<$Res> {
+  factory $GetSpaceResponseDataCopyWith(GetSpaceResponseData value,
+          $Res Function(GetSpaceResponseData) then) =
+      _$GetSpaceResponseDataCopyWithImpl<$Res>;
+  $Res call({List<SpaceMetadata> spaces});
+}
+
+/// @nodoc
+class _$GetSpaceResponseDataCopyWithImpl<$Res>
+    implements $GetSpaceResponseDataCopyWith<$Res> {
+  _$GetSpaceResponseDataCopyWithImpl(this._value, this._then);
+
+  final GetSpaceResponseData _value;
+  // ignore: unused_field
+  final $Res Function(GetSpaceResponseData) _then;
+
+  @override
+  $Res call({
+    Object? spaces = freezed,
+  }) {
+    return _then(_value.copyWith(
+      spaces: spaces == freezed
+          ? _value.spaces
+          : spaces // ignore: cast_nullable_to_non_nullable
+              as List<SpaceMetadata>,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$GetSpaceResponseDataCopyWith<$Res>
+    implements $GetSpaceResponseDataCopyWith<$Res> {
+  factory _$GetSpaceResponseDataCopyWith(_GetSpaceResponseData value,
+          $Res Function(_GetSpaceResponseData) then) =
+      __$GetSpaceResponseDataCopyWithImpl<$Res>;
+  @override
+  $Res call({List<SpaceMetadata> spaces});
+}
+
+/// @nodoc
+class __$GetSpaceResponseDataCopyWithImpl<$Res>
+    extends _$GetSpaceResponseDataCopyWithImpl<$Res>
+    implements _$GetSpaceResponseDataCopyWith<$Res> {
+  __$GetSpaceResponseDataCopyWithImpl(
+      _GetSpaceResponseData _value, $Res Function(_GetSpaceResponseData) _then)
+      : super(_value, (v) => _then(v as _GetSpaceResponseData));
+
+  @override
+  _GetSpaceResponseData get _value => super._value as _GetSpaceResponseData;
+
+  @override
+  $Res call({
+    Object? spaces = freezed,
+  }) {
+    return _then(_GetSpaceResponseData(
+      spaces: spaces == freezed
+          ? _value.spaces
+          : spaces // ignore: cast_nullable_to_non_nullable
+              as List<SpaceMetadata>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_GetSpaceResponseData
+    with DiagnosticableTreeMixin
+    implements _GetSpaceResponseData {
+  const _$_GetSpaceResponseData({required this.spaces});
+
+  factory _$_GetSpaceResponseData.fromJson(Map<String, dynamic> json) =>
+      _$_$_GetSpaceResponseDataFromJson(json);
+
+  @override
+  final List<SpaceMetadata> spaces;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'GetSpaceResponseData(spaces: $spaces)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'GetSpaceResponseData'))
+      ..add(DiagnosticsProperty('spaces', spaces));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _GetSpaceResponseData &&
+            (identical(other.spaces, spaces) ||
+                const DeepCollectionEquality().equals(other.spaces, spaces)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(spaces);
+
+  @JsonKey(ignore: true)
+  @override
+  _$GetSpaceResponseDataCopyWith<_GetSpaceResponseData> get copyWith =>
+      __$GetSpaceResponseDataCopyWithImpl<_GetSpaceResponseData>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_GetSpaceResponseDataToJson(this);
+  }
+}
+
+abstract class _GetSpaceResponseData implements GetSpaceResponseData {
+  const factory _GetSpaceResponseData({required List<SpaceMetadata> spaces}) =
+      _$_GetSpaceResponseData;
+
+  factory _GetSpaceResponseData.fromJson(Map<String, dynamic> json) =
+      _$_GetSpaceResponseData.fromJson;
+
+  @override
+  List<SpaceMetadata> get spaces => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$GetSpaceResponseDataCopyWith<_GetSpaceResponseData> get copyWith =>
+      throw _privateConstructorUsedError;
+}

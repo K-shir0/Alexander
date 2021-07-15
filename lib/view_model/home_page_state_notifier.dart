@@ -6,7 +6,9 @@ import 'package:alexander/service/space.dart';
 import 'package:alexander/view_model/common/auth_state_notifier.dart';
 import 'package:alexander/view_model/model/home_page_state.dart';
 import 'package:alexander/view_model/model/sign_in_page_state.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 import 'package:uuid/uuid.dart';
@@ -32,4 +34,17 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
         // 通知
         ref.read(spaceProvider).setSpace(SetSpaceRequest(id: spaceId));
       };
+
+  Future<void> fetchSpace(BuildContext context) async {
+    await ref.read(spaceProvider).getSpace().then((value) => value.when(
+          success: (_) {
+            print(_);
+            state = state.copyWith(spaces: _.data.spaces);
+
+            AutoRouter.of(context)
+                .pushNamed('/test/home/${state.spaces.first.id}');
+          },
+          failure: (_) {},
+        ));
+  }
 }

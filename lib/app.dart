@@ -8,6 +8,7 @@ import 'package:alexander/service/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:alexander/pages/route/app_route.gr.dart';
 
 import 'pages/counter_page.dart';
 
@@ -24,7 +25,9 @@ class App extends HookWidget {
       });
     }, []);
 
-    return MaterialApp(
+    final appRouter = useMemoized(() => AppRouter());
+
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -38,17 +41,15 @@ class App extends HookWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (BuildContext context) => IndexPage(),
-        '/home': (BuildContext context) => const HomePage(),
-        '/login': (BuildContext context) => const LoginPage(),
-        '/signup': (BuildContext context) => const SignUpPage(),
-        '/test/login': (BuildContext context) => AuthSamplePage(),
-        '/test/home': (BuildContext context) => HomeSamplePage(),
-        '/counter': (BuildContext context) =>
-            const CounterPage(title: 'Flutter Demo Home Page'),
-      },
+      routeInformationParser: appRouter.defaultRouteParser(),
+      routerDelegate: appRouter.delegate(),
+      // initialRoute: '/',
+      // routes: {
+      //   '/': (BuildContext context) => IndexPage(),
+      //   '/home': (BuildContext context) => const HomePage(),
+      //   '/login': (BuildContext context) => const LoginPage(),
+      //   '/signup': (BuildContext context) => const SignUpPage(),
+      // },
     );
   }
 }

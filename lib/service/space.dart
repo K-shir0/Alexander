@@ -29,4 +29,18 @@ class Space {
       return Result.failure(Error.getApiError(error));
     }
   }
+
+  /// スペース一覧を取得
+  Future<Result<GetSpaceResponse>> getSpace() async {
+    try {
+      return await client
+          .get(
+            '/api/getSpace',
+          )
+          .then((result) =>
+              Result.success(GetSpaceResponse.fromJson({...result.data})));
+    } on DioError catch (error) {
+      return Result.failure(Error.getApiError(error));
+    }
+  }
 }
