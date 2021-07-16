@@ -97,7 +97,7 @@ class HomeSampleSideMenu extends HookWidget {
         children: [
           ElevatedButton(
             onPressed: useProvider(homePageProvider.notifier).onTapAddSpace(),
-            child: const Text('add'),
+            child: const Text('スペースを追加'),
           ),
           Column(
             children: spaceLinks,

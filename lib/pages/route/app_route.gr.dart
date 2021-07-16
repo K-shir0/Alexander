@@ -5,16 +5,15 @@
 // **************************************************************************
 
 import 'package:alexander/pages/auth_sample_page.dart' as _i7;
-import 'package:alexander/pages/counter_page.dart' as _i11;
+import 'package:alexander/pages/counter_page.dart' as _i10;
 import 'package:alexander/pages/default_page.dart' as _i8;
 import 'package:alexander/pages/home_menu.dart' as _i4;
 import 'package:alexander/pages/home_sample_page.dart' as _i9;
-import 'package:alexander/pages/idea_list_page.dart' as _i10;
 import 'package:alexander/pages/index_page.dart' as _i3;
 import 'package:alexander/pages/login_page.dart' as _i5;
 import 'package:alexander/pages/sign_up_page.dart' as _i6;
 import 'package:auto_route/auto_route.dart' as _i1;
-import 'package:flutter/cupertino.dart' as _i12;
+import 'package:flutter/cupertino.dart' as _i11;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -62,16 +61,11 @@ class AppRouter extends _i1.RootStackRouter {
                   HomeSampleRouteArgs(id: pathParams.optString('id')));
           return _i9.HomeSamplePage(id: args.id);
         }),
-    IdeaListRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return _i10.IdeaListPage();
-        }),
     CounterRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<CounterRouteArgs>();
-          return _i11.CounterPage(key: args.key, title: args.title);
+          return _i10.CounterPage(key: args.key, title: args.title);
         })
   };
 
@@ -84,7 +78,6 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(AuthSampleRoute.name, path: '/test/login'),
         _i1.RouteConfig(DefaultRoute.name, path: '/test/home'),
         _i1.RouteConfig(HomeSampleRoute.name, path: '/test/home/:id'),
-        _i1.RouteConfig(IdeaListRoute.name, path: '/test/idea'),
         _i1.RouteConfig(CounterRoute.name, path: '/counter')
       ];
 }
@@ -141,14 +134,8 @@ class HomeSampleRouteArgs {
   final String? id;
 }
 
-class IdeaListRoute extends _i1.PageRouteInfo {
-  const IdeaListRoute() : super(name, path: '/test/idea');
-
-  static const String name = 'IdeaListRoute';
-}
-
 class CounterRoute extends _i1.PageRouteInfo<CounterRouteArgs> {
-  CounterRoute({_i12.Key? key, required String title})
+  CounterRoute({_i11.Key? key, required String title})
       : super(name,
             path: '/counter', args: CounterRouteArgs(key: key, title: title));
 
@@ -158,7 +145,7 @@ class CounterRoute extends _i1.PageRouteInfo<CounterRouteArgs> {
 class CounterRouteArgs {
   const CounterRouteArgs({this.key, required this.title});
 
-  final _i12.Key? key;
+  final _i11.Key? key;
 
   final String title;
 }
