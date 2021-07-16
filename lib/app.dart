@@ -42,6 +42,17 @@ class App extends HookWidget {
       //   '/login': (BuildContext context) => const LoginPage(),
       //   '/signup': (BuildContext context) => const SignUpPage(),
       // },
+      // initialRoute: '/',
+      // routes: {
+      //   '/': (BuildContext context) => IndexPage(),
+      //   '/home': (BuildContext context) => const HomePage(),
+      //   '/login': (BuildContext context) => const LoginPage(),
+      //   '/signup': (BuildContext context) => const SignUpPage(),
+      //   '/test/login': (BuildContext context) => AuthSamplePage(),
+      //   '/test/idea': (BuildContext context) => IdeaListPage(),
+      //   '/counter': (BuildContext context) =>
+      //       const CounterPage(title: 'Flutter Demo Home Page'),
+      // },
     );
   }
 }
