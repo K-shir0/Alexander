@@ -1,5 +1,6 @@
 import 'package:alexander/domain/space.dart';
 import 'package:alexander/view_model/home_page_state_notifier.dart';
+import 'package:alexander/view_model/idea_list_page_state_notifier.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -14,32 +15,56 @@ class HomeSamplePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final state = useProvider(homePageProvider);
+    final ideaListState = useProvider(ideaListPageProvider);
     final notifier = useProvider(homePageProvider.notifier);
+    final ideaListNotifier = useProvider(ideaListPageProvider.notifier);
 
     useEffect(() {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
         notifier.fetchPage(id ?? '');
+        // 初期アイデアの追加
+        ideaListNotifier.addIdea();
       });
     }, []);
 
+
     // スペースのタイトル
-    final spaceTitle = state.spaces.firstWhere((element) => element.id == id).title;
+    final spaceTitle =
+        state.spaces.firstWhere((element) => element.id == id).title;
 
     return Scaffold(
       appBar: AppBar(),
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          /**
+           *
+           * サイドメニュー
+           *
+           */
           SizedBox(
             width: 256,
-            child: HomeSampleSideMenu(currentSpaceId: id,),
+            child: HomeSampleSideMenu(
+              currentSpaceId: id,
+            ),
           ),
+          /**
+           *
+           * アイデアリストページビュー
+           *
+           */
           Expanded(
             child: Column(
               children: [
                 Text(id ?? ''),
-                Text(spaceTitle.isNotEmpty ? spaceTitle : 'Untitled'),
-                Text(state.ideas.toString())
+                TextFormField(
+                  initialValue: spaceTitle,
+                  decoration: const InputDecoration(
+                    hintText: 'Untitled',
+                  ),
+                ),
+                Text(state.ideas.toString()),
+                ...ideaListState.ideaList
               ],
             ),
           )
@@ -60,7 +85,10 @@ class HomeSampleSideMenu extends HookWidget {
 
     final spaceLinks = state.spaces
         .map(
-          (e) => SpaceLink(metadata: e, currentSpaceId: currentSpaceId,),
+          (e) => SpaceLink(
+            metadata: e,
+            currentSpaceId: currentSpaceId,
+          ),
         )
         .toList();
 
@@ -84,7 +112,8 @@ class SpaceLink extends StatelessWidget {
   final String? currentSpaceId;
   final SpaceMetadata metadata;
 
-  const SpaceLink({Key? key, required this.metadata, this.currentSpaceId}) : super(key: key);
+  const SpaceLink({Key? key, required this.metadata, this.currentSpaceId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

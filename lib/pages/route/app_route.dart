@@ -42,10 +42,6 @@ import 'package:auto_route/annotations.dart';
       page: HomeSamplePage,
     ),
     AutoRoute(
-      path: '/test/idea',
-      page: IdeaListPage,
-    ),
-    AutoRoute(
       path: '/counter',
       page: CounterPage,
     ),

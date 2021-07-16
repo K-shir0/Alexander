@@ -6,6 +6,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 import 'package:uuid/uuid.dart';
 
+final ideaListPageProvider = StateNotifierProvider.autoDispose<
+    IdeaListPageStateNotifier, IdeaListPageState>(
+      (refs) => IdeaListPageStateNotifier(IdeaListPageState()),
+);
+
 class IdeaListPageState {
   List<Idea> ideaList = [];
 }
