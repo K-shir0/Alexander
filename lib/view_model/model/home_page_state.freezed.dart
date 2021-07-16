@@ -20,9 +20,11 @@ HomePageState _$HomePageStateFromJson(Map<String, dynamic> json) {
 class _$HomePageStateTearOff {
   const _$HomePageStateTearOff();
 
-  _HomePageState call({List<SpaceMetadata> spaces = const []}) {
+  _HomePageState call(
+      {List<SpaceMetadata> spaces = const [], List<Idea> ideas = const []}) {
     return _HomePageState(
       spaces: spaces,
+      ideas: ideas,
     );
   }
 
@@ -37,6 +39,7 @@ const $HomePageState = _$HomePageStateTearOff();
 /// @nodoc
 mixin _$HomePageState {
   List<SpaceMetadata> get spaces => throw _privateConstructorUsedError;
+  List<Idea> get ideas => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +52,7 @@ abstract class $HomePageStateCopyWith<$Res> {
   factory $HomePageStateCopyWith(
           HomePageState value, $Res Function(HomePageState) then) =
       _$HomePageStateCopyWithImpl<$Res>;
-  $Res call({List<SpaceMetadata> spaces});
+  $Res call({List<SpaceMetadata> spaces, List<Idea> ideas});
 }
 
 /// @nodoc
@@ -64,12 +67,17 @@ class _$HomePageStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? spaces = freezed,
+    Object? ideas = freezed,
   }) {
     return _then(_value.copyWith(
       spaces: spaces == freezed
           ? _value.spaces
           : spaces // ignore: cast_nullable_to_non_nullable
               as List<SpaceMetadata>,
+      ideas: ideas == freezed
+          ? _value.ideas
+          : ideas // ignore: cast_nullable_to_non_nullable
+              as List<Idea>,
     ));
   }
 }
@@ -81,7 +89,7 @@ abstract class _$HomePageStateCopyWith<$Res>
           _HomePageState value, $Res Function(_HomePageState) then) =
       __$HomePageStateCopyWithImpl<$Res>;
   @override
-  $Res call({List<SpaceMetadata> spaces});
+  $Res call({List<SpaceMetadata> spaces, List<Idea> ideas});
 }
 
 /// @nodoc
@@ -98,12 +106,17 @@ class __$HomePageStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? spaces = freezed,
+    Object? ideas = freezed,
   }) {
     return _then(_HomePageState(
       spaces: spaces == freezed
           ? _value.spaces
           : spaces // ignore: cast_nullable_to_non_nullable
               as List<SpaceMetadata>,
+      ideas: ideas == freezed
+          ? _value.ideas
+          : ideas // ignore: cast_nullable_to_non_nullable
+              as List<Idea>,
     ));
   }
 }
@@ -111,7 +124,7 @@ class __$HomePageStateCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
-  const _$_HomePageState({this.spaces = const []});
+  const _$_HomePageState({this.spaces = const [], this.ideas = const []});
 
   factory _$_HomePageState.fromJson(Map<String, dynamic> json) =>
       _$_$_HomePageStateFromJson(json);
@@ -119,10 +132,13 @@ class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
   @JsonKey(defaultValue: const [])
   @override
   final List<SpaceMetadata> spaces;
+  @JsonKey(defaultValue: const [])
+  @override
+  final List<Idea> ideas;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomePageState(spaces: $spaces)';
+    return 'HomePageState(spaces: $spaces, ideas: $ideas)';
   }
 
   @override
@@ -130,7 +146,8 @@ class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'HomePageState'))
-      ..add(DiagnosticsProperty('spaces', spaces));
+      ..add(DiagnosticsProperty('spaces', spaces))
+      ..add(DiagnosticsProperty('ideas', ideas));
   }
 
   @override
@@ -138,12 +155,16 @@ class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
     return identical(this, other) ||
         (other is _HomePageState &&
             (identical(other.spaces, spaces) ||
-                const DeepCollectionEquality().equals(other.spaces, spaces)));
+                const DeepCollectionEquality().equals(other.spaces, spaces)) &&
+            (identical(other.ideas, ideas) ||
+                const DeepCollectionEquality().equals(other.ideas, ideas)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(spaces);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(spaces) ^
+      const DeepCollectionEquality().hash(ideas);
 
   @JsonKey(ignore: true)
   @override
@@ -157,13 +178,16 @@ class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
 }
 
 abstract class _HomePageState implements HomePageState {
-  const factory _HomePageState({List<SpaceMetadata> spaces}) = _$_HomePageState;
+  const factory _HomePageState({List<SpaceMetadata> spaces, List<Idea> ideas}) =
+      _$_HomePageState;
 
   factory _HomePageState.fromJson(Map<String, dynamic> json) =
       _$_HomePageState.fromJson;
 
   @override
   List<SpaceMetadata> get spaces => throw _privateConstructorUsedError;
+  @override
+  List<Idea> get ideas => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$HomePageStateCopyWith<_HomePageState> get copyWith =>

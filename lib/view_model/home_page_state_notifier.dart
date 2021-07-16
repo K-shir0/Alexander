@@ -41,4 +41,13 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
           failure: (_) {},
         ));
   }
+  
+  Future<void> fetchPage(String id) async {
+    await ref.read(spaceProvider).getPage(GetPageRequest(id: id)).then((value) => value.when(
+      success: (_) {
+        state = state.copyWith(ideas: _.data.ideas);
+      },
+      failure: (_) {},
+    ));
+  }
 }

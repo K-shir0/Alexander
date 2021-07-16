@@ -57,3 +57,42 @@ Map<String, dynamic> _$_$_GetSpaceResponseDataToJson(
     <String, dynamic>{
       'spaces': instance.spaces,
     };
+
+_$_GetPageRequest _$_$_GetPageRequestFromJson(Map<String, dynamic> json) {
+  return _$_GetPageRequest(
+    id: json['id'] as String,
+  );
+}
+
+Map<String, dynamic> _$_$_GetPageRequestToJson(_$_GetPageRequest instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+    };
+
+_$_GetPageResponse _$_$_GetPageResponseFromJson(Map<String, dynamic> json) {
+  return _$_GetPageResponse(
+    code: json['code'] as int,
+    data: GetPageResponseData.fromJson(json['data'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$_$_GetPageResponseToJson(_$_GetPageResponse instance) =>
+    <String, dynamic>{
+      'code': instance.code,
+      'data': instance.data,
+    };
+
+_$_GetPageResponseData _$_$_GetPageResponseDataFromJson(
+    Map<String, dynamic> json) {
+  return _$_GetPageResponseData(
+    ideas: (json['ideas'] as List<dynamic>)
+        .map((e) => Idea.fromJson(e as Map<String, dynamic>))
+        .toList(),
+  );
+}
+
+Map<String, dynamic> _$_$_GetPageResponseDataToJson(
+        _$_GetPageResponseData instance) =>
+    <String, dynamic>{
+      'ideas': instance.ideas,
+    };

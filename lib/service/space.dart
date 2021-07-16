@@ -43,4 +43,15 @@ class Space {
       return Result.failure(Error.getApiError(error));
     }
   }
+
+  /// スペース毎のアイデアを取得
+  Future<Result<GetPageResponse>> getPage(GetPageRequest getPageRequest) async {
+    try {
+      return await client.post('/api/getPage', data: getPageRequest).then(
+          (result) =>
+              Result.success(GetPageResponse.fromJson({...result.data})));
+    } on DioError catch (error) {
+      return Result.failure(Error.getApiError(error));
+    }
+  }
 }

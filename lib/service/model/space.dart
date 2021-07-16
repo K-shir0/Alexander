@@ -1,3 +1,4 @@
+import 'package:alexander/domain/idea.dart';
 import 'package:alexander/domain/space.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -45,4 +46,32 @@ class GetSpaceResponseData with _$GetSpaceResponseData {
 
   factory GetSpaceResponseData.fromJson(Map<String, dynamic> json) =>
       _$GetSpaceResponseDataFromJson(json);
+}
+
+@freezed
+class GetPageRequest with _$GetPageRequest {
+  const factory GetPageRequest({
+    required String id,
+  }) = _GetPageRequest;
+
+ factory GetPageRequest.fromJson(Map<String, dynamic> json) => _$GetPageRequestFromJson(json);
+}
+
+@freezed
+abstract class GetPageResponse with _$GetPageResponse {
+  const factory GetPageResponse({
+    required int code,
+    required GetPageResponseData data,
+  }) = _GetPageResponse;
+
+ factory GetPageResponse.fromJson(Map<String, dynamic> json) => _$GetPageResponseFromJson(json);
+}
+
+@freezed
+class GetPageResponseData with _$GetPageResponseData {
+  const factory GetPageResponseData({
+    required List<Idea> ideas,
+  }) = _GetPageResponseData;
+
+ factory GetPageResponseData.fromJson(Map<String, dynamic> json) => _$GetPageResponseDataFromJson(json);
 }
