@@ -1,6 +1,6 @@
+import 'package:alexander/domain/idea.dart';
 import 'package:alexander/domain/space.dart';
 import 'package:alexander/view_model/home_page_state_notifier.dart';
-import 'package:alexander/view_model/idea_list_page_state_notifier.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -8,29 +8,35 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class HomeSamplePage extends HookWidget {
-  final String? id;
+  final String id;
 
-  const HomeSamplePage({@PathParam('id') this.id});
+  const HomeSamplePage({@PathParam('id') required this.id});
 
   @override
   Widget build(BuildContext context) {
     final state = useProvider(homePageProvider);
-    final ideaListState = useProvider(ideaListPageProvider);
+    // final ideaListState = useProvider(ideaListPageProvider);
     final notifier = useProvider(homePageProvider.notifier);
-    final ideaListNotifier = useProvider(ideaListPageProvider.notifier);
+    // final ideaListNotifier = useProvider(ideaListPageProvider.notifier);
 
     useEffect(() {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
-        notifier.fetchPage(id ?? '');
+        notifier.initialize(context, id);
         // 初期アイデアの追加
-        ideaListNotifier.addIdea();
+        // ideaListNotifier.addIdea();
       });
     }, []);
-
 
     // スペースのタイトル
     final spaceTitle =
         state.spaces.firstWhere((element) => element.id == id).title;
+
+    /// アイデア一覧
+    final ideaList = state.ideas
+        .map((e) => IdeaTextField(
+              idea: e,
+            ))
+        .toList();
 
     return Scaffold(
       appBar: AppBar(),
@@ -56,7 +62,7 @@ class HomeSamplePage extends HookWidget {
           Expanded(
             child: Column(
               children: [
-                Text(id ?? ''),
+                Text(id),
                 TextFormField(
                   initialValue: spaceTitle,
                   decoration: const InputDecoration(
@@ -64,7 +70,8 @@ class HomeSamplePage extends HookWidget {
                   ),
                 ),
                 Text(state.ideas.toString()),
-                ...ideaListState.ideaList
+                ...ideaList
+                // ...ideaListState.ideaList
               ],
             ),
           )
@@ -128,6 +135,25 @@ class SpaceLink extends StatelessWidget {
         }
       },
       child: Text(title.isEmpty ? 'Untitled' : title),
+    );
+  }
+}
+
+class IdeaTextField extends HookWidget {
+  final Idea idea;
+
+  const IdeaTextField({required this.idea});
+
+  @override
+  Widget build(BuildContext context) {
+    final notifier = useProvider(homePageProvider.notifier);
+
+    return TextFormField(
+      key: Key(idea.id),
+      initialValue: idea.title,
+      onFieldSubmitted: (_) {
+        notifier.onEnterKeyAction(idea.id)();
+      },
     );
   }
 }

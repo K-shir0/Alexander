@@ -21,10 +21,13 @@ class _$HomePageStateTearOff {
   const _$HomePageStateTearOff();
 
   _HomePageState call(
-      {List<SpaceMetadata> spaces = const [], List<Idea> ideas = const []}) {
+      {List<SpaceMetadata> spaces = const [],
+      List<Idea> ideas = const [],
+      List<Transaction> transactions = const []}) {
     return _HomePageState(
       spaces: spaces,
       ideas: ideas,
+      transactions: transactions,
     );
   }
 
@@ -40,6 +43,7 @@ const $HomePageState = _$HomePageStateTearOff();
 mixin _$HomePageState {
   List<SpaceMetadata> get spaces => throw _privateConstructorUsedError;
   List<Idea> get ideas => throw _privateConstructorUsedError;
+  List<Transaction> get transactions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +56,10 @@ abstract class $HomePageStateCopyWith<$Res> {
   factory $HomePageStateCopyWith(
           HomePageState value, $Res Function(HomePageState) then) =
       _$HomePageStateCopyWithImpl<$Res>;
-  $Res call({List<SpaceMetadata> spaces, List<Idea> ideas});
+  $Res call(
+      {List<SpaceMetadata> spaces,
+      List<Idea> ideas,
+      List<Transaction> transactions});
 }
 
 /// @nodoc
@@ -68,6 +75,7 @@ class _$HomePageStateCopyWithImpl<$Res>
   $Res call({
     Object? spaces = freezed,
     Object? ideas = freezed,
+    Object? transactions = freezed,
   }) {
     return _then(_value.copyWith(
       spaces: spaces == freezed
@@ -78,6 +86,10 @@ class _$HomePageStateCopyWithImpl<$Res>
           ? _value.ideas
           : ideas // ignore: cast_nullable_to_non_nullable
               as List<Idea>,
+      transactions: transactions == freezed
+          ? _value.transactions
+          : transactions // ignore: cast_nullable_to_non_nullable
+              as List<Transaction>,
     ));
   }
 }
@@ -89,7 +101,10 @@ abstract class _$HomePageStateCopyWith<$Res>
           _HomePageState value, $Res Function(_HomePageState) then) =
       __$HomePageStateCopyWithImpl<$Res>;
   @override
-  $Res call({List<SpaceMetadata> spaces, List<Idea> ideas});
+  $Res call(
+      {List<SpaceMetadata> spaces,
+      List<Idea> ideas,
+      List<Transaction> transactions});
 }
 
 /// @nodoc
@@ -107,6 +122,7 @@ class __$HomePageStateCopyWithImpl<$Res>
   $Res call({
     Object? spaces = freezed,
     Object? ideas = freezed,
+    Object? transactions = freezed,
   }) {
     return _then(_HomePageState(
       spaces: spaces == freezed
@@ -117,6 +133,10 @@ class __$HomePageStateCopyWithImpl<$Res>
           ? _value.ideas
           : ideas // ignore: cast_nullable_to_non_nullable
               as List<Idea>,
+      transactions: transactions == freezed
+          ? _value.transactions
+          : transactions // ignore: cast_nullable_to_non_nullable
+              as List<Transaction>,
     ));
   }
 }
@@ -124,7 +144,10 @@ class __$HomePageStateCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
-  const _$_HomePageState({this.spaces = const [], this.ideas = const []});
+  const _$_HomePageState(
+      {this.spaces = const [],
+      this.ideas = const [],
+      this.transactions = const []});
 
   factory _$_HomePageState.fromJson(Map<String, dynamic> json) =>
       _$_$_HomePageStateFromJson(json);
@@ -135,10 +158,13 @@ class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
   @JsonKey(defaultValue: const [])
   @override
   final List<Idea> ideas;
+  @JsonKey(defaultValue: const [])
+  @override
+  final List<Transaction> transactions;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomePageState(spaces: $spaces, ideas: $ideas)';
+    return 'HomePageState(spaces: $spaces, ideas: $ideas, transactions: $transactions)';
   }
 
   @override
@@ -147,7 +173,8 @@ class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
     properties
       ..add(DiagnosticsProperty('type', 'HomePageState'))
       ..add(DiagnosticsProperty('spaces', spaces))
-      ..add(DiagnosticsProperty('ideas', ideas));
+      ..add(DiagnosticsProperty('ideas', ideas))
+      ..add(DiagnosticsProperty('transactions', transactions));
   }
 
   @override
@@ -157,14 +184,18 @@ class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
             (identical(other.spaces, spaces) ||
                 const DeepCollectionEquality().equals(other.spaces, spaces)) &&
             (identical(other.ideas, ideas) ||
-                const DeepCollectionEquality().equals(other.ideas, ideas)));
+                const DeepCollectionEquality().equals(other.ideas, ideas)) &&
+            (identical(other.transactions, transactions) ||
+                const DeepCollectionEquality()
+                    .equals(other.transactions, transactions)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(spaces) ^
-      const DeepCollectionEquality().hash(ideas);
+      const DeepCollectionEquality().hash(ideas) ^
+      const DeepCollectionEquality().hash(transactions);
 
   @JsonKey(ignore: true)
   @override
@@ -178,8 +209,10 @@ class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
 }
 
 abstract class _HomePageState implements HomePageState {
-  const factory _HomePageState({List<SpaceMetadata> spaces, List<Idea> ideas}) =
-      _$_HomePageState;
+  const factory _HomePageState(
+      {List<SpaceMetadata> spaces,
+      List<Idea> ideas,
+      List<Transaction> transactions}) = _$_HomePageState;
 
   factory _HomePageState.fromJson(Map<String, dynamic> json) =
       _$_HomePageState.fromJson;
@@ -188,6 +221,8 @@ abstract class _HomePageState implements HomePageState {
   List<SpaceMetadata> get spaces => throw _privateConstructorUsedError;
   @override
   List<Idea> get ideas => throw _privateConstructorUsedError;
+  @override
+  List<Transaction> get transactions => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$HomePageStateCopyWith<_HomePageState> get copyWith =>

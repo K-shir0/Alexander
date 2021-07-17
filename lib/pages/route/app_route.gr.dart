@@ -58,7 +58,7 @@ class AppRouter extends _i1.RootStackRouter {
           final pathParams = data.pathParams;
           final args = data.argsAs<HomeSampleRouteArgs>(
               orElse: () =>
-                  HomeSampleRouteArgs(id: pathParams.optString('id')));
+                  HomeSampleRouteArgs(id: pathParams.getString('id')));
           return _i9.HomeSamplePage(id: args.id);
         }),
     CounterRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
@@ -119,7 +119,7 @@ class DefaultRoute extends _i1.PageRouteInfo {
 }
 
 class HomeSampleRoute extends _i1.PageRouteInfo<HomeSampleRouteArgs> {
-  HomeSampleRoute({String? id})
+  HomeSampleRoute({required String id})
       : super(name,
             path: '/test/home/:id',
             args: HomeSampleRouteArgs(id: id),
@@ -129,9 +129,9 @@ class HomeSampleRoute extends _i1.PageRouteInfo<HomeSampleRouteArgs> {
 }
 
 class HomeSampleRouteArgs {
-  const HomeSampleRouteArgs({this.id});
+  const HomeSampleRouteArgs({required this.id});
 
-  final String? id;
+  final String id;
 }
 
 class CounterRoute extends _i1.PageRouteInfo<CounterRouteArgs> {
