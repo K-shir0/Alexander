@@ -6,15 +6,18 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 import 'package:uuid/uuid.dart';
 
+/// 現在は使用されていません。
 final ideaListPageProvider = StateNotifierProvider.autoDispose<
     IdeaListPageStateNotifier, IdeaListPageState>(
       (refs) => IdeaListPageStateNotifier(IdeaListPageState()),
 );
 
+/// 現在は使用されていません。
 class IdeaListPageState {
   List<Idea> ideaList = [];
 }
 
+/// 現在は使用されていません。
 class IdeaListPageStateNotifier extends StateNotifier<IdeaListPageState>
     with LocatorMixin {
   IdeaListPageStateNotifier(IdeaListPageState state) : super(state);
@@ -63,6 +66,7 @@ class IdeaListPageStateNotifier extends StateNotifier<IdeaListPageState>
   }
 }
 
+/// 現在は使用されていません。
 class Idea extends HookWidget {
   final String id;
   final Function(String) onSubmittedAction;
