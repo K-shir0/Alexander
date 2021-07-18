@@ -18,9 +18,56 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     //画面サイズを取得
     final Size size = MediaQuery.of(context).size;
-    final drawerwidth = size.width / 6.2; //drwer部分の横を指定した変数
+    final drawerwidth = size.width / 5; //drwer部分の横を指定した変数
     const sharecheck = true; //共有しているかしていないかのチェック
-
+//ノート名を格納する変数
+    List<String> noteName = [
+      'ここに',
+      'ノート',
+      'cc',
+      'dd',
+      'uu',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+      'ノート',
+    ];
     //共有ユーザー
     List<String> shereuser = [
       'user1',
@@ -240,6 +287,61 @@ class _HomePageState extends State<HomePage> {
                   width: drawerwidth,
                   height: size.height - 100,
                   color: Palette.whitecolor,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        const Padding(padding: EdgeInsets.all(5)),
+                        Row(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.all(10),
+                              width: 35,
+                              height: 35,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                    color: Palette.titleTextColor, width: 2),
+                              ),
+                              child: InkWell(
+                                //ボタンのクリックイベント
+                                onTap: () {},
+                                child: const Icon(Icons.add),
+                              ),
+                            ),
+                            const Text(
+                              'ノート追加',
+                              style: TextStyle(
+                                  color: Palette.titleTextColor, fontSize: 20),
+                            ),
+                          ],
+                        ),
+                        const Padding(padding: EdgeInsets.all(20)),
+                        //配列noteNameの要素が全てTextで表示される
+                        ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: noteName.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Container(
+                              padding: const EdgeInsets.all(10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    noteName[index],
+                                    textAlign: TextAlign.right,
+                                    style: const TextStyle(
+                                        fontSize: 15,
+                                        color: Palette.titleTextColor),
+                                  ),
+                                  const Text('　　'),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 //メインメニューのウィジェット
                 Container(
