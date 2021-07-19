@@ -60,9 +60,9 @@ class AlexanderTextField extends StatelessWidget {
           ),
           child: TextField(
             obscureText: obscureText,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: InputBorder.none,
-              labelText: engLabel,
+              // labelText: engLabel,
             ),
           ),
         ),
@@ -74,7 +74,7 @@ class AlexanderTextField extends StatelessWidget {
                  const Padding(
                   padding: EdgeInsets.only(top: 8.0, right: 8.0),
                   child: Icon(Icons.info_outline_rounded,
-                      color: Palette.emphasisTetxColor),
+                      color: Palette.emphasisTextColor),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
@@ -82,7 +82,7 @@ class AlexanderTextField extends StatelessWidget {
                     infomation,
                     style:  const TextStyle(
                       fontSize: 12,
-                      color: Palette.emphasisTetxColor,
+                      color: Palette.emphasisTextColor,
                       letterSpacing: 2.4000000000000004,
                     ),
                   ),
