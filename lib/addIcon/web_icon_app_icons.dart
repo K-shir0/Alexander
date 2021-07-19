@@ -11,7 +11,7 @@
 ///      fonts:
 ///       - asset: fonts/WebIconApp.ttf
 ///
-/// 
+///
 /// * Material Design Icons, Copyright (C) Google, Inc
 ///         Author:    Google
 ///         License:   Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
@@ -31,14 +31,15 @@ class WebIconApp {
   WebIconApp._();
 
   static const _kFontFam = 'WebIconApp';
-  static const String? _kFontPkg = null;
 
-  static const IconData keyboardarrowdown = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData google_1 = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData favorite_border = IconData(0xe91e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData share = IconData(0xeaee, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData star_border = IconData(0xeb15, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData gplus_squared = IconData(0xf0d4, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData gplus = IconData(0xf0d5, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData google = IconData(0xf1a0, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData keyboardarrowdown =
+      IconData(0xe800, fontFamily: _kFontFam);
+  static const IconData google_1 = IconData(0xe801, fontFamily: _kFontFam);
+  static const IconData favoriteborder =
+      IconData(0xe91e, fontFamily: _kFontFam);
+  static const IconData share = IconData(0xeaee, fontFamily: _kFontFam);
+  static const IconData starborder = IconData(0xeb15, fontFamily: _kFontFam);
+  static const IconData gplussquared = IconData(0xf0d4, fontFamily: _kFontFam);
+  static const IconData gplus = IconData(0xf0d5, fontFamily: _kFontFam);
+  static const IconData google = IconData(0xf1a0, fontFamily: _kFontFam);
 }

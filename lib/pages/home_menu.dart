@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
     final drawerwidth = size.width / 5; //drwer部分の横を指定した変数
     const sharecheck = true; //共有しているかしていないかのチェック
 //ノート名を格納する変数
-    List<String> noteName = [
+    final List<String> noteName = [
       'ここに',
       'ノート',
       'cc',
@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
       'ノート',
     ];
     //共有ユーザー
-    List<String> shereuser = [
+    final List<String> shereuser = [
       'user1',
       'user2',
       'user3',
@@ -333,7 +333,6 @@ class _HomePageState extends State<HomePage> {
                                         fontSize: 15,
                                         color: Palette.titleTextColor),
                                   ),
-                                  const Text('　　'),
                                 ],
                               ),
                             );
@@ -348,6 +347,74 @@ class _HomePageState extends State<HomePage> {
                   width: size.width - drawerwidth,
                   height: size.height - 100,
                   color: Palette.bgmain,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(40),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SizedBox(
+                              width: size.width / 2.3,
+                              height: 32,
+                              child: const TextField(
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(30)),
+                                  ),
+                                  prefixIcon: Icon(Icons.search),
+                                  hintText: '検索',
+                                ),
+                              ),
+                            ),
+                            //アイデア追加ボタン
+                            Container(
+                              alignment: Alignment.center,
+                              width: size.width / 8,
+                              height: 32,
+                              decoration: BoxDecoration(
+                                color: Palette.inviteandborder,
+                                // 角丸
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: InkWell(
+                                //ボタンのクリックイベント
+                                onTap: () {},
+                                child: const Text(
+                                  'アイデアを追加する',
+                                  style: TextStyle(color: Palette.whitecolor),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ),
+                            //チームを抜けるボタン
+                            if (sharecheck == true)
+                              Container(
+                                alignment: Alignment.center,
+                                width: size.width / 10,
+                                height: 32,
+                                decoration: BoxDecoration(
+                                  color: Palette.bgContentsColor,
+                                  // 角丸
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: InkWell(
+                                  //ボタンのクリックイベント
+                                  onTap: () {},
+                                  child: const Text(
+                                    'チームを抜ける',
+                                    style:
+                                        TextStyle(color: Palette.mainTextColor),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             )
