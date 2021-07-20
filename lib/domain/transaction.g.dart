@@ -8,7 +8,7 @@ part of 'transaction.dart';
 
 _$_Transaction _$_$_TransactionFromJson(Map<String, dynamic> json) {
   return _$_Transaction(
-    id: json['id'] as int,
+    id: json['id'] as String,
     spaceId: json['space_id'] as String,
     operations: (json['operations'] as List<dynamic>?)
             ?.map((e) => Operation.fromJson(e as Map<String, dynamic>))

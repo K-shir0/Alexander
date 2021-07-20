@@ -87,9 +87,7 @@ class Idea extends HookWidget {
           child: RawKeyboardListener(
             onKey: (event) {
               if (event.logicalKey == LogicalKeyboardKey.backspace) {
-                print('delete');
                 if (isDoubleDeleteKeyClick.value) {
-                  print('削除');
                   onDeleteAction(id);
                 }
 

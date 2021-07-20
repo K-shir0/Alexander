@@ -1200,3 +1200,323 @@ abstract class _GetPageResponseData implements GetPageResponseData {
   _$GetPageResponseDataCopyWith<_GetPageResponseData> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+SavePageRequest _$SavePageRequestFromJson(Map<String, dynamic> json) {
+  return _SavePageRequest.fromJson(json);
+}
+
+/// @nodoc
+class _$SavePageRequestTearOff {
+  const _$SavePageRequestTearOff();
+
+  _SavePageRequest call({required List<Transaction> transactions}) {
+    return _SavePageRequest(
+      transactions: transactions,
+    );
+  }
+
+  SavePageRequest fromJson(Map<String, Object> json) {
+    return SavePageRequest.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $SavePageRequest = _$SavePageRequestTearOff();
+
+/// @nodoc
+mixin _$SavePageRequest {
+  List<Transaction> get transactions => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SavePageRequestCopyWith<SavePageRequest> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SavePageRequestCopyWith<$Res> {
+  factory $SavePageRequestCopyWith(
+          SavePageRequest value, $Res Function(SavePageRequest) then) =
+      _$SavePageRequestCopyWithImpl<$Res>;
+  $Res call({List<Transaction> transactions});
+}
+
+/// @nodoc
+class _$SavePageRequestCopyWithImpl<$Res>
+    implements $SavePageRequestCopyWith<$Res> {
+  _$SavePageRequestCopyWithImpl(this._value, this._then);
+
+  final SavePageRequest _value;
+  // ignore: unused_field
+  final $Res Function(SavePageRequest) _then;
+
+  @override
+  $Res call({
+    Object? transactions = freezed,
+  }) {
+    return _then(_value.copyWith(
+      transactions: transactions == freezed
+          ? _value.transactions
+          : transactions // ignore: cast_nullable_to_non_nullable
+              as List<Transaction>,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$SavePageRequestCopyWith<$Res>
+    implements $SavePageRequestCopyWith<$Res> {
+  factory _$SavePageRequestCopyWith(
+          _SavePageRequest value, $Res Function(_SavePageRequest) then) =
+      __$SavePageRequestCopyWithImpl<$Res>;
+  @override
+  $Res call({List<Transaction> transactions});
+}
+
+/// @nodoc
+class __$SavePageRequestCopyWithImpl<$Res>
+    extends _$SavePageRequestCopyWithImpl<$Res>
+    implements _$SavePageRequestCopyWith<$Res> {
+  __$SavePageRequestCopyWithImpl(
+      _SavePageRequest _value, $Res Function(_SavePageRequest) _then)
+      : super(_value, (v) => _then(v as _SavePageRequest));
+
+  @override
+  _SavePageRequest get _value => super._value as _SavePageRequest;
+
+  @override
+  $Res call({
+    Object? transactions = freezed,
+  }) {
+    return _then(_SavePageRequest(
+      transactions: transactions == freezed
+          ? _value.transactions
+          : transactions // ignore: cast_nullable_to_non_nullable
+              as List<Transaction>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_SavePageRequest
+    with DiagnosticableTreeMixin
+    implements _SavePageRequest {
+  const _$_SavePageRequest({required this.transactions});
+
+  factory _$_SavePageRequest.fromJson(Map<String, dynamic> json) =>
+      _$_$_SavePageRequestFromJson(json);
+
+  @override
+  final List<Transaction> transactions;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SavePageRequest(transactions: $transactions)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SavePageRequest'))
+      ..add(DiagnosticsProperty('transactions', transactions));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SavePageRequest &&
+            (identical(other.transactions, transactions) ||
+                const DeepCollectionEquality()
+                    .equals(other.transactions, transactions)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(transactions);
+
+  @JsonKey(ignore: true)
+  @override
+  _$SavePageRequestCopyWith<_SavePageRequest> get copyWith =>
+      __$SavePageRequestCopyWithImpl<_SavePageRequest>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_SavePageRequestToJson(this);
+  }
+}
+
+abstract class _SavePageRequest implements SavePageRequest {
+  const factory _SavePageRequest({required List<Transaction> transactions}) =
+      _$_SavePageRequest;
+
+  factory _SavePageRequest.fromJson(Map<String, dynamic> json) =
+      _$_SavePageRequest.fromJson;
+
+  @override
+  List<Transaction> get transactions => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$SavePageRequestCopyWith<_SavePageRequest> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+SavePageResponse _$SavePageResponseFromJson(Map<String, dynamic> json) {
+  return _SavePageResponse.fromJson(json);
+}
+
+/// @nodoc
+class _$SavePageResponseTearOff {
+  const _$SavePageResponseTearOff();
+
+  _SavePageResponse call({required int code}) {
+    return _SavePageResponse(
+      code: code,
+    );
+  }
+
+  SavePageResponse fromJson(Map<String, Object> json) {
+    return SavePageResponse.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $SavePageResponse = _$SavePageResponseTearOff();
+
+/// @nodoc
+mixin _$SavePageResponse {
+  int get code => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SavePageResponseCopyWith<SavePageResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SavePageResponseCopyWith<$Res> {
+  factory $SavePageResponseCopyWith(
+          SavePageResponse value, $Res Function(SavePageResponse) then) =
+      _$SavePageResponseCopyWithImpl<$Res>;
+  $Res call({int code});
+}
+
+/// @nodoc
+class _$SavePageResponseCopyWithImpl<$Res>
+    implements $SavePageResponseCopyWith<$Res> {
+  _$SavePageResponseCopyWithImpl(this._value, this._then);
+
+  final SavePageResponse _value;
+  // ignore: unused_field
+  final $Res Function(SavePageResponse) _then;
+
+  @override
+  $Res call({
+    Object? code = freezed,
+  }) {
+    return _then(_value.copyWith(
+      code: code == freezed
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$SavePageResponseCopyWith<$Res>
+    implements $SavePageResponseCopyWith<$Res> {
+  factory _$SavePageResponseCopyWith(
+          _SavePageResponse value, $Res Function(_SavePageResponse) then) =
+      __$SavePageResponseCopyWithImpl<$Res>;
+  @override
+  $Res call({int code});
+}
+
+/// @nodoc
+class __$SavePageResponseCopyWithImpl<$Res>
+    extends _$SavePageResponseCopyWithImpl<$Res>
+    implements _$SavePageResponseCopyWith<$Res> {
+  __$SavePageResponseCopyWithImpl(
+      _SavePageResponse _value, $Res Function(_SavePageResponse) _then)
+      : super(_value, (v) => _then(v as _SavePageResponse));
+
+  @override
+  _SavePageResponse get _value => super._value as _SavePageResponse;
+
+  @override
+  $Res call({
+    Object? code = freezed,
+  }) {
+    return _then(_SavePageResponse(
+      code: code == freezed
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_SavePageResponse
+    with DiagnosticableTreeMixin
+    implements _SavePageResponse {
+  const _$_SavePageResponse({required this.code});
+
+  factory _$_SavePageResponse.fromJson(Map<String, dynamic> json) =>
+      _$_$_SavePageResponseFromJson(json);
+
+  @override
+  final int code;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SavePageResponse(code: $code)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SavePageResponse'))
+      ..add(DiagnosticsProperty('code', code));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SavePageResponse &&
+            (identical(other.code, code) ||
+                const DeepCollectionEquality().equals(other.code, code)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(code);
+
+  @JsonKey(ignore: true)
+  @override
+  _$SavePageResponseCopyWith<_SavePageResponse> get copyWith =>
+      __$SavePageResponseCopyWithImpl<_SavePageResponse>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_SavePageResponseToJson(this);
+  }
+}
+
+abstract class _SavePageResponse implements SavePageResponse {
+  const factory _SavePageResponse({required int code}) = _$_SavePageResponse;
+
+  factory _SavePageResponse.fromJson(Map<String, dynamic> json) =
+      _$_SavePageResponse.fromJson;
+
+  @override
+  int get code => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$SavePageResponseCopyWith<_SavePageResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}

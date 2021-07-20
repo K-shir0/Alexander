@@ -21,7 +21,7 @@ class _$TransactionTearOff {
   const _$TransactionTearOff();
 
   _Transaction call(
-      {required int id,
+      {required String id,
       required String spaceId,
       List<Operation> operations = const []}) {
     return _Transaction(
@@ -41,7 +41,7 @@ const $Transaction = _$TransactionTearOff();
 
 /// @nodoc
 mixin _$Transaction {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get spaceId => throw _privateConstructorUsedError;
   List<Operation> get operations => throw _privateConstructorUsedError;
 
@@ -56,7 +56,7 @@ abstract class $TransactionCopyWith<$Res> {
   factory $TransactionCopyWith(
           Transaction value, $Res Function(Transaction) then) =
       _$TransactionCopyWithImpl<$Res>;
-  $Res call({int id, String spaceId, List<Operation> operations});
+  $Res call({String id, String spaceId, List<Operation> operations});
 }
 
 /// @nodoc
@@ -77,7 +77,7 @@ class _$TransactionCopyWithImpl<$Res> implements $TransactionCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       spaceId: spaceId == freezed
           ? _value.spaceId
           : spaceId // ignore: cast_nullable_to_non_nullable
@@ -97,7 +97,7 @@ abstract class _$TransactionCopyWith<$Res>
           _Transaction value, $Res Function(_Transaction) then) =
       __$TransactionCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String spaceId, List<Operation> operations});
+  $Res call({String id, String spaceId, List<Operation> operations});
 }
 
 /// @nodoc
@@ -120,7 +120,7 @@ class __$TransactionCopyWithImpl<$Res> extends _$TransactionCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       spaceId: spaceId == freezed
           ? _value.spaceId
           : spaceId // ignore: cast_nullable_to_non_nullable
@@ -143,7 +143,7 @@ class _$_Transaction with DiagnosticableTreeMixin implements _Transaction {
       _$_$_TransactionFromJson(json);
 
   @override
-  final int id;
+  final String id;
   @override
   final String spaceId;
   @JsonKey(defaultValue: const [])
@@ -199,7 +199,7 @@ class _$_Transaction with DiagnosticableTreeMixin implements _Transaction {
 
 abstract class _Transaction implements Transaction {
   const factory _Transaction(
-      {required int id,
+      {required String id,
       required String spaceId,
       List<Operation> operations}) = _$_Transaction;
 
@@ -207,7 +207,7 @@ abstract class _Transaction implements Transaction {
       _$_Transaction.fromJson;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @override
   String get spaceId => throw _privateConstructorUsedError;
   @override

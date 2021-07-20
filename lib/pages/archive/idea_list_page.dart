@@ -26,9 +26,7 @@ class IdeaListPage extends HookWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print(notifier.getData());
-        },
+        onPressed: () {},
       ),
     );
   }

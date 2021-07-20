@@ -96,3 +96,28 @@ Map<String, dynamic> _$_$_GetPageResponseDataToJson(
     <String, dynamic>{
       'ideas': instance.ideas,
     };
+
+_$_SavePageRequest _$_$_SavePageRequestFromJson(Map<String, dynamic> json) {
+  return _$_SavePageRequest(
+    transactions: (json['transactions'] as List<dynamic>)
+        .map((e) => Transaction.fromJson(e as Map<String, dynamic>))
+        .toList(),
+  );
+}
+
+Map<String, dynamic> _$_$_SavePageRequestToJson(_$_SavePageRequest instance) =>
+    <String, dynamic>{
+      'transactions': instance.transactions,
+    };
+
+_$_SavePageResponse _$_$_SavePageResponseFromJson(Map<String, dynamic> json) {
+  return _$_SavePageResponse(
+    code: json['code'] as int,
+  );
+}
+
+Map<String, dynamic> _$_$_SavePageResponseToJson(
+        _$_SavePageResponse instance) =>
+    <String, dynamic>{
+      'code': instance.code,
+    };

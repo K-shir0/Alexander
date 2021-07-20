@@ -7,7 +7,7 @@ part 'transaction.g.dart';
 @freezed
 class Transaction with _$Transaction {
   const factory Transaction({
-    required int id,
+    required String id,
     required String spaceId,
     @Default([]) List<Operation> operations,
   }) = _Transaction;

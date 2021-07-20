@@ -23,11 +23,13 @@ class _$HomePageStateTearOff {
   _HomePageState call(
       {List<SpaceMetadata> spaces = const [],
       List<Idea> ideas = const [],
-      List<Transaction> transactions = const []}) {
+      List<Transaction> transactions = const [],
+      bool isSaving = false}) {
     return _HomePageState(
       spaces: spaces,
       ideas: ideas,
       transactions: transactions,
+      isSaving: isSaving,
     );
   }
 
@@ -44,6 +46,7 @@ mixin _$HomePageState {
   List<SpaceMetadata> get spaces => throw _privateConstructorUsedError;
   List<Idea> get ideas => throw _privateConstructorUsedError;
   List<Transaction> get transactions => throw _privateConstructorUsedError;
+  bool get isSaving => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -59,7 +62,8 @@ abstract class $HomePageStateCopyWith<$Res> {
   $Res call(
       {List<SpaceMetadata> spaces,
       List<Idea> ideas,
-      List<Transaction> transactions});
+      List<Transaction> transactions,
+      bool isSaving});
 }
 
 /// @nodoc
@@ -76,6 +80,7 @@ class _$HomePageStateCopyWithImpl<$Res>
     Object? spaces = freezed,
     Object? ideas = freezed,
     Object? transactions = freezed,
+    Object? isSaving = freezed,
   }) {
     return _then(_value.copyWith(
       spaces: spaces == freezed
@@ -90,6 +95,10 @@ class _$HomePageStateCopyWithImpl<$Res>
           ? _value.transactions
           : transactions // ignore: cast_nullable_to_non_nullable
               as List<Transaction>,
+      isSaving: isSaving == freezed
+          ? _value.isSaving
+          : isSaving // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -104,7 +113,8 @@ abstract class _$HomePageStateCopyWith<$Res>
   $Res call(
       {List<SpaceMetadata> spaces,
       List<Idea> ideas,
-      List<Transaction> transactions});
+      List<Transaction> transactions,
+      bool isSaving});
 }
 
 /// @nodoc
@@ -123,6 +133,7 @@ class __$HomePageStateCopyWithImpl<$Res>
     Object? spaces = freezed,
     Object? ideas = freezed,
     Object? transactions = freezed,
+    Object? isSaving = freezed,
   }) {
     return _then(_HomePageState(
       spaces: spaces == freezed
@@ -137,6 +148,10 @@ class __$HomePageStateCopyWithImpl<$Res>
           ? _value.transactions
           : transactions // ignore: cast_nullable_to_non_nullable
               as List<Transaction>,
+      isSaving: isSaving == freezed
+          ? _value.isSaving
+          : isSaving // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -147,7 +162,8 @@ class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
   const _$_HomePageState(
       {this.spaces = const [],
       this.ideas = const [],
-      this.transactions = const []});
+      this.transactions = const [],
+      this.isSaving = false});
 
   factory _$_HomePageState.fromJson(Map<String, dynamic> json) =>
       _$_$_HomePageStateFromJson(json);
@@ -161,10 +177,13 @@ class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
   @JsonKey(defaultValue: const [])
   @override
   final List<Transaction> transactions;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool isSaving;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomePageState(spaces: $spaces, ideas: $ideas, transactions: $transactions)';
+    return 'HomePageState(spaces: $spaces, ideas: $ideas, transactions: $transactions, isSaving: $isSaving)';
   }
 
   @override
@@ -174,7 +193,8 @@ class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
       ..add(DiagnosticsProperty('type', 'HomePageState'))
       ..add(DiagnosticsProperty('spaces', spaces))
       ..add(DiagnosticsProperty('ideas', ideas))
-      ..add(DiagnosticsProperty('transactions', transactions));
+      ..add(DiagnosticsProperty('transactions', transactions))
+      ..add(DiagnosticsProperty('isSaving', isSaving));
   }
 
   @override
@@ -187,7 +207,10 @@ class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
                 const DeepCollectionEquality().equals(other.ideas, ideas)) &&
             (identical(other.transactions, transactions) ||
                 const DeepCollectionEquality()
-                    .equals(other.transactions, transactions)));
+                    .equals(other.transactions, transactions)) &&
+            (identical(other.isSaving, isSaving) ||
+                const DeepCollectionEquality()
+                    .equals(other.isSaving, isSaving)));
   }
 
   @override
@@ -195,7 +218,8 @@ class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(spaces) ^
       const DeepCollectionEquality().hash(ideas) ^
-      const DeepCollectionEquality().hash(transactions);
+      const DeepCollectionEquality().hash(transactions) ^
+      const DeepCollectionEquality().hash(isSaving);
 
   @JsonKey(ignore: true)
   @override
@@ -212,7 +236,8 @@ abstract class _HomePageState implements HomePageState {
   const factory _HomePageState(
       {List<SpaceMetadata> spaces,
       List<Idea> ideas,
-      List<Transaction> transactions}) = _$_HomePageState;
+      List<Transaction> transactions,
+      bool isSaving}) = _$_HomePageState;
 
   factory _HomePageState.fromJson(Map<String, dynamic> json) =
       _$_HomePageState.fromJson;
@@ -223,6 +248,8 @@ abstract class _HomePageState implements HomePageState {
   List<Idea> get ideas => throw _privateConstructorUsedError;
   @override
   List<Transaction> get transactions => throw _privateConstructorUsedError;
+  @override
+  bool get isSaving => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$HomePageStateCopyWith<_HomePageState> get copyWith =>

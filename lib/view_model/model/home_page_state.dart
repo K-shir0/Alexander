@@ -12,6 +12,7 @@ abstract class HomePageState with _$HomePageState {
     @Default([]) List<SpaceMetadata> spaces,
     @Default([]) List<Idea> ideas,
     @Default([]) List<Transaction> transactions,
+    @Default(false) bool isSaving,
   }) = _HomePageState;
 
  factory HomePageState.fromJson(Map<String, dynamic> json) => _$HomePageStateFromJson(json);

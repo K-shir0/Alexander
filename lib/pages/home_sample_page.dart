@@ -34,6 +34,7 @@ class HomeSamplePage extends HookWidget {
     /// アイデア一覧
     final ideaList = state.ideas
         .map((e) => IdeaTextField(
+              spaceId: id,
               idea: e,
             ))
         .toList();
@@ -60,19 +61,21 @@ class HomeSamplePage extends HookWidget {
            *
            */
           Expanded(
-            child: Column(
-              children: [
-                Text(id),
-                TextFormField(
-                  initialValue: spaceTitle,
-                  decoration: const InputDecoration(
-                    hintText: 'Untitled',
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Text(id),
+                  TextFormField(
+                    initialValue: spaceTitle,
+                    decoration: const InputDecoration(
+                      hintText: 'Untitled',
+                    ),
                   ),
-                ),
-                Text(state.ideas.toString()),
-                ...ideaList
-                // ...ideaListState.ideaList
-              ],
+                  Text(state.ideas.toString()),
+                  ...ideaList
+                  // ...ideaListState.ideaList
+                ],
+              ),
             ),
           )
         ],
@@ -140,20 +143,28 @@ class SpaceLink extends StatelessWidget {
 }
 
 class IdeaTextField extends HookWidget {
+  final String spaceId;
   final Idea idea;
 
-  const IdeaTextField({required this.idea});
+  const IdeaTextField({required this.spaceId, required this.idea});
 
   @override
   Widget build(BuildContext context) {
     final notifier = useProvider(homePageProvider.notifier);
 
-    return TextFormField(
-      key: Key(idea.id),
-      initialValue: idea.title,
-      onFieldSubmitted: (_) {
-        notifier.onEnterKeyAction(idea.id)();
-      },
+    return Row(
+      children: [
+        Text(idea.position.toString()),
+        Expanded(
+          child: TextFormField(
+            key: Key(idea.id),
+            initialValue: idea.title,
+            onFieldSubmitted: (_) {
+              notifier.onEnterKeyAction(spaceId, idea.id)();
+            },
+          ),
+        ),
+      ],
     );
   }
 }

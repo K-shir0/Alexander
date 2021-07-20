@@ -20,6 +20,7 @@ _$_HomePageState _$_$_HomePageStateFromJson(Map<String, dynamic> json) {
             ?.map((e) => Transaction.fromJson(e as Map<String, dynamic>))
             .toList() ??
         [],
+    isSaving: json['is_saving'] as bool? ?? false,
   );
 }
 
@@ -28,4 +29,5 @@ Map<String, dynamic> _$_$_HomePageStateToJson(_$_HomePageState instance) =>
       'spaces': instance.spaces,
       'ideas': instance.ideas,
       'transactions': instance.transactions,
+      'is_saving': instance.isSaving,
     };

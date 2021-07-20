@@ -1,5 +1,8 @@
 import 'package:alexander/domain/idea.dart';
+import 'package:alexander/domain/operation.dart';
 import 'package:alexander/domain/space.dart';
+import 'package:alexander/domain/transaction.dart';
+import 'package:alexander/service/base/client.dart';
 import 'package:alexander/service/model/space.dart';
 import 'package:alexander/service/space.dart';
 import 'package:alexander/view_model/model/home_page_state.dart';
@@ -50,17 +53,15 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
       };
 
   /// アイデアでエンターボタンを押した時の処理
-  Function() onEnterKeyAction(String currentIdeaId) => () {
-    print('call');
+  Function() onEnterKeyAction(String currentSpaceId, String currentIdeaId) =>
+      () {
         final ideas = state.ideas;
 
         final newIdea = Idea(id: const Uuid().v4());
 
-        // TODO 現在の配列番号を取得
+        // 現在の配列番号を取得
         final index =
             ideas.indexWhere((element) => element.id == currentIdeaId);
-
-        print(index);
 
         if (index != -1) {
           ideas.insert(index + 1, newIdea);
@@ -68,19 +69,43 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
           // 状態を反映
           state = state.copyWith(ideas: ideas);
 
-          print(state.ideas);
+          // トランザクションを作成
+          // if (state.transactions.isEmpty) {
+          var transaction =
+              Transaction(id: const Uuid().v4(), spaceId: currentSpaceId);
+
+          transaction = transaction.copyWith(operations: [
+            Operation(
+                id: const Uuid().v4(),
+                command: 'next',
+                args: [newIdea.id, currentIdeaId])
+          ]);
+
+          state = state.copyWith(transactions: [transaction]);
+
+          if (!state.isSaving) {
+            print(state.transactions);
+
+            state = state.copyWith(isSaving: true);
+
+            ref
+                .read(spaceProvider)
+                .savePage(SavePageRequest(transactions: state.transactions))
+            // 失敗したらtmpから戻す
+                .whenComplete(
+                  () => state = state.copyWith(isSaving: false),
+                );
+
+            state = state.copyWith(transactions: []);
+          }
+          // }
+
+          print(state.transactions);
+
           return;
         }
 
-        // if (index != null) {
-        //   tmp.insert(index + 1, newIdea);
-        //   state = state..ideaList = tmp;
-        //   return;
-        // }
-        //
-        // // 存在しないとき最後に追加
-        // tmp.add(newIdea);
-        // state = state..ideaList = tmp;
+        // TODO 無ければ追加
       };
 
   /// アイデアでデリートキーを押した時の処理
@@ -112,7 +137,18 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
         .getPage(GetPageRequest(id: id))
         .then((value) => value.when(
               success: (_) {
-                state = state.copyWith(ideas: _.data.ideas);
+                final ideas = _.data.copyWith().ideas;
+
+                // アイデアをソート
+                ideas.sort((idea1, idea2) {
+                  if (idea1.position > idea2.position) {
+                    return 1;
+                  } else {
+                    return -1;
+                  }
+                });
+
+                state = state.copyWith(ideas: ideas);
               },
               failure: (_) {},
             ));

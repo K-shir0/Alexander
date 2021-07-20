@@ -7,8 +7,8 @@ part 'operation.g.dart';
 class Operation with _$Operation {
   const factory Operation({
     required String id,
-    @Default('') String content,
     required String command,
+    @Default([]) List<String> args,
   }) = _Operation;
 
  factory Operation.fromJson(Map<String, dynamic> json) => _$OperationFromJson(json);
