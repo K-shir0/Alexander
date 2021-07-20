@@ -2,7 +2,6 @@ import 'package:alexander/domain/idea.dart';
 import 'package:alexander/domain/operation.dart';
 import 'package:alexander/domain/space.dart';
 import 'package:alexander/domain/transaction.dart';
-import 'package:alexander/service/base/client.dart';
 import 'package:alexander/service/model/space.dart';
 import 'package:alexander/service/space.dart';
 import 'package:alexander/view_model/model/home_page_state.dart';
@@ -70,28 +69,30 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
           state = state.copyWith(ideas: ideas);
 
           // トランザクションを作成
-          // if (state.transactions.isEmpty) {
-          var transaction =
-              Transaction(id: const Uuid().v4(), spaceId: currentSpaceId);
+          Transaction transaction;
 
-          transaction = transaction.copyWith(operations: [
-            Operation(
-                id: const Uuid().v4(),
-                command: 'next',
-                args: [newIdea.id, currentIdeaId])
-          ]);
+          if (state.transactions.isEmpty) {
+            transaction =
+                Transaction(id: const Uuid().v4(), spaceId: currentSpaceId);
+          } else {
+            transaction = state.transactions.first;
+          }
+
+          transaction = transaction.copyWith(
+              operations: [Operation.next(newIdea.id, currentIdeaId)]);
 
           state = state.copyWith(transactions: [transaction]);
 
           if (!state.isSaving) {
-            print(state.transactions);
 
             state = state.copyWith(isSaving: true);
 
+            // final tmp = state.transactions;
+
+            // TODO エラーの処理
             ref
                 .read(spaceProvider)
                 .savePage(SavePageRequest(transactions: state.transactions))
-            // 失敗したらtmpから戻す
                 .whenComplete(
                   () => state = state.copyWith(isSaving: false),
                 );
@@ -99,8 +100,6 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
             state = state.copyWith(transactions: []);
           }
           // }
-
-          print(state.transactions);
 
           return;
         }
