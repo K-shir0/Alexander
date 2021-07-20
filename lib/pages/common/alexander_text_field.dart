@@ -6,11 +6,11 @@ class AlexanderTextField extends StatelessWidget {
   final IconData iconName;
   final String label;
   final String engLabel;
-  final String infomation;
+  final String information;
   final bool obscureText;
 
 
-  const AlexanderTextField({Key? key, required this.iconName,required this.label, required this.engLabel, required this.infomation,  this.obscureText = false}) : super(key: key);
+  const AlexanderTextField({Key? key, required this.iconName,required this.label, required this.engLabel, required this.information,  this.obscureText = false}) : super(key: key);
 
 
   @override
@@ -20,6 +20,7 @@ class AlexanderTextField extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
+            //左上テキストラベル
             Row(
               children: <Widget>[
                 Padding(
@@ -43,6 +44,7 @@ class AlexanderTextField extends StatelessWidget {
                 // ),
               ],
             ),
+             //右上テキストラベル
              Padding(
                padding: const EdgeInsets.only(bottom: 8.0),
                child: Text(engLabel,
@@ -53,6 +55,7 @@ class AlexanderTextField extends StatelessWidget {
              )
           ],
         ),
+        //入力テキストフィールド
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4.0),
@@ -66,6 +69,7 @@ class AlexanderTextField extends StatelessWidget {
             ),
           ),
         ),
+        //error用テキストラベル
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
@@ -79,7 +83,7 @@ class AlexanderTextField extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Text(
-                    infomation,
+                    information,
                     style:  const TextStyle(
                       fontSize: 12,
                       color: Palette.emphasisTextColor,
