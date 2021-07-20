@@ -1,7 +1,6 @@
+import 'package:alexander/pages/common/alexander_not_icon_text_field.dart';
 import 'package:alexander/pages/theme/palette.dart';
 import 'package:flutter/material.dart';
-
-import 'common/alexander_text_field.dart';
 import 'common/sign_button.dart';
 import 'home_menu.dart';
 
@@ -29,6 +28,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+                    //ログインページに戻るボタン
                     TextButton(
                       onPressed: returnPage,
                       child: Row(
@@ -54,49 +54,43 @@ class _SignUpPageState extends State<SignUpPage> {
                       height: 16,
                     ),
                     //ファーストネームTextField
-                    const AlexanderTextField(
-                        iconName: Icons.mail_outline_outlined,
+                    const AlexanderNotIconTextField(
                         label: 'ファーストネーム',
                         engLabel: 'First Name',
-                        infomation: 'ファーストネームが入力されていません'),
+                        information: 'ファーストネームが入力されていません'),
                     const SizedBox(
                       height: 16,
                     ),
                     //ラストネームTextField
-                    const AlexanderTextField(
-                        iconName: Icons.vpn_key_outlined,
+                    const AlexanderNotIconTextField(
                         label: 'ラストネーム',
                         engLabel: 'Last Name',
-                        infomation: 'ラストネームが入力されていません',
-                        obscureText: true),
+                        information: 'ラストネームが入力されていません'),
                     const SizedBox(
                       height: 16,
                     ),
                     //メールアドレスTextField
-                    const AlexanderTextField(
-                        iconName: Icons.mail_outline_outlined,
+                    const AlexanderNotIconTextField(
                         label: 'メールアドレス',
                         engLabel: 'E-mail',
-                        infomation: 'メールアドレスが入力されていません'),
+                        information: 'メールアドレスが入力されていません'),
                     const SizedBox(
                       height: 16,
                     ),
                     //パスワードTextField
-                    const AlexanderTextField(
-                        iconName: Icons.vpn_key_outlined,
+                    const AlexanderNotIconTextField(
                         label: 'パスワード',
                         engLabel: 'Password',
-                        infomation: 'パスワードが入力されていません',
+                        information: 'パスワードが入力されていません',
                         obscureText: true),
                     const SizedBox(
                       height: 16,
                     ),
                     //ログイン用パスワードTextField
-                    const AlexanderTextField(
-                        iconName: Icons.vpn_key_outlined,
+                    const AlexanderNotIconTextField(
                         label: 'もう一度パスワードを入力',
-                        engLabel: 'ConfilmPassword',
-                        infomation: 'パスワードが一致していません',
+                        engLabel: 'ConfirmPassword',
+                        information: 'パスワードが一致していません',
                         obscureText: true),
                     const SizedBox(
                       height: 16,
