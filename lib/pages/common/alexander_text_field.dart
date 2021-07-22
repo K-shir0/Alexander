@@ -70,6 +70,7 @@ class AlexanderTextField extends StatelessWidget {
             obscureText: obscureText,
             decoration: const InputDecoration(
               border: InputBorder.none,
+              contentPadding: EdgeInsets.all(20.0),
               // labelText: engLabel,
             ),
           ),
