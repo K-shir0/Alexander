@@ -54,14 +54,15 @@ class _LoginPageState extends State<LoginPage> {
                         iconName: Icons.mail_outline_outlined,
                         label: 'メールアドレス',
                         engLabel: 'E-mail',
-                        information: 'メールアドレスが入力されていません'),
+                        // information: 'メールアドレスが入力されていません',
+                    ),
                     const Gap(24),
                     //ログイン用パスワードTextField
                     const AlexanderTextField(
                         iconName: Icons.vpn_key_outlined,
                         label: 'パスワード',
                         engLabel: 'Password',
-                        information: 'パスワードが間違っています',
+                        // information: 'パスワードが間違っています',
                         obscureText: true),
                     const Gap(24),
                     //ログインボタン

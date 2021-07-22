@@ -6,12 +6,17 @@ class AlexanderTextField extends StatelessWidget {
   final IconData iconName;
   final String label;
   final String engLabel;
-  final String information;
+  final String? information;
   final bool obscureText;
 
-
-  const AlexanderTextField({Key? key, required this.iconName,required this.label, required this.engLabel, required this.information,  this.obscureText = false}) : super(key: key);
-
+  const AlexanderTextField(
+      {Key? key,
+      required this.iconName,
+      required this.label,
+      required this.engLabel,
+      this.information,
+      this.obscureText = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,34 +30,34 @@ class AlexanderTextField extends StatelessWidget {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0, right: 8.0),
-                  child: Icon(iconName,
-                      color: Palette.mainTextColor),
+                  child: Icon(iconName, color: Palette.mainTextColor),
                 ),
                 // Column(
                 //   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
-                      child: Text(
-                        label,
-                        style: const TextStyle(
-                            fontSize: 12,
-                            color: Palette.mainTextColor,
-                            letterSpacing: 2.4000000000000004,),
-                      ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: Text(
+                    label,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: Palette.mainTextColor,
+                      letterSpacing: 2.4000000000000004,
                     ),
+                  ),
+                ),
                 //   ],
                 // ),
               ],
             ),
-             //右上テキストラベル
-             Padding(
-               padding: const EdgeInsets.only(bottom: 8.0),
-               child: Text(engLabel,
+            //右上テキストラベル
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Text(engLabel,
                   style: const TextStyle(
                     fontSize: 12,
                     color: Palette.accentTextColor,
                   )),
-             )
+            )
           ],
         ),
         //入力テキストフィールド
@@ -75,16 +80,17 @@ class AlexanderTextField extends StatelessWidget {
           children: <Widget>[
             Row(
               children: <Widget>[
-                 const Padding(
-                  padding: EdgeInsets.only(top: 8.0, right: 8.0),
-                  child: Icon(Icons.info_outline_rounded,
-                      color: Palette.emphasisTextColor),
-                ),
+                if (information != null)
+                  const Padding(
+                    padding: EdgeInsets.only(top: 8.0, right: 8.0),
+                    child: Icon(Icons.info_outline_rounded,
+                        color: Palette.emphasisTextColor),
+                  ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Text(
-                    information,
-                    style:  const TextStyle(
+                    information ?? '',
+                    style: const TextStyle(
                       fontSize: 12,
                       color: Palette.emphasisTextColor,
                       letterSpacing: 2.4000000000000004,
