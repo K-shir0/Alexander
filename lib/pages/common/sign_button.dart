@@ -10,7 +10,7 @@ class SignButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 600,
+      width: double.infinity,
       height: 72,
       child: ElevatedButton(
         onPressed: () {  },
