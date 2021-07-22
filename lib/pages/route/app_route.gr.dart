@@ -80,7 +80,7 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(IndexRoute.name, path: '/'),
         _i1.RouteConfig(HomeRoute.name, path: '/home'),
         _i1.RouteConfig(LoginRoute.name, path: '/login'),
-        _i1.RouteConfig(SignUpRoute.name, path: '/singup'),
+        _i1.RouteConfig(SignUpRoute.name, path: '/signup'),
         _i1.RouteConfig(AuthSampleRoute.name, path: '/test/login'),
         _i1.RouteConfig(DefaultRoute.name, path: '/test/home'),
         _i1.RouteConfig(HomeSampleRoute.name, path: '/test/home/:id'),
@@ -108,7 +108,7 @@ class LoginRoute extends _i1.PageRouteInfo {
 }
 
 class SignUpRoute extends _i1.PageRouteInfo {
-  const SignUpRoute() : super(name, path: '/singup');
+  const SignUpRoute() : super(name, path: '/signup');
 
   static const String name = 'SignUpRoute';
 }
