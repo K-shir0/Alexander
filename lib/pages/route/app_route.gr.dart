@@ -36,7 +36,7 @@ class AppRouter extends _i1.RootStackRouter {
     LoginRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i5.LoginPage();
+          return _i5.LoginPage();
         }),
     SignUpRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,

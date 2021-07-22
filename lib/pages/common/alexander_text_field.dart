@@ -8,15 +8,17 @@ class AlexanderTextField extends StatelessWidget {
   final String engLabel;
   final String? information;
   final bool obscureText;
+  final TextEditingController? controller;
 
-  const AlexanderTextField(
-      {Key? key,
-      required this.iconName,
-      required this.label,
-      required this.engLabel,
-      this.information,
-      this.obscureText = false})
-      : super(key: key);
+  const AlexanderTextField({
+    Key? key,
+    required this.iconName,
+    required this.label,
+    required this.engLabel,
+    this.information,
+    this.obscureText = false,
+    this.controller,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +68,8 @@ class AlexanderTextField extends StatelessWidget {
             borderRadius: BorderRadius.circular(4.0),
             color: const Color(0xffedf0f0),
           ),
-          child: TextField(
+          child: TextFormField(
+            controller: controller,
             obscureText: obscureText,
             decoration: const InputDecoration(
               border: InputBorder.none,

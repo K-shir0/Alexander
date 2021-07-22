@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 
 class SignButton extends StatelessWidget {
   final String buttonLabel;
+  final Function()? onPressed;
 
-  const SignButton({Key? key, required this.buttonLabel}) : super(key: key);
+  const SignButton({Key? key, required this.buttonLabel, this.onPressed})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class SignButton extends StatelessWidget {
       width: double.infinity,
       height: 72,
       child: ElevatedButton(
-        onPressed: () {  },
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           primary: Palette.signButtonColor,
         ),
