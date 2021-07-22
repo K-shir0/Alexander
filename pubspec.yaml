@@ -35,6 +35,8 @@ dependencies:
   flutter_dotenv: ^5.0.0
   auto_route: ^2.2.0
   uuid: ^3.0.4
+  adobe_xd: ^2.0.0+1
+  flutter_svg: ^0.21.0+1
 
 dev_dependencies:
   flutter_test:
