@@ -26,7 +26,7 @@ import 'package:auto_route/annotations.dart';
       page: LoginPage,
     ),
     AutoRoute(
-      path: '/singup',
+      path: '/signup',
       page: SignUpPage,
     ),
     AutoRoute(
