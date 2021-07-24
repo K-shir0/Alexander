@@ -4,7 +4,10 @@ import 'package:alexander/pages/default_page.dart';
 import 'package:alexander/pages/home_menu.dart';
 import 'package:alexander/pages/home_sample_page.dart';
 import 'package:alexander/pages/index_page.dart';
+import 'package:alexander/pages/infinity_scroll_page.dart';
 import 'package:alexander/pages/login_page.dart';
+import 'package:alexander/pages/mandala_algorithm_page.dart';
+import 'package:alexander/pages/mandala_chart_page.dart';
 import 'package:alexander/pages/sign_up_page.dart';
 import 'package:auto_route/annotations.dart';
 
@@ -35,6 +38,22 @@ import 'package:auto_route/annotations.dart';
     AutoRoute(
       path: '/test/home',
       page: DefaultPage,
+    ),
+    AutoRoute(
+      path: '/test/home/:id',
+      page: HomeSamplePage,
+    ),
+    AutoRoute(
+      path: '/test/mandala',
+      page: MandalaChartPage,
+    ),
+    AutoRoute(
+      path: '/test/infinity',
+      page: InfinityScrollPage,
+    ),
+    AutoRoute(
+      path: '/test/mandala_algorithm',
+      page: MandalaAlgorithmPage,
     ),
     AutoRoute(
       path: '/test/home/:id',

@@ -15,6 +15,9 @@ class IndexPage extends StatelessWidget {
           const LinkButton(title: 'ホーム', pushName: '/home'),
           const LinkButton(title: 'ログインテスト', pushName: '/test/login'),
           const LinkButton(title: 'ホームテスト', pushName: '/test/home'),
+          const LinkButton(title: '無限スクロールテスト', pushName: '/test/infinity'),
+          const LinkButton(title: 'マンダラチャートテスト', pushName: '/test/mandala'),
+          const LinkButton(title: 'マンダラチャートアルゴリズムテスト', pushName: '/test/mandala_algorithm'),
         ],
       ),
     );
