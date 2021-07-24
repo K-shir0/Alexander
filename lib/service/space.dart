@@ -54,4 +54,16 @@ class Space {
       return Result.failure(Error.getApiError(error));
     }
   }
+
+  /// スペース毎のアイデアを保存
+  Future<Result<SavePageResponse>> savePage(
+      SavePageRequest savePageRequest) async {
+    try {
+      return await client.post('/api/savePage', data: savePageRequest).then(
+          (result) =>
+              Result.success(SavePageResponse.fromJson({...result.data})));
+    } on DioError catch (error) {
+      return Result.failure(Error.getApiError(error));
+    }
+  }
 }

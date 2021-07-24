@@ -6,10 +6,21 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 import 'package:uuid/uuid.dart';
 
+/// 現在は使用されていません。
+@Deprecated('')
+final ideaListPageProvider = StateNotifierProvider.autoDispose<
+    IdeaListPageStateNotifier, IdeaListPageState>(
+      (refs) => IdeaListPageStateNotifier(IdeaListPageState()),
+);
+
+/// 現在は使用されていません。
+@Deprecated('')
 class IdeaListPageState {
   List<Idea> ideaList = [];
 }
 
+/// 現在は使用されていません。
+@Deprecated('')
 class IdeaListPageStateNotifier extends StateNotifier<IdeaListPageState>
     with LocatorMixin {
   IdeaListPageStateNotifier(IdeaListPageState state) : super(state);
@@ -58,6 +69,8 @@ class IdeaListPageStateNotifier extends StateNotifier<IdeaListPageState>
   }
 }
 
+/// 現在は使用されていません。
+@Deprecated('')
 class Idea extends HookWidget {
   final String id;
   final Function(String) onSubmittedAction;
@@ -78,9 +91,7 @@ class Idea extends HookWidget {
           child: RawKeyboardListener(
             onKey: (event) {
               if (event.logicalKey == LogicalKeyboardKey.backspace) {
-                print('delete');
                 if (isDoubleDeleteKeyClick.value) {
-                  print('削除');
                   onDeleteAction(id);
                 }
 

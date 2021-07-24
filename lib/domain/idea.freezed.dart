@@ -20,10 +20,11 @@ Idea _$IdeaFromJson(Map<String, dynamic> json) {
 class _$IdeaTearOff {
   const _$IdeaTearOff();
 
-  _Idea call({required String id, String title = ''}) {
+  _Idea call({required String id, String title = '', int position = -1}) {
     return _Idea(
       id: id,
       title: title,
+      position: position,
     );
   }
 
@@ -39,6 +40,7 @@ const $Idea = _$IdeaTearOff();
 mixin _$Idea {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  int get position => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +51,7 @@ mixin _$Idea {
 abstract class $IdeaCopyWith<$Res> {
   factory $IdeaCopyWith(Idea value, $Res Function(Idea) then) =
       _$IdeaCopyWithImpl<$Res>;
-  $Res call({String id, String title});
+  $Res call({String id, String title, int position});
 }
 
 /// @nodoc
@@ -64,6 +66,7 @@ class _$IdeaCopyWithImpl<$Res> implements $IdeaCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? title = freezed,
+    Object? position = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -74,6 +77,10 @@ class _$IdeaCopyWithImpl<$Res> implements $IdeaCopyWith<$Res> {
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      position: position == freezed
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -83,7 +90,7 @@ abstract class _$IdeaCopyWith<$Res> implements $IdeaCopyWith<$Res> {
   factory _$IdeaCopyWith(_Idea value, $Res Function(_Idea) then) =
       __$IdeaCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String title});
+  $Res call({String id, String title, int position});
 }
 
 /// @nodoc
@@ -99,6 +106,7 @@ class __$IdeaCopyWithImpl<$Res> extends _$IdeaCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? title = freezed,
+    Object? position = freezed,
   }) {
     return _then(_Idea(
       id: id == freezed
@@ -109,6 +117,10 @@ class __$IdeaCopyWithImpl<$Res> extends _$IdeaCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      position: position == freezed
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -116,7 +128,7 @@ class __$IdeaCopyWithImpl<$Res> extends _$IdeaCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Idea with DiagnosticableTreeMixin implements _Idea {
-  const _$_Idea({required this.id, this.title = ''});
+  const _$_Idea({required this.id, this.title = '', this.position = -1});
 
   factory _$_Idea.fromJson(Map<String, dynamic> json) =>
       _$_$_IdeaFromJson(json);
@@ -126,10 +138,13 @@ class _$_Idea with DiagnosticableTreeMixin implements _Idea {
   @JsonKey(defaultValue: '')
   @override
   final String title;
+  @JsonKey(defaultValue: -1)
+  @override
+  final int position;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Idea(id: $id, title: $title)';
+    return 'Idea(id: $id, title: $title, position: $position)';
   }
 
   @override
@@ -138,7 +153,8 @@ class _$_Idea with DiagnosticableTreeMixin implements _Idea {
     properties
       ..add(DiagnosticsProperty('type', 'Idea'))
       ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('title', title));
+      ..add(DiagnosticsProperty('title', title))
+      ..add(DiagnosticsProperty('position', position));
   }
 
   @override
@@ -148,14 +164,18 @@ class _$_Idea with DiagnosticableTreeMixin implements _Idea {
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)));
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.position, position) ||
+                const DeepCollectionEquality()
+                    .equals(other.position, position)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(title);
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(position);
 
   @JsonKey(ignore: true)
   @override
@@ -169,7 +189,8 @@ class _$_Idea with DiagnosticableTreeMixin implements _Idea {
 }
 
 abstract class _Idea implements Idea {
-  const factory _Idea({required String id, String title}) = _$_Idea;
+  const factory _Idea({required String id, String title, int position}) =
+      _$_Idea;
 
   factory _Idea.fromJson(Map<String, dynamic> json) = _$_Idea.fromJson;
 
@@ -177,6 +198,8 @@ abstract class _Idea implements Idea {
   String get id => throw _privateConstructorUsedError;
   @override
   String get title => throw _privateConstructorUsedError;
+  @override
+  int get position => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$IdeaCopyWith<_Idea> get copyWith => throw _privateConstructorUsedError;

@@ -1,5 +1,6 @@
 import 'package:alexander/domain/idea.dart';
 import 'package:alexander/domain/space.dart';
+import 'package:alexander/domain/transaction.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -74,4 +75,22 @@ class GetPageResponseData with _$GetPageResponseData {
   }) = _GetPageResponseData;
 
  factory GetPageResponseData.fromJson(Map<String, dynamic> json) => _$GetPageResponseDataFromJson(json);
+}
+
+@freezed
+class SavePageRequest with _$SavePageRequest {
+  const factory SavePageRequest({
+    required List<Transaction> transactions
+  }) = _SavePageRequest;
+
+ factory SavePageRequest.fromJson(Map<String, dynamic> json) => _$SavePageRequestFromJson(json);
+}
+
+@freezed
+class SavePageResponse with _$SavePageResponse {
+  const factory SavePageResponse({
+    required int code,
+  }) = _SavePageResponse;
+
+ factory SavePageResponse.fromJson(Map<String, dynamic> json) => _$SavePageResponseFromJson(json);
 }

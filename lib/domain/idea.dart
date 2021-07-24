@@ -8,6 +8,7 @@ abstract class Idea with _$Idea {
   const factory Idea({
     required String id,
     @Default('') String title,
+    @Default(-1) int position
   }) = _Idea;
 
  factory Idea.fromJson(Map<String, dynamic> json) => _$IdeaFromJson(json);

@@ -3,16 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final signInPageProvider = StateNotifierProvider.autoDispose<
-    IdeaListPageStateNotifier, IdeaListPageState>(
-  (refs) => IdeaListPageStateNotifier(IdeaListPageState()),
-);
-
+/// このページは現在は使用されていません。
+///
+/// このクラスの下にはドラッグアンドドロップのサンプル実装が記述されている
+@Deprecated('')
 class IdeaListPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    final state = useProvider(signInPageProvider);
-    final notifier = useProvider(signInPageProvider.notifier);
+    final state = useProvider(ideaListPageProvider);
+    final notifier = useProvider(ideaListPageProvider.notifier);
 
     useEffect(() {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
@@ -28,9 +27,7 @@ class IdeaListPage extends HookWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print(notifier.getData());
-        },
+        onPressed: () {},
       ),
     );
   }

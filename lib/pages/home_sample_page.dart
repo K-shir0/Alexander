@@ -1,3 +1,4 @@
+import 'package:alexander/domain/idea.dart';
 import 'package:alexander/domain/space.dart';
 import 'package:alexander/view_model/home_page_state_notifier.dart';
 import 'package:auto_route/annotations.dart';
@@ -7,40 +8,74 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class HomeSamplePage extends HookWidget {
-  final String? id;
+  final String id;
 
-  const HomeSamplePage({@PathParam('id') this.id});
+  const HomeSamplePage({@PathParam('id') required this.id});
 
   @override
   Widget build(BuildContext context) {
     final state = useProvider(homePageProvider);
+    // final ideaListState = useProvider(ideaListPageProvider);
     final notifier = useProvider(homePageProvider.notifier);
+    // final ideaListNotifier = useProvider(ideaListPageProvider.notifier);
 
     useEffect(() {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
-        notifier.fetchPage(id ?? '');
+        notifier.initialize(context, id);
+        // 初期アイデアの追加
+        // ideaListNotifier.addIdea();
       });
     }, []);
 
     // スペースのタイトル
-    final spaceTitle = state.spaces.firstWhere((element) => element.id == id).title;
+    final spaceTitle =
+        state.spaces.firstWhere((element) => element.id == id).title;
+
+    /// アイデア一覧
+    final ideaList = state.ideas
+        .map((e) => IdeaTextField(
+              spaceId: id,
+              idea: e,
+            ))
+        .toList();
 
     return Scaffold(
       appBar: AppBar(),
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          /**
+           *
+           * サイドメニュー
+           *
+           */
           SizedBox(
             width: 256,
-            child: HomeSampleSideMenu(currentSpaceId: id,),
+            child: HomeSampleSideMenu(
+              currentSpaceId: id,
+            ),
           ),
+          /**
+           *
+           * アイデアリストページビュー
+           *
+           */
           Expanded(
-            child: Column(
-              children: [
-                Text(id ?? ''),
-                Text(spaceTitle.isNotEmpty ? spaceTitle : 'Untitled'),
-                Text(state.ideas.toString())
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Text(id),
+                  TextFormField(
+                    initialValue: spaceTitle,
+                    decoration: const InputDecoration(
+                      hintText: 'Untitled',
+                    ),
+                  ),
+                  Text(state.ideas.toString()),
+                  ...ideaList
+                  // ...ideaListState.ideaList
+                ],
+              ),
             ),
           )
         ],
@@ -60,7 +95,10 @@ class HomeSampleSideMenu extends HookWidget {
 
     final spaceLinks = state.spaces
         .map(
-          (e) => SpaceLink(metadata: e, currentSpaceId: currentSpaceId,),
+          (e) => SpaceLink(
+            metadata: e,
+            currentSpaceId: currentSpaceId,
+          ),
         )
         .toList();
 
@@ -69,7 +107,7 @@ class HomeSampleSideMenu extends HookWidget {
         children: [
           ElevatedButton(
             onPressed: useProvider(homePageProvider.notifier).onTapAddSpace(),
-            child: const Text('add'),
+            child: const Text('スペースを追加'),
           ),
           Column(
             children: spaceLinks,
@@ -84,7 +122,8 @@ class SpaceLink extends StatelessWidget {
   final String? currentSpaceId;
   final SpaceMetadata metadata;
 
-  const SpaceLink({Key? key, required this.metadata, this.currentSpaceId}) : super(key: key);
+  const SpaceLink({Key? key, required this.metadata, this.currentSpaceId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +138,33 @@ class SpaceLink extends StatelessWidget {
         }
       },
       child: Text(title.isEmpty ? 'Untitled' : title),
+    );
+  }
+}
+
+class IdeaTextField extends HookWidget {
+  final String spaceId;
+  final Idea idea;
+
+  const IdeaTextField({required this.spaceId, required this.idea});
+
+  @override
+  Widget build(BuildContext context) {
+    final notifier = useProvider(homePageProvider.notifier);
+
+    return Row(
+      children: [
+        Text(idea.position.toString()),
+        Expanded(
+          child: TextFormField(
+            key: Key(idea.id),
+            initialValue: idea.title,
+            onFieldSubmitted: (_) {
+              notifier.onEnterKeyAction(spaceId, idea.id)();
+            },
+          ),
+        ),
+      ],
     );
   }
 }
