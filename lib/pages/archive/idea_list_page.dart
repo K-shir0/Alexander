@@ -6,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 /// このページは現在は使用されていません。
 ///
 /// このクラスの下にはドラッグアンドドロップのサンプル実装が記述されている
+@Deprecated('')
 class IdeaListPage extends HookWidget {
   @override
   Widget build(BuildContext context) {

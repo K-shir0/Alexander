@@ -7,17 +7,20 @@ import 'package:state_notifier/state_notifier.dart';
 import 'package:uuid/uuid.dart';
 
 /// 現在は使用されていません。
+@Deprecated('')
 final ideaListPageProvider = StateNotifierProvider.autoDispose<
     IdeaListPageStateNotifier, IdeaListPageState>(
       (refs) => IdeaListPageStateNotifier(IdeaListPageState()),
 );
 
 /// 現在は使用されていません。
+@Deprecated('')
 class IdeaListPageState {
   List<Idea> ideaList = [];
 }
 
 /// 現在は使用されていません。
+@Deprecated('')
 class IdeaListPageStateNotifier extends StateNotifier<IdeaListPageState>
     with LocatorMixin {
   IdeaListPageStateNotifier(IdeaListPageState state) : super(state);
@@ -67,6 +70,7 @@ class IdeaListPageStateNotifier extends StateNotifier<IdeaListPageState>
 }
 
 /// 現在は使用されていません。
+@Deprecated('')
 class Idea extends HookWidget {
   final String id;
   final Function(String) onSubmittedAction;
