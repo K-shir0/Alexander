@@ -59,3 +59,8 @@ class SignInPageStateNotifier extends StateNotifier<SignInPageState>
     };
   }
 }
+
+final signInPageProvider =
+StateNotifierProvider.autoDispose<SignInPageStateNotifier, SignInPageState>(
+      (refs) => SignInPageStateNotifier(const SignInPageState(), refs),
+);

@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                         iconName: Icons.mail_outline_outlined,
                         label: 'メールアドレス',
                         engLabel: 'E-mail',
-                        information: 'メールアドレスが入力されていません'),
+                        infomation: 'メールアドレスが入力されていません'),
                     const SizedBox(
                       height: 16,
                     ),
@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                         iconName: Icons.vpn_key_outlined,
                         label: 'パスワード',
                         engLabel: 'Password',
-                        information: 'パスワードが間違っています',
+                        infomation: 'パスワードが間違っています',
                         obscureText: true),
                     //ログインボタン
                     const SizedBox(

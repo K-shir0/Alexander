@@ -6,11 +6,11 @@ class AlexanderTextField extends StatelessWidget {
   final IconData iconName;
   final String label;
   final String engLabel;
-  final String information;
+  final String infomation;
   final bool obscureText;
 
 
-  const AlexanderTextField({Key? key, required this.iconName,required this.label, required this.engLabel, required this.information,  this.obscureText = false}) : super(key: key);
+  const AlexanderTextField({Key? key, required this.iconName,required this.label, required this.engLabel, required this.infomation,  this.obscureText = false}) : super(key: key);
 
 
   @override
@@ -79,7 +79,7 @@ class AlexanderTextField extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Text(
-                    information,
+                    infomation,
                     style:  const TextStyle(
                       fontSize: 12,
                       color: Palette.emphasisTextColor,

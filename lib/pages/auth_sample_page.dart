@@ -1,15 +1,9 @@
 import 'package:alexander/view_model/common/auth_state_notifier.dart';
-import 'package:alexander/view_model/model/sign_in_page_state.dart';
 import 'package:alexander/view_model/sign_in_page_state_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-final signInPageProvider =
-    StateNotifierProvider.autoDispose<SignInPageStateNotifier, SignInPageState>(
-  (refs) => SignInPageStateNotifier(const SignInPageState(), refs),
-);
 
 class AuthSamplePage extends HookWidget {
   // final _form = GlobalKey<FormState>();
