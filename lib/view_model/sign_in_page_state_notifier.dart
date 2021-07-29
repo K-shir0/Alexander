@@ -58,9 +58,13 @@ class SignInPageStateNotifier extends StateNotifier<SignInPageState>
           .whenComplete(() => state.copyWith(isLoading: false));
     };
   }
+
+  Future<void> fetchSelf() async {
+    await ref.read(authStateProvider.notifier).self();
+  }
 }
 
 final signInPageProvider =
-StateNotifierProvider.autoDispose<SignInPageStateNotifier, SignInPageState>(
-      (refs) => SignInPageStateNotifier(const SignInPageState(), refs),
+    StateNotifierProvider.autoDispose<SignInPageStateNotifier, SignInPageState>(
+  (refs) => SignInPageStateNotifier(const SignInPageState(), refs),
 );

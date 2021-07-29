@@ -716,3 +716,363 @@ abstract class _SignOutResponse implements SignOutResponse {
   _$SignOutResponseCopyWith<_SignOutResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+SelfResponse _$SelfResponseFromJson(Map<String, dynamic> json) {
+  return _SelfResponse.fromJson(json);
+}
+
+/// @nodoc
+class _$SelfResponseTearOff {
+  const _$SelfResponseTearOff();
+
+  _SelfResponse call({required int code, required SelfResponseData data}) {
+    return _SelfResponse(
+      code: code,
+      data: data,
+    );
+  }
+
+  SelfResponse fromJson(Map<String, Object> json) {
+    return SelfResponse.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $SelfResponse = _$SelfResponseTearOff();
+
+/// @nodoc
+mixin _$SelfResponse {
+  int get code => throw _privateConstructorUsedError;
+  SelfResponseData get data => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SelfResponseCopyWith<SelfResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SelfResponseCopyWith<$Res> {
+  factory $SelfResponseCopyWith(
+          SelfResponse value, $Res Function(SelfResponse) then) =
+      _$SelfResponseCopyWithImpl<$Res>;
+  $Res call({int code, SelfResponseData data});
+
+  $SelfResponseDataCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class _$SelfResponseCopyWithImpl<$Res> implements $SelfResponseCopyWith<$Res> {
+  _$SelfResponseCopyWithImpl(this._value, this._then);
+
+  final SelfResponse _value;
+  // ignore: unused_field
+  final $Res Function(SelfResponse) _then;
+
+  @override
+  $Res call({
+    Object? code = freezed,
+    Object? data = freezed,
+  }) {
+    return _then(_value.copyWith(
+      code: code == freezed
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as SelfResponseData,
+    ));
+  }
+
+  @override
+  $SelfResponseDataCopyWith<$Res> get data {
+    return $SelfResponseDataCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$SelfResponseCopyWith<$Res>
+    implements $SelfResponseCopyWith<$Res> {
+  factory _$SelfResponseCopyWith(
+          _SelfResponse value, $Res Function(_SelfResponse) then) =
+      __$SelfResponseCopyWithImpl<$Res>;
+  @override
+  $Res call({int code, SelfResponseData data});
+
+  @override
+  $SelfResponseDataCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class __$SelfResponseCopyWithImpl<$Res> extends _$SelfResponseCopyWithImpl<$Res>
+    implements _$SelfResponseCopyWith<$Res> {
+  __$SelfResponseCopyWithImpl(
+      _SelfResponse _value, $Res Function(_SelfResponse) _then)
+      : super(_value, (v) => _then(v as _SelfResponse));
+
+  @override
+  _SelfResponse get _value => super._value as _SelfResponse;
+
+  @override
+  $Res call({
+    Object? code = freezed,
+    Object? data = freezed,
+  }) {
+    return _then(_SelfResponse(
+      code: code == freezed
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as SelfResponseData,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_SelfResponse with DiagnosticableTreeMixin implements _SelfResponse {
+  const _$_SelfResponse({required this.code, required this.data});
+
+  factory _$_SelfResponse.fromJson(Map<String, dynamic> json) =>
+      _$_$_SelfResponseFromJson(json);
+
+  @override
+  final int code;
+  @override
+  final SelfResponseData data;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SelfResponse(code: $code, data: $data)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SelfResponse'))
+      ..add(DiagnosticsProperty('code', code))
+      ..add(DiagnosticsProperty('data', data));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SelfResponse &&
+            (identical(other.code, code) ||
+                const DeepCollectionEquality().equals(other.code, code)) &&
+            (identical(other.data, data) ||
+                const DeepCollectionEquality().equals(other.data, data)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(code) ^
+      const DeepCollectionEquality().hash(data);
+
+  @JsonKey(ignore: true)
+  @override
+  _$SelfResponseCopyWith<_SelfResponse> get copyWith =>
+      __$SelfResponseCopyWithImpl<_SelfResponse>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_SelfResponseToJson(this);
+  }
+}
+
+abstract class _SelfResponse implements SelfResponse {
+  const factory _SelfResponse(
+      {required int code, required SelfResponseData data}) = _$_SelfResponse;
+
+  factory _SelfResponse.fromJson(Map<String, dynamic> json) =
+      _$_SelfResponse.fromJson;
+
+  @override
+  int get code => throw _privateConstructorUsedError;
+  @override
+  SelfResponseData get data => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$SelfResponseCopyWith<_SelfResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+SelfResponseData _$SelfResponseDataFromJson(Map<String, dynamic> json) {
+  return _SelfResponseData.fromJson(json);
+}
+
+/// @nodoc
+class _$SelfResponseDataTearOff {
+  const _$SelfResponseDataTearOff();
+
+  _SelfResponseData call({required User user}) {
+    return _SelfResponseData(
+      user: user,
+    );
+  }
+
+  SelfResponseData fromJson(Map<String, Object> json) {
+    return SelfResponseData.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $SelfResponseData = _$SelfResponseDataTearOff();
+
+/// @nodoc
+mixin _$SelfResponseData {
+  User get user => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SelfResponseDataCopyWith<SelfResponseData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SelfResponseDataCopyWith<$Res> {
+  factory $SelfResponseDataCopyWith(
+          SelfResponseData value, $Res Function(SelfResponseData) then) =
+      _$SelfResponseDataCopyWithImpl<$Res>;
+  $Res call({User user});
+
+  $UserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class _$SelfResponseDataCopyWithImpl<$Res>
+    implements $SelfResponseDataCopyWith<$Res> {
+  _$SelfResponseDataCopyWithImpl(this._value, this._then);
+
+  final SelfResponseData _value;
+  // ignore: unused_field
+  final $Res Function(SelfResponseData) _then;
+
+  @override
+  $Res call({
+    Object? user = freezed,
+  }) {
+    return _then(_value.copyWith(
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
+  }
+
+  @override
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$SelfResponseDataCopyWith<$Res>
+    implements $SelfResponseDataCopyWith<$Res> {
+  factory _$SelfResponseDataCopyWith(
+          _SelfResponseData value, $Res Function(_SelfResponseData) then) =
+      __$SelfResponseDataCopyWithImpl<$Res>;
+  @override
+  $Res call({User user});
+
+  @override
+  $UserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$SelfResponseDataCopyWithImpl<$Res>
+    extends _$SelfResponseDataCopyWithImpl<$Res>
+    implements _$SelfResponseDataCopyWith<$Res> {
+  __$SelfResponseDataCopyWithImpl(
+      _SelfResponseData _value, $Res Function(_SelfResponseData) _then)
+      : super(_value, (v) => _then(v as _SelfResponseData));
+
+  @override
+  _SelfResponseData get _value => super._value as _SelfResponseData;
+
+  @override
+  $Res call({
+    Object? user = freezed,
+  }) {
+    return _then(_SelfResponseData(
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_SelfResponseData
+    with DiagnosticableTreeMixin
+    implements _SelfResponseData {
+  const _$_SelfResponseData({required this.user});
+
+  factory _$_SelfResponseData.fromJson(Map<String, dynamic> json) =>
+      _$_$_SelfResponseDataFromJson(json);
+
+  @override
+  final User user;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SelfResponseData(user: $user)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SelfResponseData'))
+      ..add(DiagnosticsProperty('user', user));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SelfResponseData &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
+
+  @JsonKey(ignore: true)
+  @override
+  _$SelfResponseDataCopyWith<_SelfResponseData> get copyWith =>
+      __$SelfResponseDataCopyWithImpl<_SelfResponseData>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_SelfResponseDataToJson(this);
+  }
+}
+
+abstract class _SelfResponseData implements SelfResponseData {
+  const factory _SelfResponseData({required User user}) = _$_SelfResponseData;
+
+  factory _SelfResponseData.fromJson(Map<String, dynamic> json) =
+      _$_SelfResponseData.fromJson;
+
+  @override
+  User get user => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$SelfResponseDataCopyWith<_SelfResponseData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
