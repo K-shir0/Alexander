@@ -1,6 +1,9 @@
 import 'dart:ui';
 import 'package:alexander/addIcon/web_icon_app_icons.dart';
+import 'package:alexander/pages/notemenuinfo.dart';
+import 'package:alexander/pages/shareuserinfo.dart';
 import 'package:alexander/pages/theme/palette.dart';
+import 'package:alexander/pages/userinfo.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,263 +17,34 @@ class _HomePageState extends State<HomePage> {
   //ノート名を格納する変数
   List noteName = [];
 
+  String radioItem = '';
   @override
   Widget build(BuildContext context) {
     //画面サイズを取得
     final Size size = MediaQuery.of(context).size;
-    final drawerwidth = size.width / 5; //drwer部分の横を指定した変数
     const sharecheck = true; //共有しているかしていないかのチェック
-//ノート名を格納する変数
-    final List<String> noteName = [
-      'ここに',
-    ];
-    //共有ユーザー
-    final List<String> shereuser = [
-      'user1',
+
+    //タグの管理
+    final List<String> menugenre = [
+      'ジャンル1',
     ];
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            Column(
               children: [
-                SizedBox(
-                  width: 280,
-                  height: 112,
-                  child: Container(
-                    color: Palette.bgaccount,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(left: 24),
-                          width: 32,
-                          height: 32,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Palette.loginleft,
-                          ),
-                        ),
-                        const Expanded(
-                          child: SingleChildScrollView(
-                            child: Padding(
-                              padding: EdgeInsets.all(20),
-                              child: Text(
-                                'ユーザー名サンプルあああああ',
-                                style: TextStyle(fontSize: 12),
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ),
-                        ),
-                        //押したらメニューが出るアイコンボックス
-                        Container(
-                          margin: const EdgeInsets.only(right: 24),
-                          child: InkWell(
-                            onTap: () {},
-                            child: const Icon(
-                              WebIconApp.keyboardarrowdown,
-                              color: Palette.mainTextColor,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                //共有状態の時の処理
-                if (sharecheck == true)
-                  SizedBox(
-                    width: 1160,
-                    height: 112,
-                    child: Container(
-                      color: Palette.bgContentsColor,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          //共有状態の確認の表示ウィジェット
-                          Row(
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(left: 80),
-                                width: 16,
-                                height: 16,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Palette.emphasisTetxColor,
-                                ),
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Text(
-                                  '共有済み',
-                                  style: TextStyle(
-                                    color: Palette.emphasisTetxColor,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          //共有しているユーザー名を格納するウィジェット
-                          SizedBox(
-                            width: 600,
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 3,
-                                vertical: 3,
-                              ),
-                              height: 30,
-                              child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: shereuser.length,
-                                itemBuilder: (context, index) {
-                                  return Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        width: 32,
-                                        height: 32,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Palette.loginleft,
-                                        ),
-                                      ),
-                                      Text(
-                                        shereuser[index],
-                                        style: const TextStyle(
-                                            fontSize: 20,
-                                            color: Palette.titleTextColor),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-                          //招待ボタンを作成したウィジェット
-                          Container(
-                            height: 40,
-                            width: 110,
-                            margin: const EdgeInsets.only(right: 80),
-                            decoration: BoxDecoration(
-                              color: Palette.whitecolor,
-                              //枠線
-                              border: Border.all(
-                                  color: Palette.inviteandborder, width: 2),
-                              // 角丸
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: InkWell(
-                              onTap: () {},
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Icon(
-                                    WebIconApp.share,
-                                    color: Palette.inviteandborder,
-                                  ),
-                                  Container(
-                                    padding: const EdgeInsets.only(
-                                        left: 5, bottom: 5),
-                                    child: const Text(
-                                      '招待',
-                                      style: TextStyle(
-                                          color: Palette.inviteandborder,
-                                          fontSize: 15),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                //共有状態じゃない時の処理
-                if (sharecheck == false)
-                  SizedBox(
-                    width: size.width - drawerwidth,
-                    height: 100,
-                    child: Container(
-                      color: Palette.bgContentsColor,
-                    ),
-                  ),
+                const Userinfo(),
+                const Notemenu(),
               ],
             ),
-            Row(
+            Column(
               children: [
-                //ノート追加の部分のウィジェット
-                Container(
-                  width: 280,
-                  height: size.height - 100,
-                  color: Palette.whitecolor,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        const Padding(padding: EdgeInsets.all(5)),
-                        Row(
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(left: 24),
-                              width: 32,
-                              height: 32,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    color: Palette.titleTextColor, width: 2),
-                              ),
-                              child: InkWell(
-                                //ボタンのクリックイベント
-                                onTap: () {},
-                                child: const Icon(Icons.add),
-                              ),
-                            ),
-                            const SingleChildScrollView(
-                              child: Padding(
-                                padding: EdgeInsets.all(20),
-                                child: Text(
-                                  'ノート追加',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      color: Palette.titleTextColor,
-                                      fontSize: 16),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const Padding(padding: EdgeInsets.all(20)),
-                        //配列noteNameの要素が全てTextで表示される
-                        ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: noteName.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Container(
-                              padding: const EdgeInsets.all(10),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Container(
-                                    margin: const EdgeInsets.only(right: 24),
-                                    child: Text(
-                                      noteName[index],
-                                      textAlign: TextAlign.right,
-                                      style: const TextStyle(
-                                          fontSize: 15,
-                                          color: Palette.titleTextColor),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                //共有状態の時の処理
+                if (sharecheck == true) const Shareuserinfo(),
+                //共有状態じゃない時の処理
+                if (sharecheck == false) const Notshareuserinfo(),
                 //メインメニューのウィジェット
                 Container(
                   width: 1160,
@@ -278,38 +52,77 @@ class _HomePageState extends State<HomePage> {
                   color: Palette.bgmain,
                   child: Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 30),
-                        child: Row(
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(left: 80),
-                              child: const SizedBox(
-                                width: 646,
-                                height: 32,
-                                child: TextField(
-                                  textAlignVertical: TextAlignVertical.center,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(30)),
-                                    ),
-                                    prefixIcon: Icon(Icons.search),
-                                    hintText: '検索',
+                      Row(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(left: 80),
+                            child: const SizedBox(
+                              width: 437,
+                              height: 32,
+                              child: TextField(
+                                textAlignVertical: TextAlignVertical.center,
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(30)),
                                   ),
+                                  prefixIcon: Icon(Icons.search),
+                                  hintText: '検索',
                                 ),
                               ),
                             ),
-                            //アイデア追加ボタン
+                          ),
+                          //アイデア追加ボタン
+                          Padding(
+                            padding: const EdgeInsets.only(left: 25, right: 15),
+                            child: Container(
+                              alignment: Alignment.center,
+                              width: 178,
+                              height: 32,
+                              decoration: BoxDecoration(
+                                color: Palette.inviteandborder,
+                                // 角丸
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: InkWell(
+                                //ボタンのクリックイベント
+                                onTap: () {},
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    const Padding(
+                                      padding: EdgeInsets.only(bottom: 5),
+                                      child: Text(
+                                        '整理整頓をする',
+                                        style: TextStyle(
+                                            color: Palette.whitecolor,
+                                            fontSize: 16),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                    const Padding(
+                                      padding: EdgeInsets.only(top: 4),
+                                      child: Icon(
+                                        WebIconApp.keyboardarrowdown,
+                                        color: Palette.whitecolor,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          //チームを抜けるボタン
+                          if (sharecheck == true)
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 25, right: 15),
+                              padding: const EdgeInsets.all(15),
                               child: Container(
                                 alignment: Alignment.center,
-                                width: 185,
+                                width: 121,
                                 height: 32,
                                 decoration: BoxDecoration(
-                                  color: Palette.inviteandborder,
+                                  color: Palette.bgContentsColor,
                                   // 角丸
                                   borderRadius: BorderRadius.circular(5),
                                 ),
@@ -317,49 +130,183 @@ class _HomePageState extends State<HomePage> {
                                   //ボタンのクリックイベント
                                   onTap: () {},
                                   child: const Text(
-                                    'アイデアを追加する',
-                                    style: TextStyle(color: Palette.whitecolor),
+                                    'チームを抜ける',
+                                    style:
+                                        TextStyle(color: Palette.mainTextColor),
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
                               ),
                             ),
-                            //チームを抜けるボタン
-                            if (sharecheck == true)
-                              Padding(
-                                padding: const EdgeInsets.all(15),
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  width: 121,
-                                  height: 32,
-                                  decoration: BoxDecoration(
-                                    color: Palette.bgContentsColor,
-                                    // 角丸
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: InkWell(
-                                    //ボタンのクリックイベント
-                                    onTap: () {},
-                                    child: const Text(
-                                      'チームを抜ける',
-                                      style: TextStyle(
-                                          color: Palette.mainTextColor),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                          ],
-                        ),
+                        ],
                       ),
                       Expanded(
                         child: SingleChildScrollView(
                           child: Container(
-                            width: 200,
-                            height: 100,
                             color: Palette.bgmain,
                             child: Column(
-                              children: [],
+                              children: [
+                                //メインタグの処理
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(top: 20, left: 20),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        width: 16,
+                                        height: 276,
+                                        decoration: const BoxDecoration(
+                                            color: Palette.bgContentsColor),
+                                      ),
+                                      Container(
+                                        width: 1000,
+                                        height: 276,
+                                        decoration: const BoxDecoration(
+                                            color: Palette.whitecolor),
+                                        child: Column(
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 40, right: 40, top: 30),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  const Text(
+                                                    'タイトルサンプル',
+                                                    style:
+                                                        TextStyle(fontSize: 24),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 200,
+                                                    height: 30,
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceAround,
+                                                      children: [
+                                                        //radiobuttonは後日記載
+                                                        const Text(
+                                                          '採用',
+                                                          style: TextStyle(
+                                                              fontSize: 16,
+                                                              color: Palette
+                                                                  .titleTextColor),
+                                                        ),
+                                                        const Text(
+                                                          '保留',
+                                                          style: TextStyle(
+                                                              fontSize: 16,
+                                                              color: Palette
+                                                                  .titleTextColor),
+                                                        ),
+                                                        const Text(
+                                                          'ボツ案',
+                                                          style: TextStyle(
+                                                              fontSize: 16,
+                                                              color: Palette
+                                                                  .titleTextColor),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Flexible(
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Container(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            40),
+                                                    child:
+                                                        const SingleChildScrollView(
+                                                      child: Text(
+                                                        'サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル',
+                                                        softWrap: true,
+                                                        maxLines: 4,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .only(left: 40),
+                                                        child: SizedBox(
+                                                          width: 880,
+                                                          height: 24,
+                                                          child:
+                                                              ListView.builder(
+                                                            scrollDirection:
+                                                                Axis.horizontal,
+                                                            itemCount: menugenre
+                                                                .length,
+                                                            itemBuilder:
+                                                                (context,
+                                                                    index) {
+                                                              return Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Container(
+                                                                    width: 8,
+                                                                    height: 8,
+                                                                    decoration:
+                                                                        const BoxDecoration(
+                                                                      shape: BoxShape
+                                                                          .circle,
+                                                                      color: Palette
+                                                                          .loginleft,
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: const EdgeInsets
+                                                                            .only(
+                                                                        left: 7,
+                                                                        right:
+                                                                            7,
+                                                                        bottom:
+                                                                            5),
+                                                                    child: Text(
+                                                                      menugenre[
+                                                                          index],
+                                                                      style: const TextStyle(
+                                                                          fontSize:
+                                                                              12,
+                                                                          color:
+                                                                              Palette.titleTextColor),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          ),
+                                                        ),
+                                                      ),
+
+                                                      //下記にタグ追加のプラスボタンを配置
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -380,3 +327,5 @@ class _HomePageState extends State<HomePage> {
     noteName.add('ノート');
   }
 }
+
+class Fruits {}
