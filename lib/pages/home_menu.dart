@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   width: 1160,
                   height: size.height - 100,
-                  color: Palette.bgmain,
+                  color: Palette.bgContentsNormalColor,
                   child: Column(
                     children: [
                       Row(
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                                       child: Text(
                                         '整理整頓をする',
                                         style: TextStyle(
-                                            color: Palette.whitecolor,
+                                            color: Palette.bgContentsLightColor,
                                             fontSize: 16),
                                         textAlign: TextAlign.center,
                                       ),
@@ -105,7 +105,7 @@ class _HomePageState extends State<HomePage> {
                                       padding: EdgeInsets.only(top: 4),
                                       child: Icon(
                                         WebIconApp.keyboardarrowdown,
-                                        color: Palette.whitecolor,
+                                        color: Palette.bgContentsLightColor,
                                       ),
                                     ),
                                   ],
@@ -143,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                       Expanded(
                         child: SingleChildScrollView(
                           child: Container(
-                            color: Palette.bgmain,
+                            color: Palette.bgContentsNormalColor,
                             child: Column(
                               children: [
                                 //メインタグの処理
@@ -163,7 +163,7 @@ class _HomePageState extends State<HomePage> {
                                         width: 1000,
                                         height: 276,
                                         decoration: const BoxDecoration(
-                                            color: Palette.whitecolor),
+                                            color: Palette.bgContentsLightColor),
                                         child: Column(
                                           children: [
                                             Padding(

@@ -15,7 +15,7 @@ class Notemenu extends StatelessWidget {
         Container(
       width: 280,
       height: 788,
-      color: Palette.whitecolor,
+      color: Palette.bgContentsLightColor,
       child: Column(
         children: [
           const Padding(padding: EdgeInsets.all(5)),

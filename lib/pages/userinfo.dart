@@ -13,7 +13,7 @@ class Userinfo extends StatelessWidget {
       width: 280,
       height: 112,
       child: Container(
-        color: Palette.bgaccount,
+        color: Palette.bgContentsDarkColor,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

@@ -30,7 +30,7 @@ class Shareuserinfo extends StatelessWidget {
                   height: 16,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Palette.emphasisTetxColor,
+                    color: Palette.emphasisTextColor,
                   ),
                 ),
                 const Padding(
@@ -38,7 +38,7 @@ class Shareuserinfo extends StatelessWidget {
                   child: Text(
                     '共有済み',
                     style: TextStyle(
-                      color: Palette.emphasisTetxColor,
+                      color: Palette.emphasisTextColor,
                     ),
                   ),
                 ),
@@ -85,7 +85,7 @@ class Shareuserinfo extends StatelessWidget {
               width: 110,
               margin: const EdgeInsets.only(right: 80),
               decoration: BoxDecoration(
-                color: Palette.whitecolor,
+                color: Palette.bgContentsLightColor,
                 border: Border.all(color: Palette.inviteandborder, width: 2),
                 borderRadius: BorderRadius.circular(5),
               ),
