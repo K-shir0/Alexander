@@ -1,6 +1,7 @@
-import 'package:alexander/pages/common/alexander_not_icon_text_field.dart';
 import 'package:alexander/pages/theme/palette.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'common/alexander_text_field.dart';
 import 'common/sign_button.dart';
 import 'home_menu.dart';
 
@@ -28,79 +29,67 @@ class _SignUpPageState extends State<SignUpPage> {
                 padding: const EdgeInsets.only(left: 80, right: 80),
                 child: Column(
                   children: [
-                      TextButton(
-                        onPressed: returnPage,
-                        child: Row(
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.only(right: 12.0),
-                              child: Icon(
-                                Icons.arrow_back_ios_new_outlined,
-                                size: 16,
-                                color: Palette.mainTextColor,
-                              ),
+                    TextButton(
+                      onPressed: returnPage,
+                      child: Row(
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(right: 12.0),
+                            child: Icon(
+                              Icons.arrow_back_ios_new_outlined,
+                              size: 16,
+                              color: Palette.mainTextColor,
                             ),
-                            const Text(
-                              'ログインページに戻る',
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Palette.mainTextColor,
-                                letterSpacing: 3.2,
-                              ),
+                          ),
+                          const Text(
+                            'ログインページに戻る',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Palette.mainTextColor,
+                              letterSpacing: 3.2,
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      //ファーストネームTextField
-                      const AlexanderNotIconTextField(
-                          label: 'ファーストネーム',
-                          engLabel: 'First Name',
-                          information: 'ファーストネームが入力されていません'),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      //ラストネームTextField
-                      const AlexanderNotIconTextField(
-                          label: 'ラストネーム',
-                          engLabel: 'Last Name',
-                          information: 'ラストネームが入力されていません'),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      //メールアドレスTextField
-                      const AlexanderNotIconTextField(
-                          label: 'メールアドレス',
-                          engLabel: 'E-mail',
-                          information: 'メールアドレスが入力されていません'),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      //パスワードTextField
-                      const AlexanderNotIconTextField(
-                          label: 'パスワード',
-                          engLabel: 'Password',
-                          information: 'パスワードが入力されていません',
-                          obscureText: true),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      //ログイン用パスワードTextField
-                      const AlexanderNotIconTextField(
-                          label: 'もう一度パスワードを入力',
-                          engLabel: 'ConfirmPassword',
-                          information: 'パスワードが一致していません',
-                          obscureText: true),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      //新規登録
-                      const SignButton(buttonLabel: 'SIGN UP'),
-                      const SizedBox(
-                        height: 36,
-                      ),
+                    ),
+                    const Gap(24),
+                    //ファーストネームTextField
+                    const AlexanderTextField(
+                        label: 'ファーストネーム',
+                        engLabel: 'First Name',
+                        information: 'ファーストネームが入力されていません'),
+                    const Gap(24),
+                    //ラストネームTextField
+                    const AlexanderTextField(
+                        label: 'ラストネーム',
+                        engLabel: 'Last Name',
+                        information: 'ラストネームが入力されていません'),
+                    const Gap(24),
+                    //メールアドレスTextField
+                    const AlexanderTextField(
+                        label: 'メールアドレス',
+                        engLabel: 'E-mail',
+                        information: 'メールアドレスが入力されていません'),
+                    const Gap(24),
+                    //パスワードTextField
+                    const AlexanderTextField(
+                        label: 'パスワード',
+                        engLabel: 'Password',
+                        information: 'パスワードが入力されていません',
+                        obscureText: true),
+                    const Gap(24),
+                    //ログイン用パスワードTextField
+                    const AlexanderTextField(
+                        label: 'もう一度パスワードを入力',
+                        engLabel: 'ConfirmPassword',
+                        information: 'パスワードが一致していません',
+                        obscureText: true),
+                    const Gap(24),
+                    //新規登録
+                    const SignButton(buttonLabel: 'SIGN UP'),
+                    const SizedBox(
+                      height: 36,
+                    ),
                   ],
                 ),
               ),

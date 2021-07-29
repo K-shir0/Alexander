@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AlexanderTextField extends StatelessWidget {
-  final IconData iconName;
+  final IconData? iconName;
   final String label;
   final String engLabel;
   final String? information;
@@ -12,7 +12,7 @@ class AlexanderTextField extends StatelessWidget {
 
   const AlexanderTextField({
     Key? key,
-    required this.iconName,
+    this.iconName,
     required this.label,
     required this.engLabel,
     this.information,
@@ -30,6 +30,7 @@ class AlexanderTextField extends StatelessWidget {
             //左上テキストラベル
             Row(
               children: <Widget>[
+                if(iconName != null)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0, right: 8.0),
                   child: Icon(iconName, color: Palette.mainTextColor),
