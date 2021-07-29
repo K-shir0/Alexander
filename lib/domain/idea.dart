@@ -8,6 +8,7 @@ abstract class Idea with _$Idea {
   const factory Idea({
     required String id,
     @Default('') String title,
+    @Default('') String content,
     @Default(-1) int position
   }) = _Idea;
 
