@@ -10,6 +10,7 @@ _$_Idea _$_$_IdeaFromJson(Map<String, dynamic> json) {
   return _$_Idea(
     id: json['id'] as String,
     title: json['title'] as String? ?? '',
+    content: json['content'] as String? ?? '',
     position: json['position'] as int? ?? -1,
   );
 }
@@ -17,5 +18,6 @@ _$_Idea _$_$_IdeaFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$_IdeaToJson(_$_Idea instance) => <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
+      'content': instance.content,
       'position': instance.position,
     };
