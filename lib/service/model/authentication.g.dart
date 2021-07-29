@@ -55,3 +55,28 @@ Map<String, dynamic> _$_$_SignOutResponseToJson(_$_SignOutResponse instance) =>
     <String, dynamic>{
       'code': instance.code,
     };
+
+_$_SelfResponse _$_$_SelfResponseFromJson(Map<String, dynamic> json) {
+  return _$_SelfResponse(
+    code: json['code'] as int,
+    data: SelfResponseData.fromJson(json['data'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$_$_SelfResponseToJson(_$_SelfResponse instance) =>
+    <String, dynamic>{
+      'code': instance.code,
+      'data': instance.data,
+    };
+
+_$_SelfResponseData _$_$_SelfResponseDataFromJson(Map<String, dynamic> json) {
+  return _$_SelfResponseData(
+    user: User.fromJson(json['user'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$_$_SelfResponseDataToJson(
+        _$_SelfResponseData instance) =>
+    <String, dynamic>{
+      'user': instance.user,
+    };

@@ -5,7 +5,7 @@ import 'package:alexander/view_model/common/model/auth_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final authStateProvider = StateNotifierProvider<AuthStateNotifier, AuthState>(
-  (ref) => AuthStateNotifier(const AuthState(), ref),
+      (ref) => AuthStateNotifier(const AuthState(), ref),
 );
 
 class AuthStateNotifier extends StateNotifier<AuthState> {
@@ -43,5 +43,26 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
 
       return result;
     });
+  }
+
+  Future<Result<String>> self() async {
+    final client = ref.read(authProvider);
+
+    client.getCookie().then(
+          (value) =>
+          value.when(
+            success: (_) {
+              client.self().then(
+                      (value) =>
+                      value.when(success: (_) {
+                        // 取得成功
+                        state = state.copyWith(authUser: _.data.user);
+                      }, failure: (_) {}));
+            },
+            failure: (_) {},
+          ),
+    );
+
+    return const Result.success('');
   }
 }

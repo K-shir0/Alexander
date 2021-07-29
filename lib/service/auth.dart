@@ -63,4 +63,18 @@ class Auth {
       return Result.failure(Error.getApiError(error));
     }
   }
+
+  /// 自分の情報を取得する
+  Future<Result<SelfResponse>> self() async {
+    try {
+      return await client
+          .get(
+            '/api/auth/self',
+          )
+          .then((result) =>
+              Result.success(SelfResponse.fromJson({...result.data})));
+    } on DioError catch (error) {
+      return Result.failure(Error.getApiError(error));
+    }
+  }
 }
