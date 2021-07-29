@@ -1,4 +1,8 @@
+import 'package:alexander/pages/common/alexander_not_icon_text_field.dart';
+import 'package:alexander/pages/theme/palette.dart';
 import 'package:flutter/material.dart';
+import 'common/sign_button.dart';
+import 'home_menu.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -10,226 +14,115 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
-    final double deviceHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        //戻るボタンアイコン
-        leading: IconButton(
-          //アイコンボタンが押された時の処理
-          onPressed: returnPage,
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Container(
-            padding: const EdgeInsets.all(25),
-            width: deviceHeight,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.yellow,
-                width: 10,
+      body: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+              child: Container(
+            color: Palette.mainTextColor.withOpacity(0.4),
+          )),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 80, right: 80),
+                child: Column(
+                  children: [
+                      TextButton(
+                        onPressed: returnPage,
+                        child: Row(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(right: 12.0),
+                              child: Icon(
+                                Icons.arrow_back_ios_new_outlined,
+                                size: 16,
+                                color: Palette.mainTextColor,
+                              ),
+                            ),
+                            const Text(
+                              'ログインページに戻る',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Palette.mainTextColor,
+                                letterSpacing: 3.2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      //ファーストネームTextField
+                      const AlexanderNotIconTextField(
+                          label: 'ファーストネーム',
+                          engLabel: 'First Name',
+                          information: 'ファーストネームが入力されていません'),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      //ラストネームTextField
+                      const AlexanderNotIconTextField(
+                          label: 'ラストネーム',
+                          engLabel: 'Last Name',
+                          information: 'ラストネームが入力されていません'),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      //メールアドレスTextField
+                      const AlexanderNotIconTextField(
+                          label: 'メールアドレス',
+                          engLabel: 'E-mail',
+                          information: 'メールアドレスが入力されていません'),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      //パスワードTextField
+                      const AlexanderNotIconTextField(
+                          label: 'パスワード',
+                          engLabel: 'Password',
+                          information: 'パスワードが入力されていません',
+                          obscureText: true),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      //ログイン用パスワードTextField
+                      const AlexanderNotIconTextField(
+                          label: 'もう一度パスワードを入力',
+                          engLabel: 'ConfirmPassword',
+                          information: 'パスワードが一致していません',
+                          obscureText: true),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      //新規登録
+                      const SignButton(buttonLabel: 'SIGN UP'),
+                      const SizedBox(
+                        height: 36,
+                      ),
+                  ],
+                ),
               ),
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const SizedBox(
-                  height: 20,
-                ),
-                const Text(
-                  '新規登録画面',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 35,
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                //登録するfirstnameを入力させるエリア
-                Row(
-                  children: [
-                    const Text(
-                      'FirstName',
-                      style: TextStyle(
-                        fontSize: 10,
-                      ),
-                    ),
-                  ],
-                ),
-                TextField(
-                  decoration: const InputDecoration(
-                      icon: Icon(Icons.person), hintText: 'FirstName'),
-                  style: const TextStyle(fontSize: 15),
-                  //リアルタイム判定
-                  onChanged: (text) {
-                    if (text.isNotEmpty) {
-                      // 入力値があるなら、それを反映する。
-                      setState(() {});
-                    }
-                  },
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                //登録するlastnameを入力させるエリア
-                Row(
-                  children: [
-                    const Text(
-                      'LastName',
-                      style: TextStyle(
-                        fontSize: 10,
-                      ),
-                    ),
-                  ],
-                ),
-                TextField(
-                  decoration: const InputDecoration(
-                      icon: Icon(Icons.person), hintText: 'LastName'),
-                  style: const TextStyle(fontSize: 15),
-                  //リアルタイム判定
-                  onChanged: (text) {
-                    if (text.isNotEmpty) {
-                      // 入力値があるなら、それを反映する。
-                      setState(() {});
-                    }
-                  },
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                //登録するユーザー名を入力させるエリア
-                Row(
-                  children: [
-                    const Text(
-                      'ユーザー名',
-                      style: TextStyle(
-                        fontSize: 10,
-                      ),
-                    ),
-                  ],
-                ),
-                TextField(
-                  decoration: const InputDecoration(
-                      icon: Icon(Icons.person), hintText: 'Name'),
-                  style: const TextStyle(fontSize: 15),
-                  //リアルタイム判定
-                  onChanged: (text) {
-                    if (text.isNotEmpty) {
-                      // 入力値があるなら、それを反映する。
-                      setState(() {});
-                    }
-                  },
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                //登録するメールアドレスを入力させるエリア
-                Row(
-                  children: [
-                    const Text(
-                      'メールアドレス',
-                      style: TextStyle(
-                        fontSize: 10,
-                      ),
-                    ),
-                  ],
-                ),
-                TextField(
-                  decoration: const InputDecoration(
-                      icon: Icon(Icons.mail), hintText: 'MailAddress'),
-                  style: const TextStyle(fontSize: 15),
-                  //リアルタイム判定
-                  onChanged: (text) {
-                    if (text.isNotEmpty) {
-                      // 入力値があるなら、それを反映する。
-                      setState(() {});
-                    }
-                  },
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                //登録するパスワードを入力させるエリア
-                Row(
-                  children: [
-                    const Text(
-                      'パスワード',
-                      style: TextStyle(
-                        fontSize: 10,
-                      ),
-                    ),
-                  ],
-                ),
-                TextField(
-                  obscureText: true,
-                  autocorrect: false,
-                  decoration: const InputDecoration(
-                      icon: Icon(Icons.lock_outline), hintText: 'Password'),
-                  style: const TextStyle(fontSize: 15),
-                  //リアルタイム判定
-                  onChanged: (text) {
-                    if (text.isNotEmpty) {
-                      // 入力値があるなら、それを反映する。
-                      setState(() {});
-                    }
-                  },
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                //再パスワードを入力させるエリア
-                Row(
-                  children: [
-                    const Text(
-                      'パスワード再入力',
-                      style: TextStyle(
-                        fontSize: 10,
-                      ),
-                    ),
-                  ],
-                ),
-                TextField(
-                  obscureText: true,
-                  autocorrect: false,
-                  decoration: const InputDecoration(
-                      icon: Icon(Icons.lock_outline), hintText: 'Password'),
-                  style: const TextStyle(fontSize: 15),
-                  //リアルタイム判定
-                  onChanged: (text) {
-                    if (text.isNotEmpty) {
-                      // 入力値があるなら、それを反映する。
-                      setState(() {});
-                    }
-                  },
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                //登録ボタン
-                TextButton(
-                  style: TextButton.styleFrom(
-                    padding: const EdgeInsets.all(30.0),
-                    primary: Colors.black,
-                  ),
-                  //ログインボタンが押された時の処理
-                  onPressed: () {},
-                  child: const Text('登録'),
-                ),
-              ],
-            ),
           ),
-        ),
+        ],
       ),
     );
+  }
+
+  //ホーム画面へ
+  void toHomePage() {
+    //履歴を残さないように画面遷移
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const HomePage()),
+        (_) => false);
+  }
+
+  //新規登録画面へ
+  void toSignUpPage() {
+    Navigator.pushNamed(context, '/signup');
   }
 
   //ログインページに戻らせる画面遷移
