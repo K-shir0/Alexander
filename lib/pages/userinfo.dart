@@ -11,7 +11,7 @@ class Userinfo extends StatelessWidget {
     //ホームメニューの左上(ユーザー情報が記載されているウィジェット)
     return SizedBox(
       width: 280,
-      height: 112,
+      height: 80,
       child: Container(
         color: Palette.bgContentsDarkColor,
         child: Row(

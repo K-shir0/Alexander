@@ -1,6 +1,8 @@
 import 'dart:ui';
 import 'package:alexander/addIcon/web_icon_app_icons.dart';
+import 'package:alexander/pages/mainmenuserch.dart';
 import 'package:alexander/pages/notemenuinfo.dart';
+import 'package:alexander/pages/selectchangebutton.dart';
 import 'package:alexander/pages/shareuserinfo.dart';
 import 'package:alexander/pages/theme/palette.dart';
 import 'package:alexander/pages/userinfo.dart';
@@ -25,9 +27,7 @@ class _HomePageState extends State<HomePage> {
     const sharecheck = true; //共有しているかしていないかのチェック
 
     //タグの管理
-    final List<String> menugenre = [
-      'ジャンル1',
-    ];
+    final List<String> menugenre = ['ジャンル1', 'ジャンル2'];
     return Scaffold(
       body: SingleChildScrollView(
         child: Row(
@@ -52,93 +52,23 @@ class _HomePageState extends State<HomePage> {
                   color: Palette.bgContentsNormalColor,
                   child: Column(
                     children: [
-                      Row(
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(left: 80),
-                            child: const SizedBox(
-                              width: 437,
-                              height: 32,
-                              child: TextField(
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(30)),
-                                  ),
-                                  prefixIcon: Icon(Icons.search),
-                                  hintText: '検索',
-                                ),
-                              ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 50),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            //検索バー
+                            const Padding(
+                              padding: EdgeInsets.only(left: 80),
+                              child: Mainmenuserch(),
                             ),
-                          ),
-                          //アイデア追加ボタン
-                          Padding(
-                            padding: const EdgeInsets.only(left: 25, right: 15),
-                            child: Container(
-                              alignment: Alignment.center,
-                              width: 178,
-                              height: 32,
-                              decoration: BoxDecoration(
-                                color: Palette.inviteandborder,
-                                // 角丸
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: InkWell(
-                                //ボタンのクリックイベント
-                                onTap: () {},
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    const Padding(
-                                      padding: EdgeInsets.only(bottom: 5),
-                                      child: Text(
-                                        '整理整頓をする',
-                                        style: TextStyle(
-                                            color: Palette.bgContentsLightColor,
-                                            fontSize: 16),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                    const Padding(
-                                      padding: EdgeInsets.only(top: 4),
-                                      child: Icon(
-                                        WebIconApp.keyboardarrowdown,
-                                        color: Palette.bgContentsLightColor,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
+                            //アイデア追加ボタン
+                            const Padding(
+                              padding: EdgeInsets.only(right: 120),
+                              child: Tidybutton(),
                             ),
-                          ),
-                          //チームを抜けるボタン
-                          if (sharecheck == true)
-                            Padding(
-                              padding: const EdgeInsets.all(15),
-                              child: Container(
-                                alignment: Alignment.center,
-                                width: 121,
-                                height: 32,
-                                decoration: BoxDecoration(
-                                  color: Palette.bgContentsColor,
-                                  // 角丸
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: InkWell(
-                                  //ボタンのクリックイベント
-                                  onTap: () {},
-                                  child: const Text(
-                                    'チームを抜ける',
-                                    style:
-                                        TextStyle(color: Palette.mainTextColor),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              ),
-                            ),
-                        ],
+                          ],
+                        ),
                       ),
                       Expanded(
                         child: SingleChildScrollView(
@@ -148,27 +78,23 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 //メインタグの処理
                                 Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 20, left: 20),
+                                  padding: const EdgeInsets.only(
+                                      top: 20, left: 80, right: 80),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Container(
-                                        width: 16,
-                                        height: 276,
-                                        decoration: const BoxDecoration(
-                                            color: Palette.bgContentsColor),
-                                      ),
-                                      Container(
                                         width: 1000,
                                         height: 276,
                                         decoration: const BoxDecoration(
-                                            color: Palette.bgContentsLightColor),
+                                            color:
+                                                Palette.bgContentsLightColor),
                                         child: Column(
                                           children: [
+                                            //タイトル
                                             Padding(
                                               padding: const EdgeInsets.only(
-                                                  left: 40, right: 40, top: 30),
+                                                  left: 56, right: 40, top: 30),
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
@@ -179,68 +105,75 @@ class _HomePageState extends State<HomePage> {
                                                     style:
                                                         TextStyle(fontSize: 24),
                                                   ),
-                                                  SizedBox(
-                                                    width: 200,
-                                                    height: 30,
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceAround,
-                                                      children: [
-                                                        //radiobuttonは後日記載
-                                                        const Text(
-                                                          '採用',
-                                                          style: TextStyle(
-                                                              fontSize: 16,
+                                                  //保留ボタン
+                                                  Container(
+                                                    alignment: Alignment.center,
+                                                    width: 91,
+                                                    height: 32,
+                                                    decoration: BoxDecoration(
+                                                      border: Border.all(
+                                                          color: Palette
+                                                              .mainTextColor),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5),
+                                                    ),
+                                                    child: InkWell(
+                                                      //クリックイベント
+                                                      onTap: () {},
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        children: [
+                                                          const Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    bottom: 5),
+                                                            child: Text(
+                                                              '保留',
+                                                              style: TextStyle(
+                                                                  color: Palette
+                                                                      .titleTextColor,
+                                                                  fontSize: 16),
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                            ),
+                                                          ),
+                                                          const Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    top: 4),
+                                                            child: Icon(
+                                                              WebIconApp
+                                                                  .keyboardarrowdown,
                                                               color: Palette
-                                                                  .titleTextColor),
-                                                        ),
-                                                        const Text(
-                                                          '保留',
-                                                          style: TextStyle(
-                                                              fontSize: 16,
-                                                              color: Palette
-                                                                  .titleTextColor),
-                                                        ),
-                                                        const Text(
-                                                          'ボツ案',
-                                                          style: TextStyle(
-                                                              fontSize: 16,
-                                                              color: Palette
-                                                                  .titleTextColor),
-                                                        ),
-                                                      ],
+                                                                  .mainTextColor,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ],
                                               ),
                                             ),
+                                            //メインテキスト
                                             Flexible(
                                               child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  Container(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            40),
-                                                    child:
-                                                        const SingleChildScrollView(
-                                                      child: Text(
-                                                        'サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル',
-                                                        softWrap: true,
-                                                        maxLines: 4,
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                      ),
-                                                    ),
-                                                  ),
+                                                  //タグ一覧
                                                   Row(
                                                     children: [
                                                       Padding(
                                                         padding:
                                                             const EdgeInsets
-                                                                .only(left: 40),
+                                                                    .only(
+                                                                left: 56,
+                                                                top: 25),
                                                         child: SizedBox(
                                                           width: 880,
                                                           height: 24,
@@ -293,10 +226,26 @@ class _HomePageState extends State<HomePage> {
                                                           ),
                                                         ),
                                                       ),
-
                                                       //下記にタグ追加のプラスボタンを配置
                                                     ],
                                                   ),
+                                                  //テキスト文
+                                                  const Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 56, top: 25),
+                                                    child:
+                                                        SingleChildScrollView(
+                                                      child: Text(
+                                                        'サンプルサンプルサンプルサンプルサンプル',
+                                                        softWrap: true,
+                                                        maxLines: 4,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  //マンダラボタンなどの表示
+                                                  const SelectChangeButton(),
                                                 ],
                                               ),
                                             ),

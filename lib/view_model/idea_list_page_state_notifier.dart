@@ -10,7 +10,7 @@ import 'package:uuid/uuid.dart';
 @Deprecated('')
 final ideaListPageProvider = StateNotifierProvider.autoDispose<
     IdeaListPageStateNotifier, IdeaListPageState>(
-      (refs) => IdeaListPageStateNotifier(IdeaListPageState()),
+  (refs) => IdeaListPageStateNotifier(IdeaListPageState()),
 );
 
 /// 現在は使用されていません。
@@ -28,7 +28,11 @@ class IdeaListPageStateNotifier extends StateNotifier<IdeaListPageState>
   void addIdea([String? id]) {
     final tmp = state.ideaList;
 
-    final newIdea = Idea(id: const Uuid().v4(), onSubmittedAction: addIdea, onDeleteAction: deleteIdea,);
+    final newIdea = Idea(
+      id: const Uuid().v4(),
+      onSubmittedAction: addIdea,
+      onDeleteAction: deleteIdea,
+    );
 
     final index = ideaIndexFindById(id ?? '');
 
@@ -71,13 +75,17 @@ class IdeaListPageStateNotifier extends StateNotifier<IdeaListPageState>
 
 /// 現在は使用されていません。
 @Deprecated('')
+// ignore: must_be_immutable
 class Idea extends HookWidget {
   final String id;
   final Function(String) onSubmittedAction;
   final Function(String) onDeleteAction;
   String name = '';
 
-  Idea({required this.id, required this.onSubmittedAction, required this.onDeleteAction});
+  Idea(
+      {required this.id,
+      required this.onSubmittedAction,
+      required this.onDeleteAction});
 
   @override
   Widget build(BuildContext context) {
