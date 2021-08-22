@@ -7,6 +7,7 @@ class Palette {
   static const Color titleTextColor = Color(0xff323b50); //テキスト5
   static const Color emphasisTextColor = Color(0xffff6c00); //テキストアクセント
   static const Color googleTextColor = Color(0xff3162b4);
+  static const Color borderColor = Color(0xffd3dee6); //線
 
   static const Color bgContentsColor = Color(0xffe9eff0); //コンテンツ背景
   static const Color bgContentsHighLightColor =

@@ -14,6 +14,7 @@ class Operation with _$Operation {
     @Default([]) List<String> args,
   }) = _Operation;
 
+  // ignore: prefer_constructors_over_static_methods
   static Operation next(String ideaId, String? currentIdeaId) {
     return Operation(
         id: const Uuid().v4(),
