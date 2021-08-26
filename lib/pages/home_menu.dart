@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:alexander/addIcon/web_icon_app_icons.dart';
+import 'package:alexander/pages/mainmenu_selectedbutton.dart';
 import 'package:alexander/pages/mainmenuserch.dart';
 import 'package:alexander/pages/notemenuinfo.dart';
 import 'package:alexander/pages/selectchangebutton.dart';
@@ -25,7 +25,6 @@ class _HomePageState extends State<HomePage> {
     //画面サイズを取得
     final Size size = MediaQuery.of(context).size;
     const sharecheck = true; //共有しているかしていないかのチェック
-
     //タグの管理
     final List<String> menugenre = ['ジャンル1', 'ジャンル2'];
     return Scaffold(
@@ -35,7 +34,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             Column(
               children: [
-                const Userinfo(),
+                const UserInfo(),
                 const Notemenu(),
               ],
             ),
@@ -65,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                             //アイデア追加ボタン
                             const Padding(
                               padding: EdgeInsets.only(right: 120),
-                              child: Tidybutton(),
+                              child: TidyButton(),
                             ),
                           ],
                         ),
@@ -118,43 +117,8 @@ class _HomePageState extends State<HomePage> {
                                                           BorderRadius.circular(
                                                               5),
                                                     ),
-                                                    child: InkWell(
-                                                      //クリックイベント
-                                                      onTap: () {},
-                                                      child: Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceEvenly,
-                                                        children: [
-                                                          const Padding(
-                                                            padding:
-                                                                EdgeInsets.only(
-                                                                    bottom: 5),
-                                                            child: Text(
-                                                              '保留',
-                                                              style: TextStyle(
-                                                                  color: Palette
-                                                                      .titleTextColor,
-                                                                  fontSize: 16),
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                            ),
-                                                          ),
-                                                          const Padding(
-                                                            padding:
-                                                                EdgeInsets.only(
-                                                                    top: 4),
-                                                            child: Icon(
-                                                              WebIconApp
-                                                                  .keyboardarrowdown,
-                                                              color: Palette
-                                                                  .mainTextColor,
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
+                                                    child:
+                                                        const Mystatefullwidget(),
                                                   ),
                                                 ],
                                               ),
@@ -276,5 +240,3 @@ class _HomePageState extends State<HomePage> {
     noteName.add('ノート');
   }
 }
-
-class Fruits {}

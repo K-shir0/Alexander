@@ -35,6 +35,8 @@ class WebIconApp {
   static const IconData keyboardarrowdown =
       IconData(0xe800, fontFamily: _kFontFam);
   static const IconData google_1 = IconData(0xe801, fontFamily: _kFontFam);
+  static const IconData mandara = IconData(0xe802, fontFamily: _kFontFam);
+  static const IconData mix = IconData(0xe803, fontFamily: _kFontFam);
   static const IconData favoriteborder =
       IconData(0xe91e, fontFamily: _kFontFam);
   static const IconData share = IconData(0xeaee, fontFamily: _kFontFam);

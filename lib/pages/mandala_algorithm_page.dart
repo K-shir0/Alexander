@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -45,7 +43,8 @@ class MandalaAlgorithmPage extends HookWidget {
       }
 
       // 後
-      if ( (i - hasi) % (3 * size) == 0 && (i - hasi - 3 * size) % (9 * size) == 0) {
+      if ((i - hasi) % (3 * size) == 0 &&
+          (i - hasi - 3 * size) % (9 * size) == 0) {
         // print( );
         array[i] = true;
       }
@@ -63,7 +62,7 @@ class MandalaAlgorithmPage extends HookWidget {
 
       if (array[i] == null) {
         tmp += '×';
-      } else if (array[i] ?? false){
+      } else if (array[i] ?? false) {
         tmp += '■';
       } else {
         tmp += '□';

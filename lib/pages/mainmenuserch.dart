@@ -61,9 +61,14 @@ class Exitteambutton extends StatelessWidget {
 }
 
 //整理整頓ボタン表示
-class Tidybutton extends StatelessWidget {
-  const Tidybutton({Key? key}) : super(key: key);
+class TidyButton extends StatefulWidget {
+  const TidyButton({Key? key}) : super(key: key);
 
+  @override
+  _TidyButtonState createState() => _TidyButtonState();
+}
+
+class _TidyButtonState extends State<TidyButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -75,30 +80,60 @@ class Tidybutton extends StatelessWidget {
         // 角丸
         borderRadius: BorderRadius.circular(5),
       ),
-      child: InkWell(
-        //ボタンのクリックイベント
-        onTap: () {},
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(bottom: 5),
-              child: Text(
-                '整理整頓をする',
-                style: TextStyle(
-                    color: Palette.bgContentsLightColor, fontSize: 16),
-                textAlign: TextAlign.center,
-              ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(bottom: 5),
+            child: Text(
+              '整理整頓をする',
+              style:
+                  TextStyle(color: Palette.bgContentsLightColor, fontSize: 16),
+              textAlign: TextAlign.center,
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 4),
-              child: Icon(
-                WebIconApp.keyboardarrowdown,
-                color: Palette.bgContentsLightColor,
-              ),
+          ),
+          PopupMenuButton(
+            icon: const Icon(
+              WebIconApp.keyboardarrowdown,
+              color: Palette.bgContentsLightColor,
             ),
-          ],
-        ),
+            onSelected: (aaaa) {
+              setState(() {
+                showDialog(
+                    context: context,
+                    builder: (_) {
+                      return AlertDialog(
+                        title: const Text('何を選択したかの表示'),
+                        content: Text('$aaaaが選択されました'),
+                      );
+                    });
+              });
+            },
+            itemBuilder: (context) => [
+              const PopupMenuItem(
+                  value: 1,
+                  child: Text(
+                    '1:採用を先頭にする',
+                    style:
+                        TextStyle(fontSize: 12, color: Palette.titleTextColor),
+                  )),
+              const PopupMenuItem(
+                  value: 2,
+                  child: Text(
+                    '2:保留を先頭にする',
+                    style:
+                        TextStyle(fontSize: 12, color: Palette.titleTextColor),
+                  )),
+              const PopupMenuItem(
+                  value: 3,
+                  child: Text(
+                    '3:ボツ案を先頭にする',
+                    style:
+                        TextStyle(fontSize: 12, color: Palette.titleTextColor),
+                  )),
+            ],
+          ),
+        ],
       ),
     );
   }

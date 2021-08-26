@@ -1,3 +1,4 @@
+import 'package:alexander/addIcon/web_icon_app_icons.dart';
 import 'package:alexander/pages/theme/palette.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,10 @@ class SelectChangeButton extends StatelessWidget {
                   child: InkWell(
                     //マンダラボタンクリックイベント
                     onTap: () {},
+                    child: const Icon(
+                      WebIconApp.mandara,
+                      color: Palette.accentTextColor,
+                    ),
                   ),
                 ),
                 const Padding(
@@ -86,6 +91,10 @@ class SelectChangeButton extends StatelessWidget {
                   child: InkWell(
                     //ミックスボタンクリックイベント
                     onTap: () {},
+                    child: const Icon(
+                      WebIconApp.mix,
+                      color: Palette.accentTextColor,
+                    ),
                   ),
                 ),
                 const Padding(
