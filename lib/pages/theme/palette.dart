@@ -15,6 +15,7 @@ class Palette {
   static const Color bgContentsNormalColor = Color(0xfff5f7f7); //背景2
   static const Color bgContentsLightColor = Color(0xfffafafa); //背景1
   static const Color border = Color(0xffd3dee6);
+  static const Color mandalaCenterColor = Color(0xffe1ebeb);
 
   static const Color loginleft = Color(0xffc9d8d6); //ログイン左
   static const Color inviteandborder = Color(0xff83ACB4); //ホームページの招待ボタンで使われている色
