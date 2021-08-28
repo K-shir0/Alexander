@@ -70,7 +70,7 @@ class LoginPage extends HookWidget {
                       const Gap(24),
                       //ログインボタン
                       SignButton(
-                          onPressed: notifier.onTapSignInButton(),
+                          onPressed: notifier.onTapSignInButton(context),
                           buttonLabel: 'SIGN IN'),
                       const Gap(64),
                       Row(

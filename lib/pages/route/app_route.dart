@@ -1,4 +1,3 @@
-import 'package:alexander/pages/auth_sample_page.dart';
 import 'package:alexander/pages/counter_page.dart';
 import 'package:alexander/pages/default_page.dart';
 import 'package:alexander/pages/home_menu.dart';
@@ -30,10 +29,6 @@ import 'package:auto_route/annotations.dart';
     AutoRoute(
       path: '/signup',
       page: SignUpPage,
-    ),
-    AutoRoute(
-      path: '/test/login',
-      page: AuthSamplePage,
     ),
     AutoRoute(
       path: '/test/home',
