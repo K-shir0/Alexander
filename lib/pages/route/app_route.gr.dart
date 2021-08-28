@@ -4,16 +4,15 @@
 // AutoRouteGenerator
 // **************************************************************************
 
-import 'package:alexander/pages/auth_sample_page.dart' as _i7;
-import 'package:alexander/pages/counter_page.dart' as _i13;
-import 'package:alexander/pages/default_page.dart' as _i8;
+import 'package:alexander/pages/counter_page.dart' as _i12;
+import 'package:alexander/pages/default_page.dart' as _i7;
 import 'package:alexander/pages/home_menu.dart' as _i4;
-import 'package:alexander/pages/home_sample_page.dart' as _i9;
+import 'package:alexander/pages/home_sample_page.dart' as _i8;
 import 'package:alexander/pages/index_page.dart' as _i3;
-import 'package:alexander/pages/infinity_scroll_page.dart' as _i11;
+import 'package:alexander/pages/infinity_scroll_page.dart' as _i10;
 import 'package:alexander/pages/login_page.dart' as _i5;
-import 'package:alexander/pages/mandala_algorithm_page.dart' as _i12;
-import 'package:alexander/pages/mandala_chart_page.dart' as _i10;
+import 'package:alexander/pages/mandala_algorithm_page.dart' as _i11;
+import 'package:alexander/pages/mandala_chart_page.dart' as _i9;
 import 'package:alexander/pages/sign_up_page.dart' as _i6;
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
@@ -44,15 +43,10 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return const _i6.SignUpPage();
         }),
-    AuthSampleRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return _i7.AuthSamplePage();
-        }),
     DefaultRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i8.DefaultPage();
+          return _i7.DefaultPage();
         }),
     HomeSampleRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
@@ -61,28 +55,28 @@ class AppRouter extends _i1.RootStackRouter {
           final args = data.argsAs<HomeSampleRouteArgs>(
               orElse: () =>
                   HomeSampleRouteArgs(id: pathParams.getString('id')));
-          return _i9.HomeSamplePage(id: args.id);
+          return _i8.HomeSamplePage(id: args.id);
         }),
     MandalaChartRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i10.MandalaChartPage();
+          return _i9.MandalaChartPage();
         }),
     InfinityScrollRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i11.InfinityScrollPage();
+          return _i10.InfinityScrollPage();
         }),
     MandalaAlgorithmRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i12.MandalaAlgorithmPage();
+          return _i11.MandalaAlgorithmPage();
         }),
     CounterRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<CounterRouteArgs>();
-          return _i13.CounterPage(key: args.key, title: args.title);
+          return _i12.CounterPage(key: args.key, title: args.title);
         })
   };
 
@@ -92,7 +86,6 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(HomeRoute.name, path: '/home'),
         _i1.RouteConfig(LoginRoute.name, path: '/login'),
         _i1.RouteConfig(SignUpRoute.name, path: '/signup'),
-        _i1.RouteConfig(AuthSampleRoute.name, path: '/test/login'),
         _i1.RouteConfig(DefaultRoute.name, path: '/test/home'),
         _i1.RouteConfig(HomeSampleRoute.name, path: '/test/home/:id'),
         _i1.RouteConfig(MandalaChartRoute.name, path: '/test/mandala'),
@@ -126,12 +119,6 @@ class SignUpRoute extends _i1.PageRouteInfo {
   const SignUpRoute() : super(name, path: '/signup');
 
   static const String name = 'SignUpRoute';
-}
-
-class AuthSampleRoute extends _i1.PageRouteInfo {
-  const AuthSampleRoute() : super(name, path: '/test/login');
-
-  static const String name = 'AuthSampleRoute';
 }
 
 class DefaultRoute extends _i1.PageRouteInfo {
