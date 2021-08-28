@@ -1,9 +1,9 @@
-.PHONY: run build install
+.PHONY: run build-runner install
 
 run:
 	flutter run -d chrome --web-port=4040 --web-renderer=html
 
-build:
+build-runner:
 	flutter pub run build_runner build
 
 install:
