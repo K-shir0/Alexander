@@ -2,6 +2,7 @@ import 'package:alexander/domain/user.dart';
 import 'package:alexander/service/model/authentication.dart';
 import 'package:alexander/view_model/common/auth_state_notifier.dart';
 import 'package:alexander/view_model/model/sign_in_page_state.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
@@ -19,7 +20,7 @@ class SignInPageStateNotifier extends StateNotifier<SignInPageState>
   /// ログイン中のユーザーを取得
   User? get authUser => ref.read(authStateProvider).authUser;
 
-  Function()? onTapSignInButton() {
+  Function()? onTapSignInButton(BuildContext context) {
     if (state.isLoading) {
       return null;
     }
@@ -37,7 +38,9 @@ class SignInPageStateNotifier extends StateNotifier<SignInPageState>
             email: emailController.text,
             password: passwordController.text,
           ))
-          .then((value) => value.when(success: (_) {}, failure: (_) {}))
+          .then((value) => value.when(success: (_) {
+            AutoRouter.of(context).pushNamed('/home');
+      }, failure: (_) {}))
           .whenComplete(() => state.copyWith(isLoading: false));
     };
   }
