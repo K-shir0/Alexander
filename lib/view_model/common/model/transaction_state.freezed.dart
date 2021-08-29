@@ -20,9 +20,11 @@ TransactionState _$TransactionStateFromJson(Map<String, dynamic> json) {
 class _$TransactionStateTearOff {
   const _$TransactionStateTearOff();
 
-  _TransactionState call({List<Transaction> transactions = const []}) {
+  _TransactionState call(
+      {List<Transaction> transactions = const [], bool isSaving = false}) {
     return _TransactionState(
       transactions: transactions,
+      isSaving: isSaving,
     );
   }
 
@@ -37,6 +39,7 @@ const $TransactionState = _$TransactionStateTearOff();
 /// @nodoc
 mixin _$TransactionState {
   List<Transaction> get transactions => throw _privateConstructorUsedError;
+  bool get isSaving => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +52,7 @@ abstract class $TransactionStateCopyWith<$Res> {
   factory $TransactionStateCopyWith(
           TransactionState value, $Res Function(TransactionState) then) =
       _$TransactionStateCopyWithImpl<$Res>;
-  $Res call({List<Transaction> transactions});
+  $Res call({List<Transaction> transactions, bool isSaving});
 }
 
 /// @nodoc
@@ -64,12 +67,17 @@ class _$TransactionStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? transactions = freezed,
+    Object? isSaving = freezed,
   }) {
     return _then(_value.copyWith(
       transactions: transactions == freezed
           ? _value.transactions
           : transactions // ignore: cast_nullable_to_non_nullable
               as List<Transaction>,
+      isSaving: isSaving == freezed
+          ? _value.isSaving
+          : isSaving // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -81,7 +89,7 @@ abstract class _$TransactionStateCopyWith<$Res>
           _TransactionState value, $Res Function(_TransactionState) then) =
       __$TransactionStateCopyWithImpl<$Res>;
   @override
-  $Res call({List<Transaction> transactions});
+  $Res call({List<Transaction> transactions, bool isSaving});
 }
 
 /// @nodoc
@@ -98,12 +106,17 @@ class __$TransactionStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? transactions = freezed,
+    Object? isSaving = freezed,
   }) {
     return _then(_TransactionState(
       transactions: transactions == freezed
           ? _value.transactions
           : transactions // ignore: cast_nullable_to_non_nullable
               as List<Transaction>,
+      isSaving: isSaving == freezed
+          ? _value.isSaving
+          : isSaving // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -113,7 +126,8 @@ class __$TransactionStateCopyWithImpl<$Res>
 class _$_TransactionState
     with DiagnosticableTreeMixin
     implements _TransactionState {
-  const _$_TransactionState({this.transactions = const []});
+  const _$_TransactionState(
+      {this.transactions = const [], this.isSaving = false});
 
   factory _$_TransactionState.fromJson(Map<String, dynamic> json) =>
       _$_$_TransactionStateFromJson(json);
@@ -121,10 +135,13 @@ class _$_TransactionState
   @JsonKey(defaultValue: const [])
   @override
   final List<Transaction> transactions;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool isSaving;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TransactionState(transactions: $transactions)';
+    return 'TransactionState(transactions: $transactions, isSaving: $isSaving)';
   }
 
   @override
@@ -132,7 +149,8 @@ class _$_TransactionState
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'TransactionState'))
-      ..add(DiagnosticsProperty('transactions', transactions));
+      ..add(DiagnosticsProperty('transactions', transactions))
+      ..add(DiagnosticsProperty('isSaving', isSaving));
   }
 
   @override
@@ -141,12 +159,17 @@ class _$_TransactionState
         (other is _TransactionState &&
             (identical(other.transactions, transactions) ||
                 const DeepCollectionEquality()
-                    .equals(other.transactions, transactions)));
+                    .equals(other.transactions, transactions)) &&
+            (identical(other.isSaving, isSaving) ||
+                const DeepCollectionEquality()
+                    .equals(other.isSaving, isSaving)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(transactions);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(transactions) ^
+      const DeepCollectionEquality().hash(isSaving);
 
   @JsonKey(ignore: true)
   @override
@@ -160,14 +183,16 @@ class _$_TransactionState
 }
 
 abstract class _TransactionState implements TransactionState {
-  const factory _TransactionState({List<Transaction> transactions}) =
-      _$_TransactionState;
+  const factory _TransactionState(
+      {List<Transaction> transactions, bool isSaving}) = _$_TransactionState;
 
   factory _TransactionState.fromJson(Map<String, dynamic> json) =
       _$_TransactionState.fromJson;
 
   @override
   List<Transaction> get transactions => throw _privateConstructorUsedError;
+  @override
+  bool get isSaving => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$TransactionStateCopyWith<_TransactionState> get copyWith =>
