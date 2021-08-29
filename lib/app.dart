@@ -1,3 +1,4 @@
+import 'package:alexander/pages/route/guard/auth_route_guard.dart';
 import 'package:alexander/view_model/common/auth_state_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -15,7 +16,7 @@ class App extends HookWidget {
       });
     }, []);
 
-    final appRouter = useMemoized(() => AppRouter());
+    final appRouter = useMemoized(() => AppRouter(authGuard: AuthGuard()));
 
     return MaterialApp.router(
       title: 'Flutter Demo',

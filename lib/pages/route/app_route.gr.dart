@@ -4,49 +4,54 @@
 // AutoRouteGenerator
 // **************************************************************************
 
-import 'package:alexander/pages/counter_page.dart' as _i12;
-import 'package:alexander/pages/default_page.dart' as _i7;
-import 'package:alexander/pages/home_menu.dart' as _i4;
-import 'package:alexander/pages/home_sample_page.dart' as _i8;
-import 'package:alexander/pages/index_page.dart' as _i3;
-import 'package:alexander/pages/infinity_scroll_page.dart' as _i10;
-import 'package:alexander/pages/login_page.dart' as _i5;
-import 'package:alexander/pages/mandala_algorithm_page.dart' as _i11;
-import 'package:alexander/pages/mandala_chart_page.dart' as _i9;
-import 'package:alexander/pages/sign_up_page.dart' as _i6;
+import 'package:alexander/pages/counter_page.dart' as _i13;
+import 'package:alexander/pages/default_page.dart' as _i8;
+import 'package:alexander/pages/home_menu.dart' as _i5;
+import 'package:alexander/pages/home_sample_page.dart' as _i9;
+import 'package:alexander/pages/index_page.dart' as _i4;
+import 'package:alexander/pages/infinity_scroll_page.dart' as _i11;
+import 'package:alexander/pages/login_page.dart' as _i6;
+import 'package:alexander/pages/mandala_algorithm_page.dart' as _i12;
+import 'package:alexander/pages/mandala_chart_page.dart' as _i10;
+import 'package:alexander/pages/route/guard/auth_route_guard.dart' as _i3;
+import 'package:alexander/pages/sign_up_page.dart' as _i7;
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
-  AppRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
+  AppRouter(
+      {_i2.GlobalKey<_i2.NavigatorState>? navigatorKey,
+      required this.authGuard})
       : super(navigatorKey);
+
+  final _i3.AuthGuard authGuard;
 
   @override
   final Map<String, _i1.PageFactory> pagesMap = {
     IndexRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i3.IndexPage();
+          return _i4.IndexPage();
         }),
     HomeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i4.HomePage();
+          return const _i5.HomePage();
         }),
     LoginRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i5.LoginPage();
+          return _i6.LoginPage();
         }),
     SignUpRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i6.SignUpPage();
+          return const _i7.SignUpPage();
         }),
     DefaultRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i7.DefaultPage();
+          return _i8.DefaultPage();
         }),
     HomeSampleRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
@@ -55,35 +60,35 @@ class AppRouter extends _i1.RootStackRouter {
           final args = data.argsAs<HomeSampleRouteArgs>(
               orElse: () =>
                   HomeSampleRouteArgs(id: pathParams.getString('id')));
-          return _i8.HomeSamplePage(id: args.id);
+          return _i9.HomeSamplePage(id: args.id);
         }),
     MandalaChartRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i9.MandalaChartPage();
+          return _i10.MandalaChartPage();
         }),
     InfinityScrollRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i10.InfinityScrollPage();
+          return _i11.InfinityScrollPage();
         }),
     MandalaAlgorithmRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i11.MandalaAlgorithmPage();
+          return _i12.MandalaAlgorithmPage();
         }),
     CounterRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<CounterRouteArgs>();
-          return _i12.CounterPage(key: args.key, title: args.title);
+          return _i13.CounterPage(key: args.key, title: args.title);
         })
   };
 
   @override
   List<_i1.RouteConfig> get routes => [
         _i1.RouteConfig(IndexRoute.name, path: '/'),
-        _i1.RouteConfig(HomeRoute.name, path: '/home'),
+        _i1.RouteConfig(HomeRoute.name, path: '/home', guards: [authGuard]),
         _i1.RouteConfig(LoginRoute.name, path: '/login'),
         _i1.RouteConfig(SignUpRoute.name, path: '/signup'),
         _i1.RouteConfig(DefaultRoute.name, path: '/test/home'),
@@ -92,8 +97,11 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(InfinityScrollRoute.name, path: '/test/infinity'),
         _i1.RouteConfig(MandalaAlgorithmRoute.name,
             path: '/test/mandala_algorithm'),
-        _i1.RouteConfig(HomeSampleRoute.name, path: '/test/home/:id'),
-        _i1.RouteConfig(CounterRoute.name, path: '/counter')
+        _i1.RouteConfig(HomeSampleRoute.name,
+            path: '/test/home/:id', guards: [authGuard]),
+        _i1.RouteConfig(CounterRoute.name, path: '/counter'),
+        _i1.RouteConfig('*#redirect',
+            path: '*', redirectTo: '/home', fullMatch: true)
       ];
 }
 
