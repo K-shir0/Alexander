@@ -9,10 +9,12 @@ class AuthGuard extends AutoRouteGuard {
 
     final user = context?.read(authStateProvider).authUser;
 
-    if (user != null) {
-      resolver.next();
-    } else {
-      router.pushNamed('/login');
-    }
+    resolver.next();
+
+    // if (user != null) {
+    //   resolver.next();
+    // } else {
+    //   router.pushNamed('/login');
+    // }
   }
 }

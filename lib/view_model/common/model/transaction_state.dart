@@ -10,6 +10,7 @@ part 'transaction_state.g.dart';
 class TransactionState with _$TransactionState {
   const factory TransactionState({
     @Default([]) List<Transaction> transactions,
+    @Default(false) bool isSaving,
   }) = _TransactionState;
 
   factory TransactionState.fromJson(Map<String, dynamic> json) =>

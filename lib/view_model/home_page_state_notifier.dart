@@ -4,6 +4,7 @@ import 'package:alexander/domain/space.dart';
 import 'package:alexander/domain/transaction.dart';
 import 'package:alexander/service/model/space.dart';
 import 'package:alexander/service/space.dart';
+import 'package:alexander/view_model/common/transaction_state_notifier.dart';
 import 'package:alexander/view_model/model/home_page_state.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,7 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
 
   /// アイデアでエンターボタンを押した時の処理
   Function() onEnterKeyAction(String currentSpaceId, String currentIdeaId) =>
-      () {
+      () async {
         final ideas = state.ideas;
 
         final newIdea = Idea(id: const Uuid().v4());
@@ -68,37 +69,40 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
           // 状態を反映
           state = state.copyWith(ideas: ideas);
 
-          // トランザクションを作成
-          Transaction transaction;
+          ref.read(transactionStateProvider.notifier).operationAdd(
+              Operation.next(newIdea.id, currentIdeaId), currentSpaceId);
 
-          if (state.transactions.isEmpty) {
-            transaction =
-                Transaction(id: const Uuid().v4(), spaceId: currentSpaceId);
-          } else {
-            transaction = state.transactions.first;
-          }
-
-          transaction = transaction.copyWith(
-              operations: [Operation.next(newIdea.id, currentIdeaId)]);
-
-          state = state.copyWith(transactions: [transaction]);
-
-          if (!state.isSaving) {
-
-            state = state.copyWith(isSaving: true);
-
-            // final tmp = state.transactions;
-
-            // TODO エラーの処理
-            ref
-                .read(spaceProvider)
-                .savePage(SavePageRequest(transactions: state.transactions))
-                .whenComplete(
-                  () => state = state.copyWith(isSaving: false),
-                );
-
-            state = state.copyWith(transactions: []);
-          }
+          // // トランザクションを作成
+          // Transaction transaction;
+          //
+          // if (state.transactions.isEmpty) {
+          //   transaction =
+          //       Transaction(id: const Uuid().v4(), spaceId: currentSpaceId);
+          // } else {
+          //   transaction = state.transactions.first;
+          // }
+          //
+          // transaction = transaction.copyWith(
+          //     operations: [Operation.next(newIdea.id, currentIdeaId)]);
+          //
+          // state = state.copyWith(transactions: [transaction]);
+          //
+          // if (!state.isSaving) {
+          //
+          //   state = state.copyWith(isSaving: true);
+          //
+          //   // final tmp = state.transactions;
+          //
+          //   // TODO エラーの処理
+          //   ref
+          //       .read(spaceProvider)
+          //       .savePage(SavePageRequest(transactions: state.transactions))
+          //       .whenComplete(
+          //         () => state = state.copyWith(isSaving: false),
+          //   );
+          //
+          //   state = state.copyWith(transactions: []);
+          // }
           // }
 
           return;
@@ -109,6 +113,11 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
 
   /// アイデアでデリートキーを押した時の処理
   Function() onDeleteKeyAction() => () {};
+
+  Function(String)? onChangedIdea(String currentSpaceId, String ideaId) => (String text) {
+    ref.read(transactionStateProvider.notifier).operationAdd(
+        Operation.editIdea(ideaId, text), currentSpaceId);
+  };
 
   /**
    *

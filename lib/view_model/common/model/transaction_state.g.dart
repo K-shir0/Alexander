@@ -12,6 +12,7 @@ _$_TransactionState _$_$_TransactionStateFromJson(Map<String, dynamic> json) {
             ?.map((e) => Transaction.fromJson(e as Map<String, dynamic>))
             .toList() ??
         [],
+    isSaving: json['is_saving'] as bool? ?? false,
   );
 }
 
@@ -19,4 +20,5 @@ Map<String, dynamic> _$_$_TransactionStateToJson(
         _$_TransactionState instance) =>
     <String, dynamic>{
       'transactions': instance.transactions,
+      'is_saving': instance.isSaving,
     };
