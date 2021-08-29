@@ -21,6 +21,7 @@ class App extends HookWidget {
     return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
+        fontFamily: 'Noto Sans JP',
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
