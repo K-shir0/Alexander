@@ -7,6 +7,7 @@ import 'package:alexander/pages/infinity_scroll_page.dart';
 import 'package:alexander/pages/login_page.dart';
 import 'package:alexander/pages/mandala_algorithm_page.dart';
 import 'package:alexander/pages/mandala_chart_page.dart';
+import 'package:alexander/pages/route/guard/auth_route_guard.dart';
 import 'package:alexander/pages/sign_up_page.dart';
 import 'package:auto_route/annotations.dart';
 
@@ -21,6 +22,7 @@ import 'package:auto_route/annotations.dart';
     AutoRoute(
       path: '/home',
       page: HomePage,
+      guards: [AuthGuard],
     ),
     AutoRoute(
       path: '/login',
@@ -53,11 +55,13 @@ import 'package:auto_route/annotations.dart';
     AutoRoute(
       path: '/test/home/:id',
       page: HomeSamplePage,
+      guards: [AuthGuard],
     ),
     AutoRoute(
       path: '/counter',
       page: CounterPage,
     ),
+    RedirectRoute(path: '*', redirectTo: '/home'),
   ],
 )
 class $AppRouter {}
