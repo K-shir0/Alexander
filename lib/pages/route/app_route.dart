@@ -1,6 +1,5 @@
 import 'package:alexander/pages/counter_page.dart';
 import 'package:alexander/pages/default_page.dart';
-import 'package:alexander/pages/home_menu.dart';
 import 'package:alexander/pages/home_sample_page.dart';
 import 'package:alexander/pages/index_page.dart';
 import 'package:alexander/pages/infinity_scroll_page.dart';
@@ -10,6 +9,8 @@ import 'package:alexander/pages/mandala_chart_page.dart';
 import 'package:alexander/pages/route/guard/auth_route_guard.dart';
 import 'package:alexander/pages/sign_up_page.dart';
 import 'package:auto_route/annotations.dart';
+
+import '../home_menu_page.dart';
 
 @AdaptiveAutoRouter(
   replaceInRouteName: 'Page,Route',
@@ -21,6 +22,11 @@ import 'package:auto_route/annotations.dart';
     ),
     AutoRoute(
       path: '/home',
+      page: DefaultPage,
+      guards: [AuthGuard],
+    ),
+    AutoRoute(
+      path: '/home/:id',
       page: HomePage,
       guards: [AuthGuard],
     ),
@@ -33,14 +39,6 @@ import 'package:auto_route/annotations.dart';
       page: SignUpPage,
     ),
     AutoRoute(
-      path: '/test/home',
-      page: DefaultPage,
-    ),
-    AutoRoute(
-      path: '/test/home/:id',
-      page: HomeSamplePage,
-    ),
-    AutoRoute(
       path: '/test/mandala',
       page: MandalaChartPage,
     ),
@@ -51,11 +49,6 @@ import 'package:auto_route/annotations.dart';
     AutoRoute(
       path: '/test/mandala_algorithm',
       page: MandalaAlgorithmPage,
-    ),
-    AutoRoute(
-      path: '/test/home/:id',
-      page: HomeSamplePage,
-      guards: [AuthGuard],
     ),
     AutoRoute(
       path: '/counter',

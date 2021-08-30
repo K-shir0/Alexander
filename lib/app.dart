@@ -9,6 +9,7 @@ class App extends HookWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     //　起動時に一度だけログイン済みかチェックする
     useEffect(() {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
@@ -16,7 +17,9 @@ class App extends HookWidget {
       });
     }, []);
 
-    final appRouter = useMemoized(() => AppRouter(authGuard: AuthGuard()));
+    final appRouter = useMemoized(() => AppRouter(
+      authGuard: AuthGuard(),
+    ));
 
     return MaterialApp.router(
       title: 'Flutter Demo',

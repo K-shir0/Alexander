@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'common/alexander_text_field.dart';
 import 'common/sign_button.dart';
-import 'home_menu.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -101,13 +100,13 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   //ホーム画面へ
-  void toHomePage() {
-    //履歴を残さないように画面遷移
-    Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
-        (_) => false);
-  }
+  // void toHomePage() {
+  //   //履歴を残さないように画面遷移
+  //   Navigator.pushAndRemoveUntil(
+  //       context,
+  //       MaterialPageRoute(builder: (context) => HomePage()),
+  //       (_) => false);
+  // }
 
   //新規登録画面へ
   void toSignUpPage() {

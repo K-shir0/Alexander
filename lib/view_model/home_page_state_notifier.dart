@@ -132,7 +132,7 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
             state = state.copyWith(spaces: _.data.spaces);
 
             AutoRouter.of(context)
-                .pushNamed('/test/home/${state.spaces.first.id}');
+                .pushNamed('/home/${state.spaces.first.id}');
           },
           failure: (_) {},
         ));

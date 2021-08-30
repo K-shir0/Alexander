@@ -4,17 +4,16 @@
 // AutoRouteGenerator
 // **************************************************************************
 
-import 'package:alexander/pages/counter_page.dart' as _i13;
-import 'package:alexander/pages/default_page.dart' as _i8;
-import 'package:alexander/pages/home_menu.dart' as _i5;
-import 'package:alexander/pages/home_sample_page.dart' as _i9;
+import 'package:alexander/pages/counter_page.dart' as _i12;
+import 'package:alexander/pages/default_page.dart' as _i5;
+import 'package:alexander/pages/home_menu_page.dart' as _i6;
 import 'package:alexander/pages/index_page.dart' as _i4;
-import 'package:alexander/pages/infinity_scroll_page.dart' as _i11;
-import 'package:alexander/pages/login_page.dart' as _i6;
-import 'package:alexander/pages/mandala_algorithm_page.dart' as _i12;
-import 'package:alexander/pages/mandala_chart_page.dart' as _i10;
+import 'package:alexander/pages/infinity_scroll_page.dart' as _i10;
+import 'package:alexander/pages/login_page.dart' as _i7;
+import 'package:alexander/pages/mandala_algorithm_page.dart' as _i11;
+import 'package:alexander/pages/mandala_chart_page.dart' as _i9;
 import 'package:alexander/pages/route/guard/auth_route_guard.dart' as _i3;
-import 'package:alexander/pages/sign_up_page.dart' as _i7;
+import 'package:alexander/pages/sign_up_page.dart' as _i8;
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
@@ -33,72 +32,63 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return _i4.IndexPage();
         }),
-    HomeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+    DefaultRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i5.HomePage();
+          return _i5.DefaultPage();
+        }),
+    HomeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final pathParams = data.pathParams;
+          final args = data.argsAs<HomeRouteArgs>(
+              orElse: () => HomeRouteArgs(id: pathParams.getString('id')));
+          return _i6.HomePage(id: args.id);
         }),
     LoginRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i6.LoginPage();
+          return _i7.LoginPage();
         }),
     SignUpRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i7.SignUpPage();
-        }),
-    DefaultRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return _i8.DefaultPage();
-        }),
-    HomeSampleRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
-        routeData: routeData,
-        builder: (data) {
-          final pathParams = data.pathParams;
-          final args = data.argsAs<HomeSampleRouteArgs>(
-              orElse: () =>
-                  HomeSampleRouteArgs(id: pathParams.getString('id')));
-          return _i9.HomeSamplePage(id: args.id);
+          return const _i8.SignUpPage();
         }),
     MandalaChartRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i10.MandalaChartPage();
+          return _i9.MandalaChartPage();
         }),
     InfinityScrollRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i11.InfinityScrollPage();
+          return _i10.InfinityScrollPage();
         }),
     MandalaAlgorithmRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i12.MandalaAlgorithmPage();
+          return _i11.MandalaAlgorithmPage();
         }),
     CounterRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<CounterRouteArgs>();
-          return _i13.CounterPage(key: args.key, title: args.title);
+          return _i12.CounterPage(key: args.key, title: args.title);
         })
   };
 
   @override
   List<_i1.RouteConfig> get routes => [
         _i1.RouteConfig(IndexRoute.name, path: '/'),
-        _i1.RouteConfig(HomeRoute.name, path: '/home', guards: [authGuard]),
+        _i1.RouteConfig(DefaultRoute.name, path: '/home', guards: [authGuard]),
+        _i1.RouteConfig(HomeRoute.name, path: '/home/:id', guards: [authGuard]),
         _i1.RouteConfig(LoginRoute.name, path: '/login'),
         _i1.RouteConfig(SignUpRoute.name, path: '/signup'),
-        _i1.RouteConfig(DefaultRoute.name, path: '/test/home'),
-        _i1.RouteConfig(HomeSampleRoute.name, path: '/test/home/:id'),
         _i1.RouteConfig(MandalaChartRoute.name, path: '/test/mandala'),
         _i1.RouteConfig(InfinityScrollRoute.name, path: '/test/infinity'),
         _i1.RouteConfig(MandalaAlgorithmRoute.name,
             path: '/test/mandala_algorithm'),
-        _i1.RouteConfig(HomeSampleRoute.name,
-            path: '/test/home/:id', guards: [authGuard]),
         _i1.RouteConfig(CounterRoute.name, path: '/counter'),
         _i1.RouteConfig('*#redirect',
             path: '*', redirectTo: '/home', fullMatch: true)
@@ -111,10 +101,26 @@ class IndexRoute extends _i1.PageRouteInfo {
   static const String name = 'IndexRoute';
 }
 
-class HomeRoute extends _i1.PageRouteInfo {
-  const HomeRoute() : super(name, path: '/home');
+class DefaultRoute extends _i1.PageRouteInfo {
+  const DefaultRoute() : super(name, path: '/home');
+
+  static const String name = 'DefaultRoute';
+}
+
+class HomeRoute extends _i1.PageRouteInfo<HomeRouteArgs> {
+  HomeRoute({required String id})
+      : super(name,
+            path: '/home/:id',
+            args: HomeRouteArgs(id: id),
+            rawPathParams: {'id': id});
 
   static const String name = 'HomeRoute';
+}
+
+class HomeRouteArgs {
+  const HomeRouteArgs({required this.id});
+
+  final String id;
 }
 
 class LoginRoute extends _i1.PageRouteInfo {
@@ -127,28 +133,6 @@ class SignUpRoute extends _i1.PageRouteInfo {
   const SignUpRoute() : super(name, path: '/signup');
 
   static const String name = 'SignUpRoute';
-}
-
-class DefaultRoute extends _i1.PageRouteInfo {
-  const DefaultRoute() : super(name, path: '/test/home');
-
-  static const String name = 'DefaultRoute';
-}
-
-class HomeSampleRoute extends _i1.PageRouteInfo<HomeSampleRouteArgs> {
-  HomeSampleRoute({required String id})
-      : super(name,
-            path: '/test/home/:id',
-            args: HomeSampleRouteArgs(id: id),
-            rawPathParams: {'id': id});
-
-  static const String name = 'HomeSampleRoute';
-}
-
-class HomeSampleRouteArgs {
-  const HomeSampleRouteArgs({required this.id});
-
-  final String id;
 }
 
 class MandalaChartRoute extends _i1.PageRouteInfo {
