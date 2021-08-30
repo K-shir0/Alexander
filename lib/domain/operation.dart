@@ -30,6 +30,14 @@ class Operation with _$Operation {
         args: [ideaId, contents]);
   }
 
+  // ignore: prefer_constructors_over_static_methods
+  static Operation editIdeaContent(String ideaId, String contents) {
+    return Operation(
+        id: const Uuid().v4(),
+        command: 'editIdeaContent',
+        args: [ideaId, contents]);
+  }
+
   factory Operation.fromJson(Map<String, dynamic> json) =>
       _$OperationFromJson(json);
 }

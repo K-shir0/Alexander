@@ -162,7 +162,7 @@ class IdeaTextField extends HookWidget {
             onFieldSubmitted: (_) {
               notifier.onEnterKeyAction(spaceId, idea.id)();
             },
-            onChanged: notifier.onChangedIdea(spaceId, idea.id)
+            onChanged: notifier.onChangedIdeaTitle(spaceId, idea.id)
           ),
         ),
       ],

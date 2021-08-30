@@ -114,10 +114,19 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
   /// アイデアでデリートキーを押した時の処理
   Function() onDeleteKeyAction() => () {};
 
-  Function(String)? onChangedIdea(String currentSpaceId, String ideaId) => (String text) {
-    ref.read(transactionStateProvider.notifier).operationAdd(
-        Operation.editIdea(ideaId, text), currentSpaceId);
-  };
+  Function(String)? onChangedIdeaTitle(String currentSpaceId, String ideaId) =>
+      (String text) {
+        ref
+            .read(transactionStateProvider.notifier)
+            .operationAdd(Operation.editIdea(ideaId, text), currentSpaceId);
+      };
+
+  Function(String)? onChangedIdeaContent(
+          String currentSpaceId, String ideaId) =>
+      (String text) {
+        ref.read(transactionStateProvider.notifier).operationAdd(
+            Operation.editIdeaContent(ideaId, text), currentSpaceId);
+      };
 
   /**
    *
@@ -131,8 +140,7 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
           success: (_) {
             state = state.copyWith(spaces: _.data.spaces);
 
-            AutoRouter.of(context)
-                .pushNamed('/home/${state.spaces.first.id}');
+            AutoRouter.of(context).pushNamed('/home/${state.spaces.first.id}');
           },
           failure: (_) {},
         ));
@@ -140,6 +148,8 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
 
   /// アイデア一覧（ページ）を取得する処理
   Future<void> fetchPage(String id) async {
+    state = state.copyWith(isLoading: true);
+
     await ref
         .read(spaceProvider)
         .getPage(GetPageRequest(id: id))
@@ -159,6 +169,11 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
                 state = state.copyWith(ideas: ideas);
               },
               failure: (_) {},
-            ));
+            ))
+        .whenComplete(
+          () => state = state.copyWith(
+            isLoading: false,
+          ),
+        );
   }
 }

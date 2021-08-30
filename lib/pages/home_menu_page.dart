@@ -59,10 +59,6 @@ class HomePage extends HookWidget {
             ),
             Column(
               children: [
-                // //共有状態の時の処理
-                // if (sharecheck == true) const Shareuserinfo(),
-                // //共有状態じゃない時の処理
-                // if (sharecheck == false)
                 const Notshareuserinfo(),
                 // メインメニューのウィジェット
                 Container(
@@ -80,7 +76,9 @@ class HomePage extends HookWidget {
                                 padding: const EdgeInsets.only(
                                     left: 80, right: 80, top: 20),
                                 child: Column(
-                                  children: [...ideaList],
+                                  children: [
+                                    if (!state.isLoading) ...ideaList,
+                                  ],
                                 )),
                           ),
                         ),
@@ -118,29 +116,30 @@ class IdeaCard extends HookWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            //タイトル
-            // Text(
-            //   idea.title,
-            //   style: TextStyle(fontSize: 24),
-            // ),
             TextFormField(
                 key: Key('${idea.id}-idea'),
                 initialValue: idea.title,
                 style: const TextStyle(fontSize: 24),
                 decoration: const InputDecoration(
-                  hintText: 'Untitled',
-                  border: InputBorder.none,
-                  enabledBorder: InputBorder.none
-                ),
+                    hintText: 'Untitled',
+                    border: InputBorder.none,
+                    enabledBorder: InputBorder.none),
                 onFieldSubmitted: (_) {
                   notifier.onEnterKeyAction(spaceId, idea.id)();
                 },
-                onChanged: notifier.onChangedIdea(spaceId, idea.id)),
+                onChanged: notifier.onChangedIdeaTitle(spaceId, idea.id)),
             const Gap(32),
             //メインテキスト
-            Text(
-              idea.content,
-            ),
+            TextFormField(
+                key: Key('${idea.id}-content'),
+                initialValue: idea.content,
+                maxLines: null,
+                decoration: const InputDecoration(
+                    border: InputBorder.none, enabledBorder: InputBorder.none),
+                // onFieldSubmitted: (_) {
+                //   notifier.onEnterKeyAction(spaceId, idea.id)();
+                // },
+                onChanged: notifier.onChangedIdeaContent(spaceId, idea.id)),
             const Gap(32),
             //マンダラボタンなどの表示
             const SelectChangeButton(),
