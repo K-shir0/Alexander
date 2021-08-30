@@ -26,7 +26,26 @@ class _HomePageState extends State<HomePage> {
     final Size size = MediaQuery.of(context).size;
     const sharecheck = true; //共有しているかしていないかのチェック
     //タグの管理
-    final List<String> menugenre = ['ジャンル1', 'ジャンル2'];
+    final List<String> menugenre = [
+      'ジャンル1',
+      'ジャンル2',
+      'ジャンル2',
+      'ジャンル2',
+      'ジャンル2',
+      'ジャンル2',
+      'ジャンル2',
+      'ジャンル2',
+      'ジャンル2',
+      'ジャンル2',
+      'ジャンル2',
+      'ジャンル2',
+      'ジャンル2',
+      'ジャンル2',
+      'ジャンル2',
+      'ジャンル2',
+      'ジャンル2',
+      'ジャンル2',
+    ];
     return Scaffold(
       body: SingleChildScrollView(
         child: Row(
@@ -47,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                 //メインメニューのウィジェット
                 Container(
                   width: 1160,
-                  height: size.height - 100,
+                  height: size.height - 80,
                   color: Palette.bgContentsNormalColor,
                   child: Column(
                     children: [
@@ -84,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                                     children: [
                                       Container(
                                         width: 1000,
-                                        height: 276,
+                                        height: 372,
                                         decoration: const BoxDecoration(
                                             color:
                                                 Palette.bgContentsLightColor),
@@ -130,15 +149,13 @@ class _HomePageState extends State<HomePage> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   //タグ一覧
-                                                  Row(
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                left: 56,
-                                                                top: 25),
-                                                        child: SizedBox(
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 10, left: 50),
+                                                    child: Row(
+                                                      children: [
+                                                        SizedBox(
                                                           width: 880,
                                                           height: 24,
                                                           child:
@@ -166,41 +183,53 @@ class _HomePageState extends State<HomePage> {
                                                                           .loginleft,
                                                                     ),
                                                                   ),
-                                                                  Padding(
-                                                                    padding: const EdgeInsets
-                                                                            .only(
-                                                                        left: 7,
-                                                                        right:
-                                                                            7,
-                                                                        bottom:
-                                                                            5),
-                                                                    child: Text(
-                                                                      menugenre[
-                                                                          index],
-                                                                      style: const TextStyle(
-                                                                          fontSize:
-                                                                              12,
-                                                                          color:
-                                                                              Palette.titleTextColor),
-                                                                    ),
+                                                                  Text(
+                                                                    menugenre[
+                                                                        index],
+                                                                    style: const TextStyle(
+                                                                        fontSize:
+                                                                            12,
+                                                                        color: Palette
+                                                                            .titleTextColor),
                                                                   ),
                                                                 ],
                                                               );
                                                             },
                                                           ),
                                                         ),
-                                                      ),
-                                                      //下記にタグ追加のプラスボタンを配置
-                                                    ],
+                                                        //下記にタグ追加のプラスボタンを配置
+                                                        InkWell(
+                                                          onTap: () {},
+                                                          child: Container(
+                                                            height: 24,
+                                                            width: 24,
+                                                            decoration: BoxDecoration(
+                                                                border: Border.all(
+                                                                    color: Palette
+                                                                        .titleTextColor),
+                                                                shape: BoxShape
+                                                                    .circle),
+                                                            child: const Icon(
+                                                              Icons.add,
+                                                              color: Palette
+                                                                  .titleTextColor,
+                                                              size: 20,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
                                                   //テキスト文
                                                   const Padding(
                                                     padding: EdgeInsets.only(
-                                                        left: 56, top: 25),
+                                                        left: 56,
+                                                        top: 25,
+                                                        right: 40),
                                                     child:
                                                         SingleChildScrollView(
                                                       child: Text(
-                                                        'サンプルサンプルサンプルサンプルサンプル',
+                                                        'サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル',
                                                         softWrap: true,
                                                         maxLines: 4,
                                                         overflow: TextOverflow

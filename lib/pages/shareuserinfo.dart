@@ -1,6 +1,7 @@
 import 'package:alexander/pages/theme/palette.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'accordion_button.dart';
 
 //共有状態の時に呼ばれるウィジェット
 class Shareuserinfo extends StatelessWidget {
@@ -9,9 +10,8 @@ class Shareuserinfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //共有ユーザー
-    final List<String> shereuser = [
-      'user1',
-    ];
+    final List<String> shereuser = ['user1', 'isss'];
+
     return SizedBox(
       width: 1160,
       height: 80,
@@ -30,28 +30,24 @@ class Shareuserinfo extends StatelessWidget {
                     horizontal: 3,
                     vertical: 3,
                   ),
-                  height: 30,
+                  height: 40,
+                  //共有ユーザー名の表示
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: shereuser.length,
                     itemBuilder: (context, index) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 32,
-                            height: 32,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Palette.loginleft,
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: Row(
+                          children: [
+                            AccordionIconButton(
+                              iconData: Icons.search,
+                              iconSize: 30,
+                              maxWidth: 100,
+                              label: shereuser[index],
                             ),
-                          ),
-                          Text(
-                            shereuser[index],
-                            style: const TextStyle(
-                                fontSize: 20, color: Palette.titleTextColor),
-                          ),
-                        ],
+                          ],
+                        ),
                       );
                     },
                   ),
@@ -105,6 +101,7 @@ class Notshareuserinfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const String user = 'user1'; //非共有時のユーザー名
     return SizedBox(
       width: 1160,
       height: 80,
@@ -115,14 +112,11 @@ class Notshareuserinfo extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                margin: const EdgeInsets.only(left: 24),
-                width: 32,
-                height: 32,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Palette.loginleft,
-                ),
+              const AccordionIconButton(
+                iconData: Icons.search,
+                iconSize: 30,
+                maxWidth: 100,
+                label: user,
               ),
               //非共有中表示
               Container(

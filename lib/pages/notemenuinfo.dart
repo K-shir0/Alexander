@@ -9,10 +9,12 @@ class Notemenu extends StatelessWidget {
   Widget build(BuildContext context) {
     //ノート名を格納する変数
     final List<String> noteName = ['ノートサンプル', 'ノートサンプル2', 'ノートサンプル3'];
+    //画面サイズを取得
+    final Size size = MediaQuery.of(context).size;
     return //ノート追加の部分のウィジェット
         Container(
       width: 280,
-      height: 788,
+      height: size.height - 80,
       color: Palette.bgContentsLightColor,
       child: Column(
         children: [
