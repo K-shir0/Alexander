@@ -13,6 +13,7 @@ abstract class HomePageState with _$HomePageState {
     @Default([]) List<Idea> ideas,
     @Default([]) List<Transaction> transactions,
     @Default(false) bool isSaving,
+    @Default(false) bool isLoading,
   }) = _HomePageState;
 
  factory HomePageState.fromJson(Map<String, dynamic> json) => _$HomePageStateFromJson(json);
