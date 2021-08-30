@@ -3,19 +3,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AccordionIconButton extends StatefulWidget {
-  final IconData _iconData;
   final double _iconSize;
   final String _label;
   final double _maxWidth;
 
   const AccordionIconButton(
       {Key? key,
-      required IconData iconData,
       required double iconSize,
       required String label,
       required double maxWidth})
-      : _iconData = iconData,
-        _iconSize = iconSize,
+      : _iconSize = iconSize,
         _label = label,
         _maxWidth = maxWidth,
         super(key: key);
@@ -41,10 +38,6 @@ class _State extends State<AccordionIconButton> {
   @override
   Widget build(BuildContext context) {
     const Duration duration = Duration(milliseconds: 2);
-    final Widget iconWidget = Icon(
-      widget._iconData,
-      size: widget._iconSize,
-    );
 
     return AnimatedContainer(
       constraints: BoxConstraints(maxWidth: widget._maxWidth),

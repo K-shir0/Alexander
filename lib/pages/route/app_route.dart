@@ -1,7 +1,7 @@
 import 'package:alexander/pages/auth_sample_page.dart';
 import 'package:alexander/pages/counter_page.dart';
 import 'package:alexander/pages/default_page.dart';
-import 'package:alexander/pages/home_menu.dart';
+import 'package:alexander/pages/homemenu/home_menu.dart';
 import 'package:alexander/pages/home_sample_page.dart';
 import 'package:alexander/pages/index_page.dart';
 import 'package:alexander/pages/infinity_scroll_page.dart';

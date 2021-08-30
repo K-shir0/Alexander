@@ -1,7 +1,7 @@
 import 'package:alexander/pages/theme/palette.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'accordion_button.dart';
+import '../accordion_button.dart';
 
 //共有状態の時に呼ばれるウィジェット
 class Shareuserinfo extends StatelessWidget {
@@ -41,7 +41,6 @@ class Shareuserinfo extends StatelessWidget {
                         child: Row(
                           children: [
                             AccordionIconButton(
-                              iconData: Icons.search,
                               iconSize: 30,
                               maxWidth: 100,
                               label: shereuser[index],
@@ -113,7 +112,6 @@ class Notshareuserinfo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const AccordionIconButton(
-                iconData: Icons.search,
                 iconSize: 30,
                 maxWidth: 100,
                 label: user,
