@@ -24,7 +24,8 @@ class App extends HookWidget {
     }
 
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'Alexander',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Noto Sans JP',
         // This is the theme of your application.

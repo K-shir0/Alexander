@@ -214,7 +214,7 @@ class NoteMenu extends HookWidget {
           Padding(
             padding: const EdgeInsets.all(24.0),
             child: InkWell(
-              onTap: () {},
+              onTap: useProvider(homePageProvider.notifier).onTapAddSpace(),
               child: Row(
                 children: [
                   const Icon(Icons.add_box_outlined),
