@@ -72,9 +72,10 @@ class TransactionStateNotifier extends StateNotifier<TransactionState> {
         )
         .whenComplete(
       () {
-        state = state.copyWith(isSaving: false);
-
-        saveTransactions();
+        Future.delayed(const Duration(seconds: 2)).then((_) {
+          state = state.copyWith(isSaving: false);
+          saveTransactions();
+        });
       },
     );
 

@@ -73,100 +73,100 @@ class LoginPage extends HookWidget {
                           onPressed: notifier.onTapSignInButton(context),
                           buttonLabel: 'SIGN IN'),
                       const Gap(64),
-                      Row(
-                        // mainAxisAlignment: MainAxisAlignment.s,
-                        children: <Widget>[
-                          const Padding(
-                            padding: EdgeInsets.only(right: 24),
-                            child: Text(
-                              'Googleアカウントでグイン・新規登録',
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Palette.mainTextColor,
-                                letterSpacing: 2.4000000000000004,
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              color: Palette.border,
-                              height: 2,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const Gap(32),
-                      //Googleログイン用ボタン
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4.0),
-                          color: const Color(0xfffafafa),
-                          border: Border.all(color: const Color(0xff3162b4)),
-                        ),
-                        child: SizedBox(
-                          height: 48,
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              primary: Palette.bgContentsLightColor,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Icon(
-                                  Icons.login_outlined,
-                                  size: 44,
-                                  color: Palette.googleTextColor,
-                                ),
-                                const Text(
-                                  'Continue with Google',
-                                  style: TextStyle(
-                                    fontFamily: 'Arial',
-                                    fontSize: 16,
-                                    color: Palette.googleTextColor,
-                                    letterSpacing: 3.2,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      const Gap(32),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          const Padding(
-                            padding: EdgeInsets.only(right: 24),
-                            child: Text(
-                              '初めて利用する方はこちら',
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Palette.mainTextColor,
-                                letterSpacing: 2.4000000000000004,
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              color: Palette.border,
-                              height: 2,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const Gap(32),
-                      TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          '新しくアカウントを作る',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Palette.accentTextColor,
-                          ),
-                        ),
-                      ),
+                      // Row(
+                      //   // mainAxisAlignment: MainAxisAlignment.s,
+                      //   children: <Widget>[
+                      //     const Padding(
+                      //       padding: EdgeInsets.only(right: 24),
+                      //       child: Text(
+                      //         'Googleアカウントでグイン・新規登録',
+                      //         style: TextStyle(
+                      //           fontSize: 12,
+                      //           color: Palette.mainTextColor,
+                      //           letterSpacing: 2.4000000000000004,
+                      //         ),
+                      //       ),
+                      //     ),
+                      //     Expanded(
+                      //       child: Container(
+                      //         color: Palette.border,
+                      //         height: 2,
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
+                  //     const Gap(32),
+                  //     //Googleログイン用ボタン
+                  //     Container(
+                  //       decoration: BoxDecoration(
+                  //         borderRadius: BorderRadius.circular(4.0),
+                  //         color: const Color(0xfffafafa),
+                  //         border: Border.all(color: const Color(0xff3162b4)),
+                  //       ),
+                  //       child: SizedBox(
+                  //         height: 48,
+                  //         child: ElevatedButton(
+                  //           onPressed: () {},
+                  //           style: ElevatedButton.styleFrom(
+                  //             primary: Palette.bgContentsLightColor,
+                  //           ),
+                  //           child: Row(
+                  //             mainAxisAlignment: MainAxisAlignment.center,
+                  //             children: [
+                  //               const Icon(
+                  //                 Icons.login_outlined,
+                  //                 size: 44,
+                  //                 color: Palette.googleTextColor,
+                  //               ),
+                  //               const Text(
+                  //                 'Continue with Google',
+                  //                 style: TextStyle(
+                  //                   fontFamily: 'Arial',
+                  //                   fontSize: 16,
+                  //                   color: Palette.googleTextColor,
+                  //                   letterSpacing: 3.2,
+                  //                   fontWeight: FontWeight.w700,
+                  //                 ),
+                  //               ),
+                  //             ],
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ),
+                  //     const Gap(32),
+                  //     Row(
+                  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //       children: <Widget>[
+                  //         const Padding(
+                  //           padding: EdgeInsets.only(right: 24),
+                  //           child: Text(
+                  //             '初めて利用する方はこちら',
+                  //             style: TextStyle(
+                  //               fontSize: 12,
+                  //               color: Palette.mainTextColor,
+                  //               letterSpacing: 2.4000000000000004,
+                  //             ),
+                  //           ),
+                  //         ),
+                  //         Expanded(
+                  //           child: Container(
+                  //             color: Palette.border,
+                  //             height: 2,
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //     const Gap(32),
+                  //     TextButton(
+                  //       onPressed: () {},
+                  //       child: const Text(
+                  //         '新しくアカウントを作る',
+                  //         style: TextStyle(
+                  //           fontSize: 16,
+                  //           color: Palette.accentTextColor,
+                  //         ),
+                  //       ),
+                  //     ),
                     ],
                   ),
                 ),

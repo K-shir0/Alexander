@@ -1,6 +1,7 @@
 import 'package:alexander/pages/theme/palette.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 //共有状態の時に呼ばれるウィジェット
 class Shareuserinfo extends StatelessWidget {
@@ -106,35 +107,24 @@ class Notshareuserinfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 1160,
+      width: MediaQuery.of(context).size.width - 280,
       height: 80,
       child: Container(
-        color: Palette.bgContentsNormalColor,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 136, right: 80),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(left: 24),
-                width: 32,
-                height: 32,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Palette.loginleft,
-                ),
+        color: Palette.bgContentsColor,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            //共有中表示
+            Container(
+              padding: const EdgeInsets.all(5.0),
+              decoration: BoxDecoration(
+                border: Border.all(color: Palette.accentTextColor),
+                borderRadius: BorderRadius.circular(5),
               ),
-              //非共有中表示
-              Container(
-                padding: const EdgeInsets.all(5.0),
-                width: 112,
-                height: 40,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Palette.accentTextColor),
-                  borderRadius: BorderRadius.circular(5),
-                ),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    top: 4.0, bottom: 4.0, right: 8.0, left: 8.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
                       width: 16,
@@ -144,8 +134,9 @@ class Notshareuserinfo extends StatelessWidget {
                         color: Palette.accentTextColor,
                       ),
                     ),
+                    const Gap(8),
                     const Padding(
-                      padding: EdgeInsets.only(bottom: 5),
+                      padding: EdgeInsets.only(bottom: 4.0),
                       child: Text(
                         '非共有',
                         style: TextStyle(
@@ -155,8 +146,9 @@ class Notshareuserinfo extends StatelessWidget {
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+            const Gap(32),
+          ],
         ),
       ),
     );

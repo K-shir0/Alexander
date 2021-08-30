@@ -30,6 +30,26 @@ class Operation with _$Operation {
         args: [ideaId, contents]);
   }
 
+  // ignore: prefer_constructors_over_static_methods
+  static Operation editIdeaContent(String ideaId, String contents) {
+    return Operation(
+        id: const Uuid().v4(),
+        command: 'editIdeaContent',
+        args: [ideaId, contents]);
+  }
+
+  // ignore: prefer_constructors_over_static_methods
+  static Operation deleteIdea(String ideaId) {
+    return Operation(
+        id: const Uuid().v4(), command: 'deleteIdea', args: [ideaId]);
+  }
+
+  // ignore: prefer_constructors_over_static_methods
+  static Operation editSpaceTitle(String content) {
+    return Operation(
+        id: const Uuid().v4(), command: 'editSpaceTitle', args: [content]);
+  }
+
   factory Operation.fromJson(Map<String, dynamic> json) =>
       _$OperationFromJson(json);
 }

@@ -21,7 +21,7 @@ class HomeSamplePage extends HookWidget {
 
     useEffect(() {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
-        notifier.initialize(context, id);
+        notifier.initialize(context: context, spaceId: id);
         // 初期アイデアの追加
         // ideaListNotifier.addIdea();
       });
@@ -70,10 +70,10 @@ class HomeSamplePage extends HookWidget {
                     decoration: const InputDecoration(
                       hintText: 'Untitled',
                     ),
+                    onChanged: notifier.onChangedSpaceTitle(id),
                   ),
                   Text(state.ideas.toString()),
                   ...ideaList
-                  // ...ideaListState.ideaList
                 ],
               ),
             ),
@@ -157,13 +157,12 @@ class IdeaTextField extends HookWidget {
         Text(idea.position.toString()),
         Expanded(
           child: TextFormField(
-            key: Key(idea.id),
-            initialValue: idea.title,
-            onFieldSubmitted: (_) {
-              notifier.onEnterKeyAction(spaceId, idea.id)();
-            },
-            onChanged: notifier.onChangedIdea(spaceId, idea.id)
-          ),
+              key: Key(idea.id),
+              initialValue: idea.title,
+              onFieldSubmitted: (_) {
+                notifier.onEnterKeyAction(spaceId, idea.id)();
+              },
+              onChanged: notifier.onChangedIdeaTitle(spaceId, idea.id)),
         ),
       ],
     );

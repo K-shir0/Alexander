@@ -7,6 +7,8 @@ import 'package:alexander/pages/route/app_route.gr.dart';
 
 class App extends HookWidget {
   // This widget is the root of your application.
+  final _appRouter = AppRouter(authGuard: AuthGuard());
+
   @override
   Widget build(BuildContext context) {
     //　起動時に一度だけログイン済みかチェックする
@@ -16,11 +18,16 @@ class App extends HookWidget {
       });
     }, []);
 
-    final appRouter = useMemoized(() => AppRouter(authGuard: AuthGuard()));
+    if (!useProvider(authStateProvider).isChecked) {
+      print('Container');
+      return Container();
+    }
 
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'Alexander',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'Noto Sans JP',
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -33,8 +40,8 @@ class App extends HookWidget {
 
         primarySwatch: Colors.blue,
       ),
-      routeInformationParser: appRouter.defaultRouteParser(),
-      routerDelegate: appRouter.delegate(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
+      routerDelegate: _appRouter.delegate(),
     );
   }
 }

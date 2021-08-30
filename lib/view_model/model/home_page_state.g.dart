@@ -21,6 +21,8 @@ _$_HomePageState _$_$_HomePageStateFromJson(Map<String, dynamic> json) {
             .toList() ??
         [],
     isSaving: json['is_saving'] as bool? ?? false,
+    isLoading: json['is_loading'] as bool? ?? false,
+    isSpaceListFetched: json['is_space_list_fetched'] as bool? ?? false,
   );
 }
 
@@ -30,4 +32,6 @@ Map<String, dynamic> _$_$_HomePageStateToJson(_$_HomePageState instance) =>
       'ideas': instance.ideas,
       'transactions': instance.transactions,
       'is_saving': instance.isSaving,
+      'is_loading': instance.isLoading,
+      'is_space_list_fetched': instance.isSpaceListFetched,
     };

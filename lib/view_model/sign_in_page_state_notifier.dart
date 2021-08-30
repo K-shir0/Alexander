@@ -38,9 +38,11 @@ class SignInPageStateNotifier extends StateNotifier<SignInPageState>
             email: emailController.text,
             password: passwordController.text,
           ))
-          .then((value) => value.when(success: (_) {
-            AutoRouter.of(context).pushNamed('/home');
-      }, failure: (_) {}))
+          .then((value) => value.when(
+              success: (_) {
+                AutoRouter.of(context).pushNamed('/home');
+              },
+              failure: (_) {}))
           .whenComplete(() => state.copyWith(isLoading: false));
     };
   }
