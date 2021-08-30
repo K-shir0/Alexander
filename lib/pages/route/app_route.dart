@@ -14,11 +14,11 @@ import '../home_menu_page.dart';
 @AdaptiveAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-    AutoRoute(
-      path: '/',
-      page: IndexPage,
-      initial: true,
-    ),
+    // AutoRoute(
+    //   path: '/',
+    //   page: IndexPage,
+    //   initial: true,
+    // ),
     AutoRoute(
       path: '/home',
       page: DefaultPage,
@@ -33,26 +33,26 @@ import '../home_menu_page.dart';
       path: '/login',
       page: LoginPage,
     ),
-    AutoRoute(
-      path: '/signup',
-      page: SignUpPage,
-    ),
-    AutoRoute(
-      path: '/test/mandala',
-      page: MandalaChartPage,
-    ),
-    AutoRoute(
-      path: '/test/infinity',
-      page: InfinityScrollPage,
-    ),
-    AutoRoute(
-      path: '/test/mandala_algorithm',
-      page: MandalaAlgorithmPage,
-    ),
-    AutoRoute(
-      path: '/counter',
-      page: CounterPage,
-    ),
+    // AutoRoute(
+    //   path: '/signup',
+    //   page: SignUpPage,
+    // ),
+    // AutoRoute(
+    //   path: '/test/mandala',
+    //   page: MandalaChartPage,
+    // ),
+    // AutoRoute(
+    //   path: '/test/infinity',
+    //   page: InfinityScrollPage,
+    // ),
+    // AutoRoute(
+    //   path: '/test/mandala_algorithm',
+    //   page: MandalaAlgorithmPage,
+    // ),
+    // AutoRoute(
+    //   path: '/counter',
+    //   page: CounterPage,
+    // ),
     RedirectRoute(path: '*', redirectTo: '/home'),
   ],
 )

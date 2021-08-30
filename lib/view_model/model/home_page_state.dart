@@ -14,6 +14,7 @@ abstract class HomePageState with _$HomePageState {
     @Default([]) List<Transaction> transactions,
     @Default(false) bool isSaving,
     @Default(false) bool isLoading,
+    @Default(false) bool isSpaceListFetched,
   }) = _HomePageState;
 
  factory HomePageState.fromJson(Map<String, dynamic> json) => _$HomePageStateFromJson(json);

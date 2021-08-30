@@ -29,8 +29,15 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
    */
 
   /// 初期化処理
-  Future<void> initialize(BuildContext context, String spaceId) async {
-    fetchPage(spaceId);
+  Future<void> initialize(
+      {required BuildContext context, String? spaceId}) async {
+    if (!state.isSpaceListFetched) {
+      await fetchSpace(context);
+    }
+
+    if (spaceId != null) {
+      fetchPage(spaceId);
+    }
   }
 
   /**
@@ -120,7 +127,8 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
       };
 
   /// アイデアでデリートキーを押した時の処理
-  Function() onDeleteKeyAction(String currentSpaceId, String ideaId) => () async {
+  Function() onDeleteKeyAction(String currentSpaceId, String ideaId) =>
+      () async {
         final ideas = state.ideas;
 
         ideas.removeWhere((element) => element.id == ideaId);
@@ -139,6 +147,23 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
             .operationAdd(Operation.editIdea(ideaId, text), currentSpaceId);
       };
 
+  Function(String)? onChangedSpaceTitle(String currentSpaceId) =>
+      (String text) {
+        print(text);
+
+        final spaces = state.spaces;
+        final index = spaces.indexWhere(
+          (element) => element.id == currentSpaceId,
+        );
+
+        spaces[index] = spaces[index].copyWith(title: text);
+        state = state.copyWith(spaces: spaces);
+
+        ref
+            .read(transactionStateProvider.notifier)
+            .operationAdd(Operation.editSpaceTitle(text), currentSpaceId);
+      };
+
   Function(String)? onChangedIdeaContent(
           String currentSpaceId, String ideaId) =>
       (String text) {
@@ -154,14 +179,21 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
 
   /// スペースの一覧を取得する処理
   Future<void> fetchSpace(BuildContext context) async {
-    await ref.read(spaceProvider).getSpace().then((value) => value.when(
-          success: (_) {
-            state = state.copyWith(spaces: _.data.spaces);
+    await ref
+        .read(spaceProvider)
+        .getSpace()
+        .then((value) => value.when(
+              success: (_) {
+                state = state.copyWith(spaces: _.data.spaces);
 
-            AutoRouter.of(context).pushNamed('/home/${state.spaces.first.id}');
-          },
-          failure: (_) {},
-        ));
+                AutoRouter.of(context)
+                    .pushNamed('/home/${state.spaces.first.id}');
+              },
+              failure: (_) {},
+            ))
+        .whenComplete(
+          () => state = state.copyWith(isSpaceListFetched: true),
+        );
   }
 
   /// アイデア一覧（ページ）を取得する処理

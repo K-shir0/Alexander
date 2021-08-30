@@ -26,7 +26,6 @@ class SignButton extends StatelessWidget {
             color: Color(0xffeff6f7),
             letterSpacing: 5.6000000000000005,
             fontWeight: FontWeight.w700,
-            height: 2.3214285714285716,
           ),
         ),
       ),

@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:collection/collection.dart';
 
 class HomePage extends HookWidget {
   final String id;
@@ -25,7 +26,7 @@ class HomePage extends HookWidget {
 
     useEffect(() {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
-        notifier.initialize(context, id);
+        notifier.initialize(context: context, spaceId: id);
         // 初期アイデアの追加
         // ideaListNotifier.addIdea();
       });
@@ -49,8 +50,8 @@ class HomePage extends HookWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: notifier.onEnterKeyAction(id, null),
-        child: const Icon(Icons.add),
         backgroundColor: Palette.inviteandborder,
+        child: const Icon(Icons.add),
       ),
       body: SingleChildScrollView(
         child: Row(
@@ -73,21 +74,39 @@ class HomePage extends HookWidget {
                   child: Column(
                     children: [
                       // アイデア一覧
-                      Expanded(
-                        child: SingleChildScrollView(
-                          child: Container(
-                            color: Palette.bgContentsNormalColor,
-                            child: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 80, right: 80, top: 20),
-                                child: Column(
-                                  children: [
-                                    if (!state.isLoading) ...ideaList,
-                                  ],
-                                )),
+                      if (!state.isLoading)
+                        Expanded(
+                          child: SingleChildScrollView(
+                            child: Container(
+                              color: Palette.bgContentsNormalColor,
+                              child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 80, right: 80, top: 24),
+                                  child: Column(
+                                    children: [
+                                      TextFormField(
+                                        initialValue: state.spaces
+                                            .firstWhereOrNull(
+                                                (element) => element.id == id)
+                                            ?.title,
+                                        style: const TextStyle(
+                                            fontSize: 32,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                        decoration: const InputDecoration(
+                                            hintText: 'Untitled',
+                                            border: InputBorder.none,
+                                            enabledBorder: InputBorder.none),
+                                        onChanged:
+                                            notifier.onChangedSpaceTitle(id),
+                                      ),
+                                      const Gap(24),
+                                      ...ideaList,
+                                    ],
+                                  )),
+                            ),
                           ),
                         ),
-                      ),
                     ],
                   ),
                 ),
@@ -251,6 +270,8 @@ class SpaceLinkWidget extends HookWidget {
       },
       child: Text(
         metadata.title.isEmpty ? 'Untitled' : metadata.title,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         textAlign: TextAlign.right,
         style: const TextStyle(fontSize: 15, color: Palette.titleTextColor),
       ),

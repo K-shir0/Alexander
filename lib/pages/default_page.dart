@@ -12,10 +12,10 @@ class DefaultPage extends HookWidget {
     // 一度だけ一覧を取得
     useEffect(() {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
-        notifier.fetchSpace(context);
+        notifier.initialize(context: context);
       });
     }, []);
 
-    return const Text('test');
+    return Container();
   }
 }

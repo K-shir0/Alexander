@@ -31,7 +31,7 @@ class Userinfo extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.all(20),
                   child: Text(
-                    'ユーザー名サンプルあああああ',
+                    'User',
                     style: TextStyle(fontSize: 12),
                     overflow: TextOverflow.ellipsis,
                   ),

@@ -25,13 +25,15 @@ class _$HomePageStateTearOff {
       List<Idea> ideas = const [],
       List<Transaction> transactions = const [],
       bool isSaving = false,
-      bool isLoading = false}) {
+      bool isLoading = false,
+      bool isSpaceListFetched = false}) {
     return _HomePageState(
       spaces: spaces,
       ideas: ideas,
       transactions: transactions,
       isSaving: isSaving,
       isLoading: isLoading,
+      isSpaceListFetched: isSpaceListFetched,
     );
   }
 
@@ -50,6 +52,7 @@ mixin _$HomePageState {
   List<Transaction> get transactions => throw _privateConstructorUsedError;
   bool get isSaving => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isSpaceListFetched => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -67,7 +70,8 @@ abstract class $HomePageStateCopyWith<$Res> {
       List<Idea> ideas,
       List<Transaction> transactions,
       bool isSaving,
-      bool isLoading});
+      bool isLoading,
+      bool isSpaceListFetched});
 }
 
 /// @nodoc
@@ -86,6 +90,7 @@ class _$HomePageStateCopyWithImpl<$Res>
     Object? transactions = freezed,
     Object? isSaving = freezed,
     Object? isLoading = freezed,
+    Object? isSpaceListFetched = freezed,
   }) {
     return _then(_value.copyWith(
       spaces: spaces == freezed
@@ -108,6 +113,10 @@ class _$HomePageStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSpaceListFetched: isSpaceListFetched == freezed
+          ? _value.isSpaceListFetched
+          : isSpaceListFetched // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -124,7 +133,8 @@ abstract class _$HomePageStateCopyWith<$Res>
       List<Idea> ideas,
       List<Transaction> transactions,
       bool isSaving,
-      bool isLoading});
+      bool isLoading,
+      bool isSpaceListFetched});
 }
 
 /// @nodoc
@@ -145,6 +155,7 @@ class __$HomePageStateCopyWithImpl<$Res>
     Object? transactions = freezed,
     Object? isSaving = freezed,
     Object? isLoading = freezed,
+    Object? isSpaceListFetched = freezed,
   }) {
     return _then(_HomePageState(
       spaces: spaces == freezed
@@ -167,6 +178,10 @@ class __$HomePageStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSpaceListFetched: isSpaceListFetched == freezed
+          ? _value.isSpaceListFetched
+          : isSpaceListFetched // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -179,7 +194,8 @@ class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
       this.ideas = const [],
       this.transactions = const [],
       this.isSaving = false,
-      this.isLoading = false});
+      this.isLoading = false,
+      this.isSpaceListFetched = false});
 
   factory _$_HomePageState.fromJson(Map<String, dynamic> json) =>
       _$_$_HomePageStateFromJson(json);
@@ -199,10 +215,13 @@ class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
   @JsonKey(defaultValue: false)
   @override
   final bool isLoading;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool isSpaceListFetched;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomePageState(spaces: $spaces, ideas: $ideas, transactions: $transactions, isSaving: $isSaving, isLoading: $isLoading)';
+    return 'HomePageState(spaces: $spaces, ideas: $ideas, transactions: $transactions, isSaving: $isSaving, isLoading: $isLoading, isSpaceListFetched: $isSpaceListFetched)';
   }
 
   @override
@@ -214,7 +233,8 @@ class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
       ..add(DiagnosticsProperty('ideas', ideas))
       ..add(DiagnosticsProperty('transactions', transactions))
       ..add(DiagnosticsProperty('isSaving', isSaving))
-      ..add(DiagnosticsProperty('isLoading', isLoading));
+      ..add(DiagnosticsProperty('isLoading', isLoading))
+      ..add(DiagnosticsProperty('isSpaceListFetched', isSpaceListFetched));
   }
 
   @override
@@ -233,7 +253,10 @@ class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
                     .equals(other.isSaving, isSaving)) &&
             (identical(other.isLoading, isLoading) ||
                 const DeepCollectionEquality()
-                    .equals(other.isLoading, isLoading)));
+                    .equals(other.isLoading, isLoading)) &&
+            (identical(other.isSpaceListFetched, isSpaceListFetched) ||
+                const DeepCollectionEquality()
+                    .equals(other.isSpaceListFetched, isSpaceListFetched)));
   }
 
   @override
@@ -243,7 +266,8 @@ class _$_HomePageState with DiagnosticableTreeMixin implements _HomePageState {
       const DeepCollectionEquality().hash(ideas) ^
       const DeepCollectionEquality().hash(transactions) ^
       const DeepCollectionEquality().hash(isSaving) ^
-      const DeepCollectionEquality().hash(isLoading);
+      const DeepCollectionEquality().hash(isLoading) ^
+      const DeepCollectionEquality().hash(isSpaceListFetched);
 
   @JsonKey(ignore: true)
   @override
@@ -262,7 +286,8 @@ abstract class _HomePageState implements HomePageState {
       List<Idea> ideas,
       List<Transaction> transactions,
       bool isSaving,
-      bool isLoading}) = _$_HomePageState;
+      bool isLoading,
+      bool isSpaceListFetched}) = _$_HomePageState;
 
   factory _HomePageState.fromJson(Map<String, dynamic> json) =
       _$_HomePageState.fromJson;
@@ -277,6 +302,8 @@ abstract class _HomePageState implements HomePageState {
   bool get isSaving => throw _privateConstructorUsedError;
   @override
   bool get isLoading => throw _privateConstructorUsedError;
+  @override
+  bool get isSpaceListFetched => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$HomePageStateCopyWith<_HomePageState> get copyWith =>
