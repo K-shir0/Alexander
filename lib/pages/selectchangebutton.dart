@@ -1,9 +1,12 @@
 import 'package:alexander/pages/theme/palette.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class SelectChangeButton extends StatelessWidget {
-  const SelectChangeButton({Key? key}) : super(key: key);
+class SelectChangeButton extends HookWidget {
+  final Function() onTapDeleteAction;
+
+  const SelectChangeButton({required this.onTapDeleteAction});
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +114,7 @@ class SelectChangeButton extends StatelessWidget {
                 ),
                 child: InkWell(
                   //消去ボタンクリックイベント
-                  onTap: () {},
+                  onTap: onTapDeleteAction,
                   child: const Icon(
                     Icons.delete_outline,
                     color: Palette.accentTextColor,

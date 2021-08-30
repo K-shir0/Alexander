@@ -53,7 +53,7 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
       };
 
   /// アイデアでエンターボタンを押した時の処理
-  Function() onEnterKeyAction(String currentSpaceId, String currentIdeaId) =>
+  Function() onEnterKeyAction(String currentSpaceId, String? currentIdeaId) =>
       () async {
         final ideas = state.ideas;
 
@@ -106,13 +106,31 @@ class HomePageStateNotifier extends StateNotifier<HomePageState>
           // }
 
           return;
+        } else {
+          ideas.add(newIdea);
+
+          state = state.copyWith(ideas: ideas);
+
+          ref
+              .read(transactionStateProvider.notifier)
+              .operationAdd(Operation.next(newIdea.id, null), currentSpaceId);
         }
 
         // TODO 無ければ追加
       };
 
   /// アイデアでデリートキーを押した時の処理
-  Function() onDeleteKeyAction() => () {};
+  Function() onDeleteKeyAction(String currentSpaceId, String ideaId) => () async {
+        final ideas = state.ideas;
+
+        ideas.removeWhere((element) => element.id == ideaId);
+
+        state = state.copyWith(ideas: ideas);
+
+        ref
+            .read(transactionStateProvider.notifier)
+            .operationAdd(Operation.deleteIdea(ideaId), currentSpaceId);
+      };
 
   Function(String)? onChangedIdeaTitle(String currentSpaceId, String ideaId) =>
       (String text) {

@@ -47,6 +47,11 @@ class HomePage extends HookWidget {
     final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: notifier.onEnterKeyAction(id, null),
+        child: const Icon(Icons.add),
+        backgroundColor: Palette.inviteandborder,
+      ),
       body: SingleChildScrollView(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,6 +124,7 @@ class IdeaCard extends HookWidget {
             TextFormField(
                 key: Key('${idea.id}-idea'),
                 initialValue: idea.title,
+                maxLines: null,
                 style: const TextStyle(fontSize: 24),
                 decoration: const InputDecoration(
                     hintText: 'Untitled',
@@ -142,7 +148,12 @@ class IdeaCard extends HookWidget {
                 onChanged: notifier.onChangedIdeaContent(spaceId, idea.id)),
             const Gap(32),
             //マンダラボタンなどの表示
-            const SelectChangeButton(),
+            SelectChangeButton(
+              onTapDeleteAction: notifier.onDeleteKeyAction(
+                spaceId,
+                idea.id,
+              ),
+            ),
           ],
         ),
       ),
@@ -162,9 +173,14 @@ class NoteMenu extends HookWidget {
     //ノート名を格納する変数
     final spaceLinks = state.spaces
         .map(
-          (e) => SpaceLinkWidget(
-            metadata: e,
-            currentSpaceId: currentSpaceId,
+          (e) => Column(
+            children: [
+              SpaceLinkWidget(
+                metadata: e,
+                currentSpaceId: currentSpaceId,
+              ),
+              const Gap(12),
+            ],
           ),
         )
         .toList();
@@ -176,37 +192,18 @@ class NoteMenu extends HookWidget {
       color: Palette.bgContentsLightColor,
       child: Column(
         children: [
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 30, bottom: 30, left: 24),
-                child: Container(
-                  width: 32,
-                  height: 32,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Palette.titleTextColor, width: 2),
-                  ),
-                  child: InkWell(
-                    //ボタンのクリックイベント
-                    onTap: () {},
-                    child: const Icon(Icons.add),
-                  ),
-                ),
+          Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: InkWell(
+              onTap: () {},
+              child: Row(
+                children: [
+                  const Icon(Icons.add_box_outlined),
+                  const Gap(8),
+                  const Text('ノート追加'),
+                ],
               ),
-              const SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.all(20),
-                  child: Text(
-                    'ノート追加',
-                    textAlign: TextAlign.center,
-                    style:
-                        TextStyle(color: Palette.titleTextColor, fontSize: 16),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
           // 区切り線
           const Divider(
