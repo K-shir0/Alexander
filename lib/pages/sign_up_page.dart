@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'common/alexander_text_field.dart';
 import 'common/sign_button.dart';
-import 'homemenu/home_menu.dart';
+import 'home_menu.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
